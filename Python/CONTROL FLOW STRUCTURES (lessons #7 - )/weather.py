@@ -1,4 +1,11 @@
+import tkinter as tk
+import keyboard
+from PIL import ImageTk, Image
+import os
 
+import colour_utils
+
+from math import floor
 
 from random import randint
 
@@ -81,9 +88,13 @@ if (weather == "rainy"):
 
 
 
+match weather:
+    case "sunny":
+        sample = 1
+    case "rainy":
+        sample = 2
 
 
 
-
-
+canvas.pack()
 root.mainloop()
