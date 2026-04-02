@@ -1,0 +1,54 @@
+Tuesday, Jan 28th
+
+%%% PYTHON:
+
+- console printing (hello world)
+
+print("hello world")
+
+hello world
+
+- variables
+- data types (int, double, float,...)
+- data structures (list)
+
+
+int x = 10
+int y = 50
+
+str = "this is a string"
+
+print(x + y)
+
+60
+
+
+- code flow:
+	- sequential, "line by line"
+	- functions
+	- code identation
+
+
+function (flowers)
+	print ("the flowers are growing")
+	function (stamens)
+		print ("the stamens are growing")
+
+function (bushes)
+	print ("the bushes are happily growing")
+
+
+
+
+- code flow structures:
+	- IF
+	- IF/else
+	- While
+	- For
+
+
+
+%%% SCRATCH:
+
+	- Sequential code
+	- Loops	

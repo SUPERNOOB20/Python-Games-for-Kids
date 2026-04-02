@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="Tree.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.342051"
+     inkscape:cx="343.51602"
+     inkscape:cy="770.35296"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern8"
+       preserveAspectRatio="xMidYMid"
+       id="pattern13"
+       patternTransform="matrix(1.6420739,0.43999237,-0.43999237,1.6420739,86.574377,420.06254)"
+       x="0"
+       y="0" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath27">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect28-6"
+         width="46.160622"
+         height="39.922417"
+         x="86.574379"
+         y="420.06253" />
+    </clipPath>
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="46.160622"
+       height="39.922417"
+       patternTransform="translate(86.574379,420.06253)"
+       preserveAspectRatio="xMidYMid"
+       id="pattern8"
+       inkscape:label="Triangle grid"
+       inkscape:collect="always"
+       inkscape:isstock="true">
+      <path
+         style="fill:none;stroke:#000000;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         d="M 63.480393,440 75,420 86.519607,440 Z M 86.560705,439.97627 75,420 l 23.080311,0.0237 z m 11.519606,-20 L 75,420 86.560705,400.02373 Z M 86.519607,400 75,420 63.480393,400 Z M 63.439295,400.02373 75,420 51.919689,419.97627 Z m -11.519606,20 L 75,420 63.439295,439.97627 Z M 109.64102,440 l 11.5196,-20 11.51961,20 z M 132.72133,439.9763 121.16062,420 l 23.08031,0.0237 z m 11.5196,-20 L 121.16062,420 132.72133,400.02373 Z M 132.68023,400 l -11.51961,20 -11.5196,-20 z m -23.08031,0.0237 11.5607,19.97627 -23.080309,-0.0237 z m -11.519609,20 L 121.16062,420 109.59992,439.97627 Z M 86.560705,480 98.080311,460 109.59992,480 Z M 109.64102,479.97627 98.080311,460 l 23.080309,0.0237 z m 11.5196,-20 L 98.080311,460 109.64102,440.02373 Z M 109.59992,440 98.080311,460 86.560705,440 Z M 86.519607,440.02373 98.080311,460 75,459.97627 Z M 75,460.02373 98.080311,460 86.519607,479.97627 Z M 132.72133,480 l 11.5196,-20 11.51961,20 z M 155.80164,479.9763 144.24093,460 l 23.08032,0.0237 z m 11.51961,-20 L 144.24093,460 155.80164,440.02373 Z M 155.76054,440 l -11.51961,20 -11.5196,-20 z m -23.08031,0.0237 11.5607,19.97627 -23.08031,-0.0237 z m -11.51961,20 23.08031,-0.0237 -11.5607,19.97627 z"
+         id="path7"
+         sodipodi:nodetypes="cccc"
+         clip-path="url(#clipPath27)"
+         transform="translate(-86.574379,-420.06253)" />
+    </pattern>
+  </defs>
+  <rect
+     style="display:inline;fill:#72dbe0;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3,12;stroke-opacity:1;stroke-dashoffset:0"
+     id="rect2"
+     width="171.6093"
+     height="171.6093"
+     x="18.753942"
+     y="52.136375"
+     inkscape:label="fill n stroke"
+     inkscape:highlight-color="#00a3aa"
+     inkscape:export-filename="C:\Users\Claudia\Tree.png"
+     inkscape:export-xdpi="290.93524"
+     inkscape:export-ydpi="290.93524" />
+  <rect
+     style="fill:url(#pattern13);stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,4.0000128;fill-opacity:1;opacity:0.416;stroke-dashoffset:0"
+     id="rect3"
+     width="171.6093"
+     height="171.6093"
+     x="18.753942"
+     y="52.136375"
+     inkscape:label="texture" />
+  <g
+     inkscape:label="Tree"
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:highlight-color="#00ca00">
+    <rect
+       style="fill:#502f09;fill-opacity:1;stroke:#000000;stroke-width:0.612;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1"
+       width="41.401783"
+       height="30.946785"
+       x="81.00769"
+       y="183.13637"
+       inkscape:label="Wood (Trunk)"
+       inkscape:highlight-color="#502f09" />
+    <path
+       style="fill:#196e08;fill-opacity:1;stroke:#000000;stroke-width:0.611669;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 80.929543,188.15477 H 42.115108 L 89.162589,141.10728 H 52.151903 L 92.821837,100.43735 H 60.097701 L 101.34266,59.192396 142.69217,100.5419 h -34.91969 l 41.50634,41.50634 h -42.76094 l 48.98166,48.98165 -32.88935,-1.66108"
+       id="path1"
+       inkscape:label="Leaves (Treetop)"
+       inkscape:highlight-color="#196e08"
+       sodipodi:nodetypes="ccccccccccccc" />
+  </g>
+</svg>

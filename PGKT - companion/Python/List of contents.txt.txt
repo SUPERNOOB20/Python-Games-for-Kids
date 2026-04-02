@@ -1,0 +1,44 @@
+%%%  DAY BY DAY:  %%%
+
+TODAY'S CLASS:
+17:20 - 18:20?
+
+
+
+--------------------------------------------------------
+
+TODAY's TOPICS (02-03-2026)
+
+
+- !! Logic (book: page 24 & 25)
+- Compiled vs interpreted (book: page 15)
+
+- !! Algorithms
+
+- Variables (book: page 24 & 25)
+- Keywords
+
+
+--------------------------------------------------------
+
+
+-  Variables
+
+-  Operators
+-  Data types:
+	* int
+	* float
+	* double
+	* str (string)
+
+-  Control Flow Structures
+-  Data Structures:
+	*  Sets
+	*  Tuples  ;  Lists
+	*  Matrices (lists of lists) (2-dimensional) ; lists of lists of lists of... (n-dimensional)
+	*  Dictionaries
+
+	* FIFO queues  ;  LIFO queues (stack)
+
+-  Functions
+-  Modules

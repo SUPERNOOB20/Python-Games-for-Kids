@@ -1,0 +1,21 @@
+---  version history (features)  ---
+
+1.1.3nc brings no puzzles :(
+1.2.0 brings 1 puzzle
+1.2.1 brings 2 puzzles!
+
+
+
+
+
+
+
+
+
+---  Technical notes  ---
+
+"nc" means "no clones". It's just there for me to remember that those versions have no clones.
+
+The board is a backdrop in this version. So most of the old SET UP logic is not needed anymore, and has been disposed of accordingly.
+
+From 1.1.3 onwards everything is "nc", so the label has been deprecated for that version onwards.

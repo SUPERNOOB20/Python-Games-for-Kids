@@ -1,0 +1,59 @@
+Abstraction tree:
+
+
+"I'm Azul Cian and I'm 23 years old!"
+
+
+Objects:
+Azul ----> Name: Azul Cian
+---------> Age: 23 years old.
+
+
+Variables:
+my_name = "Azul Cian"
+my_age = "23"
+
+
+
+
+
+
+
+Objects: Higher than variables in abstraction
+
+Variable: piece of information that the computer remembers
+
+
+variables go like this:
+
+my_name = "Azul Cian"
+my_age = "23"
+
+^^^
+
+name = value
+
+Data type: If I have a 
+
+
+
+
+Operators:
++
+-
+/
+*
+
+logical operators:
+and
+or
+not
+
+assignment operator
+=    
+
+comparison operators
+==   (a.k.a "is")
+!=   (a.k.a "is not")
+
+

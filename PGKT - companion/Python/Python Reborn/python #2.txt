@@ -1,0 +1,42 @@
+Tuesday, Jan 28th
+
+- Setting (history of Python):
+
+Made by Guido van Rossum, a dutch programmer.
+It's a very simple programming language.
+
+
+
+Variables:
+Variables are our way to store information in our computers!
+Each variable is it's own piece of data. It can be a number, text, or whatever we need to work with
+(for example, if I want to write code that handles student inscriptions, maybe I will have data types such as "Student" or "ID" or other information).
+
+
+Data types:
+
+The ones included in Python (the ones we always use!) are:
+
+int = integer. 		It's a whole number. Example: I have int = 2 apples
+float. 			It's a decimal number. The ticket costs float = 5.50 dollars.
+double. 		It's a decimal number that is calculated with more precision by the computer. I suggest we don't use this one for this basic course, there's no need.
+str = string. 		It's text. You have to write it enclosed by quotation marks like this: str = "Hello World."
+
+We can also make our own ones when needed, but this is a case by case scenario.
+
+The idea with data types is that we know what information we are storing in our computer!
+Imagine I'm doing a system that aids in driving, and I have a variable with value "50".
+But what is 50? 50 kilometers per hour? 50 liters of gas left in the tank? 50 tracks in my Spotify playlist?
+Data types help us distinguish what each variable does, and what does it mean and represent :3
+
+
+
+
+Examples:
+- Ticketek (displays shows).
+	Idea: First I do 
+- Websites (Think about booking (or some other webpage)).
+- Images
+
+
+

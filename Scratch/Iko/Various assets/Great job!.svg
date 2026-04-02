@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="Great job!.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.96746633"
+     inkscape:cx="347.81572"
+     inkscape:cy="515.26341"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient3"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#da82ea;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#eaa6e7;stop-opacity:1;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <rect
+       x="107.49728"
+       y="328.69361"
+       width="148.84239"
+       height="416.3327"
+       id="rect2" />
+    <rect
+       x="107.49728"
+       y="328.69361"
+       width="148.84239"
+       height="416.3327"
+       id="rect3" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3"
+       id="linearGradient4"
+       x1="105.61567"
+       y1="431.5928"
+       x2="154.59918"
+       y2="704.32574"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3"
+       id="linearGradient6"
+       x1="107.49805"
+       y1="383.06836"
+       x2="150.94293"
+       y2="704.01324"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <rect
+     style="display:inline;fill:#e4e4e4;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+     id="rect1"
+     width="160"
+     height="120"
+     x="28.441988"
+     y="77.121544"
+     inkscape:export-filename="Great_Job!.png"
+     inkscape:export-xdpi="74.341461"
+     inkscape:export-ydpi="74.341461"
+     inkscape:label="ref" />
+  <g
+     inkscape:label="Text"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,138.6547,-7.4261284)"
+       id="text2"
+       style="font-style:italic;font-weight:bold;font-size:64px;font-family:Candara;-inkscape-font-specification:'Candara, Bold Italic';text-align:start;letter-spacing:4.5px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect3);display:inline;fill:url(#linearGradient4);fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="Job!"><tspan
+         x="107.49805"
+         y="383.06836"
+         id="tspan11">
+</tspan><tspan
+         x="107.49805"
+         y="463.06836"
+         id="tspan12">J
+</tspan><tspan
+         x="107.49805"
+         y="543.06836"
+         id="tspan13">O
+</tspan><tspan
+         x="107.49805"
+         y="623.06836"
+         id="tspan14">B
+</tspan><tspan
+         x="107.49805"
+         y="703.06836"
+         id="tspan15">!</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,9.5718233,-0.54696132)"
+       id="text1"
+       style="font-style:italic;font-weight:bold;font-size:64px;font-family:Candara;-inkscape-font-specification:'Candara, Bold Italic';text-align:start;letter-spacing:4.5px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);display:inline;fill:url(#linearGradient6);fill-opacity:1;stroke:#000000;stroke-width:1.88976;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="Great"><tspan
+         x="107.49805"
+         y="383.06836"
+         id="tspan16">G
+</tspan><tspan
+         x="107.49805"
+         y="463.06836"
+         id="tspan17">R
+</tspan><tspan
+         x="107.49805"
+         y="543.06836"
+         id="tspan18">E
+</tspan><tspan
+         x="107.49805"
+         y="623.06836"
+         id="tspan19">A
+</tspan><tspan
+         x="107.49805"
+         y="703.06836"
+         id="tspan20">T</tspan></text>
+  </g>
+</svg>

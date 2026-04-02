@@ -1,0 +1,3 @@
+- PowerToys
+- Remove the duplicated files
+- Share python activities
