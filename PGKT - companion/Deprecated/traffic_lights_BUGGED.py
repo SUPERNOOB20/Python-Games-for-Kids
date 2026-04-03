@@ -4,8 +4,7 @@ import sys
 
 from random import randint
 
-frame_counter = 0           # Times global events
-car_frame_counter = 0       # Times cars' animation loop :3
+frame_counter = 0
 
 traffic_lights = "green"      # Lo inicializo en "green". ¿Por qué? Porque sí :p
 
@@ -131,8 +130,8 @@ def stop_cars():
 
     cars_x_movement = False
 
-    global car_frame_counter
-    car_frame_counter -= 1
+    global frame_counter
+    frame_counter -= 1
     return
 
 
@@ -227,7 +226,7 @@ while(running == True):
     if ((frame_counter % 100) == 0):
         cambiar_las_luces_del_semaforo()
 
-    if ((car_frame_counter % 120) == 0):
+    if ((frame_counter % 120) == 0):
         cars_x_pos -= step_func * 120
 
     if cars_x_movement == True:
@@ -246,8 +245,8 @@ while(running == True):
         # print("FPS:", int(clock.get_fps()))
         
 
-    frame_counter     += 1
-    car_frame_counter += 1
+    frame_counter += 1
+
     
 
     pygame.display.flip()
