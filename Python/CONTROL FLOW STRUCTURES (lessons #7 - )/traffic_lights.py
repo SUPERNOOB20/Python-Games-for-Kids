@@ -59,19 +59,33 @@ pygame.init()
 
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-cars_size = (2332, 31)                                          # <--- CONSTANT
-cars_inverse_aspect_ratio = cars_size[1] / cars_size[0]         # <--- CONSTANT
+cars_raw_size = (2332, 31)                                          # <--- CONSTANT
+cars_proportion = cars_raw_size[0] / cars_raw_size[1]
+cars_inverse_proportion = 1 / cars_proportion
 
-cars_adaptive_width = 2332 / user_screen_width
+scale_factor = cars_raw_size[0] / 1920
 
-cars_transformed_width = cars_adaptive_width
-cars_transformed_height = cars_adaptive_width * cars_inverse_aspect_ratio
+cars_transformed_width = user_screen_width * scale_factor
+cars_transformed_height = cars_raw_size[1] / scale_factor
+
+"""
+# Scales the size of the "cars" image to adapt to the user's screen resolution (pain).
+cars_transformed_width = cars_size[0] / user_screen_width
+cars_transformed_height = (cars_transformed_width * 31) / cars_size[0]
+
+print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
+print("(different) CAR DIMENSIONS: ", user_screen_width / cars_transformed_width, user_screen_height * cars_transformed_height)
+
+
+cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
+cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (user_screen_width / cars_transformed_width, user_screen_height * cars_transformed_height))
+"""
 
 print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
 
 
 cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
-cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_adaptive_width, ))
+cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (user_screen_width / cars_transformed_width, user_screen_height * cars_transformed_height))
 
 
 
