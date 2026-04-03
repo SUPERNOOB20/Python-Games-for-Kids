@@ -85,7 +85,7 @@ print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
 
 
 cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
-cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (user_screen_width / cars_transformed_width, user_screen_height * cars_transformed_height))
+cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_transformed_width, cars_transformed_height))
 
 
 
@@ -94,9 +94,23 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("Traffic Lights :)")
 
 
+cars_x_pos = 0
+cars_y_pos = int_horizontal_position(70)
+
+cars_x_movement = 0
+
+
+def move_cars():
+    global cars_x_movement
+
+    cars_x_movement = int_horizontal_position(1)
+    return
 
 
 def stop_cars():
+    global cars_x_movement
+
+    cars_x_movement = int_horizontal_position(0)
     return
 
 
@@ -168,11 +182,17 @@ while(running == True):
     # keyboard.on_press_key("esc", lambda _: pygame.quit())
     keyboard.on_press_key("esc", lambda _: stop_running())
 
+    move_cars()
+
     handle_traffic_lights()
 
     cambiar_las_luces_del_semaforo()
 
-    screen.blit(cars_scaled_surface)
+
+    # global cars_x_pos
+    # global cars_y_pos
+    # global cars_x_movement
+    screen.blit(cars_scaled_surface, (cars_x_pos + cars_x_movement, cars_y_pos))
 
     pygame.display.flip()
     clock.tick(60)  # Caps the events loop at a 60fps ceiling
