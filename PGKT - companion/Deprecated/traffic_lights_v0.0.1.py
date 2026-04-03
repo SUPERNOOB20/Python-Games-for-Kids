@@ -15,9 +15,9 @@ def cambiar_las_luces_del_semaforo():
     traffic_lights_change = randint(0, 1)
 
     global frame_counter
-    # print("\n")
-    # print("TRAFFIC LIGHTS CUR VALUE:", traffic_lights)
-    # print("FRAME COUNTER:", frame_counter)
+    print("\n")
+    print("TRAFFIC LIGHTS CUR VALUE:", traffic_lights)
+    print("FRAME COUNTER:", frame_counter)
 
     if (traffic_lights_change == 0):
         traffic_lights = "red"
@@ -77,7 +77,20 @@ scale_factor = cars_raw_size[0] / 1920
 cars_transformed_width = user_screen_width * scale_factor
 cars_transformed_height = cars_raw_size[1] / scale_factor
 
-# print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
+"""
+# Scales the size of the "cars" image to adapt to the user's screen resolution (pain).
+cars_transformed_width = cars_size[0] / user_screen_width
+cars_transformed_height = (cars_transformed_width * 31) / cars_size[0]
+
+print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
+print("(different) CAR DIMENSIONS: ", user_screen_width / cars_transformed_width, user_screen_height * cars_transformed_height)
+
+
+cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
+cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (user_screen_width / cars_transformed_width, user_screen_height * cars_transformed_height))
+"""
+
+print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
 
 
 cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
@@ -94,9 +107,6 @@ red_light_scaled_surface = pygame.transform.scale(surface = red_light_raw_surfac
 
 green_light_raw_surface = pygame.image.load("green_light.png").convert_alpha()
 green_light_scaled_surface = pygame.transform.scale(surface = green_light_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
-
-post_raw_surface = pygame.image.load("post.png").convert_alpha()
-post_scaled_surface = pygame.transform.scale(surface = post_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
 
 
 clock = pygame.time.Clock()
@@ -198,13 +208,12 @@ debug_mode = True
 
 while(running == True):
 
-
-
     screen.fill((255, 255, 255))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
 
     # keyboard.on_press_key("esc", lambda _: pygame.quit())
     keyboard.on_press_key("esc", lambda _: stop_running())
@@ -236,16 +245,6 @@ while(running == True):
         Render_Text((str(traffic_lights)), (255,0,0), (100,0))    # Show FPS
         # print("FPS:", int(clock.get_fps()))
         
-
-    
-    screen.blit(post_scaled_surface, (int_horizontal_position(20), int_vertical_position(20)))
-
-    if traffic_lights == "red":
-        screen.blit(red_light_scaled_surface, (int_horizontal_position(20), int_vertical_position(19.7)))
-    else:       # traffic_lights == "green"
-        screen.blit(green_light_scaled_surface, (int_horizontal_position(20), int_vertical_position(20.3)))
-    
-    
 
     frame_counter     += 1
     car_frame_counter += 1
