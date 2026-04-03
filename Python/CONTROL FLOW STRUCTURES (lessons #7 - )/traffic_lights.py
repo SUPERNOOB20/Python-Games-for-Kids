@@ -7,8 +7,12 @@ from random import randint
 traffic_lights = 0      # Lo inicializo en 0. ¿Por qué? Porque sí :p
 
 def cambiar_las_luces_del_semaforo():
+    global traffic_lights
+
 
     traffic_lights = randint(0, 1)
+
+    print("TRAFFIC LIGHTS CUR VALUE:", traffic_lights)
 
     if (traffic_lights == 0):
         traffic_lights = "red"
@@ -87,13 +91,24 @@ print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
 cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
 cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_transformed_width, cars_transformed_height))
 
+base_raw_surface = pygame.image.load("base.png").convert_alpha()
+base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width, user_screen_height))
+
+true_scale_factor_width = 1920 / user_screen_width
+true_scale_factor_height = 1080 / user_screen_height
+
+red_light_raw_surface = pygame.image.load("red_light.png").convert_alpha()
+red_light_scaled_surface = pygame.transform.scale(surface = red_light_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
+
+green_light_raw_surface = pygame.image.load("green_light.png").convert_alpha()
+green_light_scaled_surface = pygame.transform.scale(surface = green_light_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
 
 
 clock = pygame.time.Clock()
 
 pygame.display.set_caption("Traffic Lights :)")
 
-
+frame_counter = 0
 
 cars_x_pos = 0
 cars_y_pos = int_vertical_position(70)
@@ -112,6 +127,9 @@ def stop_cars():
     global cars_x_movement
 
     cars_x_movement = False
+
+    global frame_counter
+    frame_counter -= 1
     return
 
 
@@ -157,6 +175,15 @@ def handle_traffic_lights():
 
 
 
+def Render_Text(what, color, where):
+    font = pygame.font.SysFont('Arial', 30)
+    text = font.render(what, 1, pygame.Color(color))
+    screen.blit(text, where)
+
+    return
+
+
+
 
 
 running = True
@@ -174,10 +201,11 @@ def stop_running():
 step_func = (11.9270833333 * vw) / 120
 
 
+debug_mode = True
 
 while(running == True):
 
-    screen.fill((0, 0, 0))
+    screen.fill((255, 255, 255))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -187,17 +215,18 @@ while(running == True):
     # keyboard.on_press_key("esc", lambda _: pygame.quit())
     keyboard.on_press_key("esc", lambda _: stop_running())
 
+    screen.blit(base_scaled_surface, (0, 0))
+
     move_cars()
 
     handle_traffic_lights()
 
-    cambiar_las_luces_del_semaforo()
+    if ((frame_counter % 100) == 0):
+        cambiar_las_luces_del_semaforo()
 
-    # print("is car moving: ", cars_x_movement)
+    if ((frame_counter % 120) == 0):
+        cars_x_pos -= step_func * 120
 
-    # global cars_x_pos
-    # global cars_y_pos
-    # global cars_x_movement
     if cars_x_movement == True:
         screen.blit(cars_scaled_surface, (cars_x_pos + step_func, cars_y_pos))
         cars_x_pos += step_func
@@ -205,6 +234,18 @@ while(running == True):
         screen.blit(cars_scaled_surface, (cars_x_pos, cars_y_pos))
     
     # print("stuff: ", cars_x_pos, cars_y_pos, cars_x_movement)
+
+    if debug_mode == True:
+        pygame.font.init()
+        
+        Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
+        Render_Text((str(traffic_lights)), (255,0,0), (100,0))    # Show FPS
+        # print("FPS:", int(clock.get_fps()))
+        
+
+    frame_counter += 1
+
+    
 
     pygame.display.flip()
     clock.tick(60)  # Caps the events loop at a 60fps ceiling
