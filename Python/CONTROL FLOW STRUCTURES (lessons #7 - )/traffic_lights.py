@@ -51,7 +51,7 @@ import pygame       # imports pygame-ce
 # if pygame not ce... throw an exception or a warning.
 
 
-from adaptive_screensize_utils import *
+from adaptive_screensize_utils_b import *
 
 
 
@@ -94,23 +94,24 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("Traffic Lights :)")
 
 
-cars_x_pos = 0
-cars_y_pos = int_horizontal_position(70)
 
-cars_x_movement = 0
+cars_x_pos = 0
+cars_y_pos = int_vertical_position(70)
+
+cars_x_movement = True
 
 
 def move_cars():
     global cars_x_movement
 
-    cars_x_movement = int_horizontal_position(1)
+    cars_x_movement = True
     return
 
 
 def stop_cars():
     global cars_x_movement
 
-    cars_x_movement = int_horizontal_position(0)
+    cars_x_movement = False
     return
 
 
@@ -169,6 +170,8 @@ def stop_running():
     return
 
 
+# loop every 120 frames cuz why not
+step_func = (11.9270833333 * vw) / 120
 
 
 
@@ -188,11 +191,18 @@ while(running == True):
 
     cambiar_las_luces_del_semaforo()
 
+    # print("is car moving: ", cars_x_movement)
 
     # global cars_x_pos
     # global cars_y_pos
     # global cars_x_movement
-    screen.blit(cars_scaled_surface, (cars_x_pos + cars_x_movement, cars_y_pos))
+    if cars_x_movement == True:
+        screen.blit(cars_scaled_surface, (cars_x_pos + step_func, cars_y_pos))
+        cars_x_pos += step_func
+    else:
+        screen.blit(cars_scaled_surface, (cars_x_pos, cars_y_pos))
+    
+    # print("stuff: ", cars_x_pos, cars_y_pos, cars_x_movement)
 
     pygame.display.flip()
     clock.tick(60)  # Caps the events loop at a 60fps ceiling
