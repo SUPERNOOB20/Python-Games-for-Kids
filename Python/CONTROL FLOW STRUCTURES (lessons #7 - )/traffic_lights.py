@@ -177,6 +177,8 @@ step_func = (11.9270833333 * vw) / 120
 
 while(running == True):
 
+    screen.fill((0, 0, 0))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
