@@ -4,20 +4,12 @@ import sys
 
 from random import randint
 
-traffic_lights = 0      # Lo inicializo en 0. ¿Por qué? Porque sí :p
+traffic_lights = randint(0, 1)
 
-def cambiar_las_luces_del_semaforo():
-
-    traffic_lights = randint(0, 1)
-
-    if (traffic_lights == 0):
-        traffic_lights = "red"
-    else:
-        traffic_lights = "green"
-    return
-
-
-
+if (traffic_lights == 0):
+    traffic_lights = "red"
+else:
+    traffic_lights = "green"
 
 
 def change_path_to_module_location():
@@ -59,19 +51,8 @@ pygame.init()
 
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-cars_size = (2332, 31)                                          # <--- CONSTANT
-cars_inverse_aspect_ratio = cars_size[1] / cars_size[0]         # <--- CONSTANT
-
-cars_adaptive_width = 2332 / user_screen_width
-
-cars_transformed_width = cars_adaptive_width
-cars_transformed_height = cars_adaptive_width * cars_inverse_aspect_ratio
-
-print("CAR DIMENSIONS: ", cars_transformed_width, cars_transformed_height)
-
-
 cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
-cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_adaptive_width, ))
+cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (user_screen_width, user_screen_height))
 
 
 
@@ -83,7 +64,10 @@ pygame.display.set_caption("Traffic Lights :)")
 
 
 def stop_cars():
+    screen.blit(cars_scaled_surface)
     return
+
+
 
 
 
@@ -130,35 +114,15 @@ def handle_traffic_lights():
 
 
 
-running = True
 
 
-def stop_running():
+while(True):
 
-    global running
-
-    running = False
-    return
-
-
-
-
-
-while(running == True):
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-
-    # keyboard.on_press_key("esc", lambda _: pygame.quit())
-    keyboard.on_press_key("esc", lambda _: stop_running())
+    keyboard.on_press_key("esc", lambda _: pygame.quit())
 
     handle_traffic_lights()
 
-    cambiar_las_luces_del_semaforo()
 
-    screen.blit(cars_scaled_surface)
 
     pygame.display.flip()
     clock.tick(60)  # Caps the events loop at a 60fps ceiling

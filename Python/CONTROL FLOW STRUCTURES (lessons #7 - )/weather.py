@@ -2,8 +2,7 @@ import tkinter as tk
 import keyboard
 from PIL import ImageTk, Image
 import os
-
-import colour_utils
+import sys
 
 from math import floor
 
@@ -21,7 +20,7 @@ def change_path_to_module_location():
 
 
 
-
+import colour_utils
 
 
 root = tk.Tk()
