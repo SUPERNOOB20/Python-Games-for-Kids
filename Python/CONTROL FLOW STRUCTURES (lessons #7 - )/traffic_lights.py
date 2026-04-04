@@ -154,6 +154,7 @@ def handle_traffic_lights():
 
 
 
+
     # ---------------------------------------------------------------------------------------------------
 
     return
@@ -217,7 +218,9 @@ while(running == True):
         cambiar_las_luces_del_semaforo()
 
     if ((car_frame_counter % 120) == 0):
-        cars_x_pos -= step_func * 120
+        cars_x_pos        -= step_func * 120
+        frame_counter     += 1
+        car_frame_counter += 1
 
     if cars_x_movement == True:
         screen.blit(cars_scaled_surface, (cars_x_pos + step_func, cars_y_pos))
