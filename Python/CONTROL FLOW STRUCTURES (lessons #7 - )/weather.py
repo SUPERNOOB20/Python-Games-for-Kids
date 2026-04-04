@@ -11,6 +11,15 @@ from random import randint
 
 def change_path_to_module_location():
 
+    true_path = os.path.dirname(os.path.realpath(__file__))
+
+    new_true_path = os.path.join(true_path, '..')
+
+    sys.path.append(true_path + "/../..")
+
+    os.chdir(new_true_path)
+
+
     new_true_path = os.path.join(true_path, '..')
     new_true_path = os.path.join(new_true_path, 'Libraries')
 
@@ -19,7 +28,10 @@ def change_path_to_module_location():
     return
 
 
+change_path_to_module_location()
 
+
+from adaptive_screensize_utils_b import *
 import colour_utils
 
 
@@ -45,12 +57,12 @@ else:
     weather = "rainy"
 
 
-canvas.create_image(user_screen_width / 2, user_screen_height / 2, image=sunny, anchor=tk.CENTER)
+canvas.create_image(user_screen_width / 2, user_screen_height / 2, image="sunny.png", anchor=tk.CENTER)
 canvas.pack()
 
 
 def take_umbrella():
-    canvas.create_image(user_screen_width / 2, user_screen_height / 2, image=rainy, anchor=tk.CENTER)
+    canvas.create_image(user_screen_width / 2, user_screen_height / 2, image="rainy.png", anchor=tk.CENTER)
     canvas.pack()
     return
 
