@@ -27,8 +27,13 @@ def change_path_to_module_location():
 
     return
 
-
 change_path_to_module_location()
+
+
+
+os.chdir("CONTROL FLOW STRUCTURES (lessons #7 - )")
+print("current_dir: ", os.getcwd())
+os.chdir("Assets")
 
 
 from adaptive_screensize_utils_b import *
