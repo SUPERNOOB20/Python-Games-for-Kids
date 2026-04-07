@@ -72,11 +72,7 @@ pygame.init()
 
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-cars_raw_size = (2332, 31)                                          # <--- CONSTANT
-cars_proportion = cars_raw_size[0] / cars_raw_size[1]
-cars_inverse_proportion = 1 / cars_proportion
-
-scale_factor = cars_raw_size[0] / 1920
+# scale_factor = (1920 / user_screen_width, 1080 / user_screen_height)
 
 base_raw_surface = pygame.image.load("base.png").convert_alpha()
 base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width, user_screen_height))
@@ -92,8 +88,8 @@ clock = pygame.time.Clock()
 
 pygame.display.set_caption("Traffic Lights :)")
 
-cars_x_pos = 0
-cars_y_pos = int_vertical_position(70)
+kid_x_pos = 0
+kid_y_pos = int_vertical_position(user_screen_height * (7/10))
 
 cars_x_movement = True
 
