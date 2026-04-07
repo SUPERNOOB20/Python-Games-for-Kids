@@ -86,7 +86,7 @@ true_scale_factor_height = 1080 / user_screen_height
 
 clock = pygame.time.Clock()
 
-pygame.display.set_caption("Traffic Lights :)")
+pygame.display.set_caption("Park and School! :)")
 
 kid_x_pos = 0
 kid_y_pos = int_vertical_position(user_screen_height * (7/10))

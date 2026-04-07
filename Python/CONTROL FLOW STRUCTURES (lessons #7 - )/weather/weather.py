@@ -19,20 +19,23 @@ def change_path_to_module_location():
 
     os.chdir(new_true_path)
 
-
     new_true_path = os.path.join(true_path, '..')
+    new_true_path = os.path.join(new_true_path, '..')
     new_true_path = os.path.join(new_true_path, 'Libraries')
 
     sys.path.append(new_true_path)
+
+    # os.chdir("LIBRARIES PATH:", new_true_path)
 
     return
 
 change_path_to_module_location()
 
 
-
+os.chdir("../")
 os.chdir("CONTROL FLOW STRUCTURES (lessons #7 - )")
 print("current_dir: ", os.getcwd())
+os.chdir("weather")
 os.chdir("Assets")
 
 
