@@ -25,7 +25,7 @@ def change_path_to_module_location():
 
     sys.path.append(new_true_path)
 
-    # os.chdir("LIBRARIES PATH:", new_true_path)
+    # print("LIBRARIES PATH:", str(sys.path))
 
     return
 
@@ -34,9 +34,12 @@ change_path_to_module_location()
 
 os.chdir("../")
 os.chdir("CONTROL FLOW STRUCTURES (lessons #7 - )")
-print("current_dir: ", os.getcwd())
 os.chdir("weather")
 os.chdir("Assets")
+
+print("current_dir: ", os.getcwd())
+
+
 
 
 from adaptive_screensize_utils_b import *
