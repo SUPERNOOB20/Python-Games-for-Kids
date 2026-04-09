@@ -67,13 +67,14 @@ sad_face_scaled_surface = pygame.transform.scale(surface = sad_face_raw_surface,
 umbrella_face_raw_surface = pygame.image.load("umbrella.png").convert_alpha()
 umbrella_scaled_surface = pygame.transform.scale(surface = umbrella_face_raw_surface, size = (user_screen_width, user_screen_height))
 
-
+base_raw_surface = pygame.image.load("base.png").convert_alpha()
+base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width, user_screen_height))
 
 
 
 frame_counter = 0               # Times global events (in this case, the weather animation loop :3)
 
-weather = 0     # Just initializes the "weather" variable.
+weather = "rainy"     # Just initializes the "weather" variable.
 
 
 def change_weather():
@@ -212,7 +213,8 @@ while(running == True):
         if draw_umbrella == True:
             screen.blit(umbrella_scaled_surface, (0, 0))
 
-
+    if draw_sad_face == False:
+        screen.blit(base_scaled_surface, (0, 0))     # Draw_base()
     
 
     
