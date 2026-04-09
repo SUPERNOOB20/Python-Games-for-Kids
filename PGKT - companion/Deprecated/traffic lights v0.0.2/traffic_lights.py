@@ -73,14 +73,12 @@ cars_proportion = cars_raw_size[0] / cars_raw_size[1]
 cars_inverse_proportion = 1 / cars_proportion
 
 scale_factor = cars_raw_size[0] / 1920
-car_scale_factor = 3
-animation_duration = 120
 
 cars_transformed_width = user_screen_width * scale_factor
 cars_transformed_height = cars_raw_size[1] / scale_factor
 
 cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
-cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_transformed_width * car_scale_factor, cars_transformed_height * car_scale_factor))
+cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_transformed_width, cars_transformed_height))
 
 base_raw_surface = pygame.image.load("base.png").convert_alpha()
 base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width, user_screen_height))
@@ -96,9 +94,6 @@ green_light_scaled_surface = pygame.transform.scale(surface = green_light_raw_su
 
 post_raw_surface = pygame.image.load("post.png").convert_alpha()
 post_scaled_surface = pygame.transform.scale(surface = post_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
-
-background_raw_surface = pygame.image.load("background.png").convert_alpha()
-background_scaled_surface = pygame.transform.scale(surface = background_raw_surface, size = (user_screen_width, user_screen_height))
 
 
 clock = pygame.time.Clock()
@@ -159,10 +154,13 @@ def handle_traffic_lights():
 
 
 
+
     # ---------------------------------------------------------------------------------------------------
 
-
     return
+
+
+
 
 
 
@@ -191,17 +189,17 @@ def stop_running():
     return
 
 
-# loop every "animation_duration" amount of frames
-step_func = (11.9270833333 * vw) * car_scale_factor / animation_duration
+# loop every 120 frames cuz why not
+step_func = (11.9270833333 * vw) / 120
 
 
 debug_mode = False
 
 while(running == True):
 
-    screen.fill((255, 255, 255))
 
-    screen.blit(background_scaled_surface, (0, 0))
+
+    screen.fill((255, 255, 255))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -219,8 +217,8 @@ while(running == True):
     if ((frame_counter % 100) == 0):
         cambiar_las_luces_del_semaforo()
 
-    if ((car_frame_counter % animation_duration) == 0):
-        cars_x_pos        -= step_func * animation_duration
+    if ((car_frame_counter % 120) == 0):
+        cars_x_pos        -= step_func * 120
         frame_counter     += 1
         car_frame_counter += 1
 
