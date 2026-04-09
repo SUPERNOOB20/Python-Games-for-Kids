@@ -215,21 +215,11 @@ while(running == True):
 
     if draw_sad_face == False:
         screen.blit(base_scaled_surface, (0, 0))     # Draw_base()
-    
-
-    
-
-    # if draw_sad_face == False:
-        # print("HUH")
-
- 
-
 
     
 
     frame_counter += 1
     
-
 
 
     if debug_mode == True:
