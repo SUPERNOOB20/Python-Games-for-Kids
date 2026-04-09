@@ -42,49 +42,72 @@ os.chdir("CONTROL FLOW STRUCTURES (lessons #7 - )")
 os.chdir("weather")
 os.chdir("Assets")
 
-print("current_dir: (GETCWD)", os.getcwd())
-# print("current_dir (CURDIR): ", os.curdir)
-# print("sys path:", ss)
-
-
+# print("current_dir: (GETCWD)", os.getcwd())
 
 from adaptive_screensize_utils_b import *
-import colour_utils
+# import colour_utils
 
 
 
 
-root = tk.Tk()
-root.attributes('-fullscreen', True)
-# c = tk.Canvas(root, bg = 'black')
-
-keyboard.on_press_key("esc", lambda _: root.destroy())
 
 
-# os.chdir(os.path.dirname(os.path.realpath(__file__)))
-# cur_path = os.getcwd()
+pygame.init()
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-frame_counter = 0               # Times global events
-weather_frame_counter = 0       # Times weather animation loop :3
+sunny_raw_surface = pygame.image.load("sunny.png").convert_alpha()
+sunny_scaled_surface = pygame.transform.scale(surface = sunny_raw_surface, size = (user_screen_width, user_screen_height))
+
+rainy_raw_surface = pygame.image.load("rainy.png").convert_alpha()
+rainy_scaled_surface = pygame.transform.scale(surface = rainy_raw_surface, size = (user_screen_width, user_screen_height))
+
+sad_face_raw_surface = pygame.image.load("sad_face.png").convert_alpha()
+sad_face_scaled_surface = pygame.transform.scale(surface = sad_face_raw_surface, size = (user_screen_width, user_screen_height))
+
+umbrella_face_raw_surface = pygame.image.load("umbrella.png").convert_alpha()
+umbrella_scaled_surface = pygame.transform.scale(surface = umbrella_face_raw_surface, size = (user_screen_width, user_screen_height))
+
+
+
+
+
+frame_counter = 0               # Times global events (in this case, the weather animation loop :3)
 
 weather = 0     # Just initializes the "weather" variable.
 
-weather = randint(0, 1)
 
-match weather:
-    case "sunny":
-        weather = 0
-    case "rainy":
-        weather = 1
+def change_weather():
 
+    global weather
+
+    weather = randint(0, 1)
+
+    match weather:
+        case 0:
+            weather = "sunny"
+
+        case 1:
+            weather = "rainy"
+    
+    return
+
+
+draw_umbrella = False   # Oh no! If the kids don't solve the exercise... the guy will get wet! D:
 draw_sad_face = True    # Oh no! If the kids don't solve the exercise... the guy will get wet! D:
 
 def take_umbrella():
-    # load rainy.png
-    # load happy_face.png (?
+
+    # loads umbrella.png
+    # loads happy_face.png (?
+
+
+
+    global draw_umbrella
+    draw_umbrella = True
 
     global draw_sad_face
-    draw_sad_face = False
+    draw_sad_face = False       # If the guy takes the umbrella with him, he won't get wet! So now, he's happy :D    
+
     return
 
 
@@ -118,13 +141,36 @@ if (weather == "rainy"):
 
 
 
-change_weather_speed = 2        # Time it takes to change the weather (in seconds)
+change_weather_speed = 1        # Time it takes to change the weather (in seconds)
 fps = 30
 
-change_weather_speed_in_frames = change_weather_speed * fps
+change_weather_speed_in_frames = change_weather_speed * fps         # change_weather_speed_in_frames = 60
 
 
-debug_mode = False
+
+running = True
+
+
+def stop_running():
+
+    global running
+
+    running = False
+    return
+
+
+debug_mode = True       # Switches between "debug mode" and "release mode"
+
+
+clock = pygame.time.Clock()
+pygame.display.set_caption("Weather :)")
+
+def Render_Text(what, color, where):
+    font = pygame.font.SysFont('Arial', 30)
+    text = font.render(what, 1, pygame.Color(color))
+    screen.blit(text, where)
+
+    return
 
 while(running == True):
 
@@ -135,38 +181,74 @@ while(running == True):
     # keyboard.on_press_key("esc", lambda _: pygame.quit())
     keyboard.on_press_key("esc", lambda _: stop_running())
 
+
+
+
+
     screen.fill((255, 255, 255))
     # screen.blit(base_scaled_surface, (0, 0))
 
-    if ((frame_counter % 100) == 0):
+    if ((frame_counter % change_weather_speed_in_frames) == 0):
         change_weather()
-        weather_frame_counter + 1
+        frame_counter + 1
+
+        
+
+
+    if weather == "sunny":
+
+        temp_store_draw_sad_face = draw_sad_face        # Temporarily stores "draw_sad_face" state (COPIED BY VALUE)
+
+        draw_sad_face = False
+        screen.blit(sunny_scaled_surface, (0, 0))
+
+        draw_sad_face = temp_store_draw_sad_face        # Restores "draw_sad_face" state.
+
+    else:       # weather == "rainy"
+        screen.blit(rainy_scaled_surface, (0, 0))
+
+        if draw_sad_face == True:
+            screen.blit(sad_face_scaled_surface, (0, 0))
+        if draw_umbrella == True:
+            screen.blit(umbrella_scaled_surface, (0, 0))
+
+
+    
+
+    
+
+    # if draw_sad_face == False:
+        # print("HUH")
+
+ 
+
+
+    
+
+    frame_counter += 1
+    
+
 
 
     if debug_mode == True:
         pygame.font.init()
         
         Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
-        Render_Text((str(traffic_lights)), (255,0,0), (100,0))    # Show FPS
+        Render_Text((str(weather)), (255,0,0), (100,0))    # Show weather status (rainy or sunny)
         # print("FPS:", int(clock.get_fps()))
-        
 
-    
-    if draw_sad_face == True:
-        screen.blit(sad_face_scaled_surface, (0, 0))
+        for event in pygame.event.get():
+            
+            if event.type == pygame.KEYDOWN:    # Checking if a key got pressed or not
+                
+                if event.key == pygame.K_d:     # Checking if key "D" was pressed
+                    print("\n")
+                    print("WEATHER:", weather)
+                    print("FRAME COUNTER:", frame_counter)
+                    print("DRAW SAD FACE:", draw_sad_face)
 
+            
 
-
-    if weather == "sunny":
-        screen.blit(sunny_scaled_surface, (0, 0))
-    else:       # weather == "rainy"
-        screen.blit(rainy_scaled_surface, (0, 0))
-    
-    
-
-    frame_counter     += 1
-    weather_frame_counter += 1
-    
 
     pygame.display.flip()
     clock.tick(fps)          # Caps the events loop at a (30)fps ceiling. Be careful if the framerate is even lower than that... (oof with delta time)

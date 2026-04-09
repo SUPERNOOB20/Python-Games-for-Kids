@@ -27,15 +27,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.342051"
-     inkscape:cx="460.45765"
-     inkscape:cy="653.41133"
+     inkscape:zoom="0.48373316"
+     inkscape:cx="201.5574"
+     inkscape:cy="482.70414"
      inkscape:window-width="1366"
      inkscape:window-height="745"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer7"
+     inkscape:current-layer="g34"
      showguides="true" />
   <defs
      id="defs1">
@@ -246,12 +246,11 @@
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:highlight-color="#b1b1b1"
-     style="display:none">
+     style="display:inline">
     <g
        id="g10"
        inkscape:label="stickman"
-       transform="translate(0,58.208364)"
-       style="display:inline">
+       transform="translate(0,58.208364)">
       <path
          style="fill:#000000;stroke:#000000;stroke-width:0.64;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          d="M 103.92265,196.35911 87.021198,225.63329"
@@ -299,49 +298,7 @@
      id="layer7"
      inkscape:label="sad_face"
      inkscape:highlight-color="#000000"
-     style="display:none">
-    <g
-       id="g10-8"
-       inkscape:label="stickman"
-       transform="translate(0,58.208364)"
-       style="display:inline">
-      <path
-         style="fill:#000000;stroke:#000000;stroke-width:0.64;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="M 103.92265,196.35911 87.021198,225.63329"
-         id="path1-2" />
-      <path
-         style="fill:#000000;stroke:#000000;stroke-width:0.64;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="m 103.92265,196.35911 16.90146,29.27418"
-         id="path2-4" />
-      <path
-         style="fill:#000000;stroke:#000000;stroke-width:0.64;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="m 103.92264,162.55619 1e-5,33.80292"
-         id="path3-5" />
-      <path
-         style="fill:#000000;stroke:#000000;stroke-width:0.64;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="m 103.92264,162.55619 16.90146,29.27418"
-         id="path4-5" />
-      <path
-         style="fill:#000000;stroke:#000000;stroke-width:0.64;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="M 103.92264,162.55619 87.02118,191.83037"
-         id="path5-1" />
-      <ellipse
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.640001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         id="path6-7"
-         cx="103.95684"
-         cy="155.47375"
-         rx="10.973412"
-         ry="7.9993091" />
-      <path
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.640001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="m 99.444405,153.04739 -0.03419,1.26407"
-         id="path7-1"
-         sodipodi:nodetypes="cc" />
-      <path
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.640001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-         d="m 108.57182,152.87569 c 0,0.4558 0,0.9116 0,1.3674"
-         id="path8-1" />
-    </g>
+     style="display:inline">
     <path
        style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.640001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        d="m 102.00829,219.75895 c -0.0248,-0.68381 0.61959,-1.17082 1.02555,-1.64088 0.0641,-0.0742 0.10161,-0.16998 0.17093,-0.2393 0.45915,-0.45915 1.4822,-1.0756 2.15365,-0.92299 0.37106,0.0843 0.75934,0.34911 1.02556,0.61533 0.35212,0.35212 0.45703,1.03873 0.58114,1.50414 0.0156,0.0583 0.0301,0.41022 0.10256,0.41022"
@@ -503,11 +460,10 @@
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="Rainy Weather"
-     style="display:inline">
+     style="display:none">
     <g
        id="g1"
-       inkscape:label="rainy_weather_text"
-       style="display:none">
+       inkscape:label="rainy_weather_text">
       <text
          xml:space="preserve"
          style="font-style:italic;font-weight:bold;font-size:12.7px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:1.19062px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;display:inline;fill:none;stroke:#000000;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
