@@ -106,7 +106,6 @@ def take_umbrella():
 # v  Do the exercise HERE!
 
 if (weather == "rainy"):
-    print("The weather is rainy today! Don't forget to take an umbrella wherever you go!")
     take_umbrella()
 
 
