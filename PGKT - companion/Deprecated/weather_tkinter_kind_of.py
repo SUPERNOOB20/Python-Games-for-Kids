@@ -67,24 +67,21 @@ keyboard.on_press_key("esc", lambda _: root.destroy())
 frame_counter = 0               # Times global events
 weather_frame_counter = 0       # Times weather animation loop :3
 
-weather = 0     # Just initializes the "weather" variable.
+weather = 0
 
 weather = randint(0, 1)
 
-match weather:
-    case "sunny":
-        weather = 0
-    case "rainy":
-        weather = 1
+if (weather == 0):
+    weather = "sunny"
+else:
+    weather = "rainy"
 
-draw_sad_face = True    # Oh no! If the kids don't solve the exercise... the guy will get wet! D:
+
+
 
 def take_umbrella():
     # load rainy.png
-    # load happy_face.png (?
-
-    global draw_sad_face
-    draw_sad_face = False
+    # load happy face.png ?
     return
 
 
@@ -119,55 +116,13 @@ if (weather == "rainy"):
 
 
 
-change_weather_speed = 2        # Time it takes to change the weather (in seconds)
-fps = 30
 
-change_weather_speed_in_frames = change_weather_speed * fps
-
-
-debug_mode = False
-
-while(running == True):
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    # keyboard.on_press_key("esc", lambda _: pygame.quit())
-    keyboard.on_press_key("esc", lambda _: stop_running())
-
-    screen.fill((255, 255, 255))
-    # screen.blit(base_scaled_surface, (0, 0))
-
-    if ((frame_counter % 100) == 0):
-        change_weather()
-        weather_frame_counter + 1
-
-
-    if debug_mode == True:
-        pygame.font.init()
-        
-        Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
-        Render_Text((str(traffic_lights)), (255,0,0), (100,0))    # Show FPS
-        # print("FPS:", int(clock.get_fps()))
-        
-
-    
-    if draw_sad_face == True:
-        screen.blit(sad_face_scaled_surface, (0, 0))
+match weather:
+    case "sunny":
+        weather = 0
+    case "rainy":
+        sample = 1
 
 
 
-    if weather == "sunny":
-        screen.blit(sunny_scaled_surface, (0, 0))
-    else:       # weather == "rainy"
-        screen.blit(rainy_scaled_surface, (0, 0))
-    
-    
 
-    frame_counter     += 1
-    weather_frame_counter += 1
-    
-
-    pygame.display.flip()
-    clock.tick(fps)          # Caps the events loop at a (30)fps ceiling. Be careful if the framerate is even lower than that... (oof with delta time)

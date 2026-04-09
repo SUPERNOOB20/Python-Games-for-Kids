@@ -1,5 +1,6 @@
 def decorator_function(function):
     def wrapper():
+        
         print(f"Ingresá tus dos números (sin coma) con los cuales hacer {function}:\n")
         a = int(input())
         b = int(input())
@@ -21,14 +22,19 @@ def resta(a, b):
 
 @decorator_function
 def multiplicacion(a, b):
-    return a + b
+    return a * b
+
+@decorator_function
+def division(a, b):
+    return a / b
 
 @decorator_function
 def division_entera(a, b):
-    return a + b
+    return a // b
 
 
 suma()
 resta()
 multiplicacion()
+division()
 division_entera()
