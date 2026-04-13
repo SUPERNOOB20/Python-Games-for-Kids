@@ -155,16 +155,12 @@ def handle_traffic_lights():
 
     if (traffic_lights == "red"):
         stop_cars()
-        everything
-        that
-        is
-        here
-        is
-        INSIDE
-        true_scale_factor_height
 
-    car_horn()
-    car_turn_on_the_lights()
+
+
+
+
+
 
     # ---------------------------------------------------------------------------------------------------
 

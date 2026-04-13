@@ -47,9 +47,6 @@ os.chdir("Assets")
 from adaptive_screensize_utils_b import *
 # import colour_utils
 
-
-
-
 asset_height = 3000     # The height of the assets. I exported them at 3000px of height, but feel free to export in a different resolution and change this number if needed :3
 scale_factor = asset_height / user_screen_height
 
@@ -72,18 +69,6 @@ umbrella_scaled_surface = pygame.transform.scale(surface = umbrella_face_raw_sur
 
 base_raw_surface = pygame.image.load("base.png").convert_alpha()
 base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width / scale_factor, user_screen_height))
-
-
-# vv   Centers all the images on screen ":3
-# ------------------------------------------------------------------------------------------------------------------------------
-screen_center = (floor(user_screen_width / 2), floor(user_screen_height / 2))
-
-sunny_centered_rect = sunny_scaled_surface.get_rect(center = screen_center)
-rainy_centered_rect = rainy_scaled_surface.get_rect(center = screen_center)
-sad_face_centered_rect = sad_face_scaled_surface.get_rect(center = screen_center)
-umbrella_centered_rect = umbrella_scaled_surface.get_rect(center = screen_center)
-base_centered_rect = base_scaled_surface.get_rect(center = screen_center)
-# ------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -144,18 +129,13 @@ def take_umbrella():
 # ---------------------------------------------------------------------------------------------------
 # v  Do the exercise HERE!
 
-
-
-
+if (weather == "rainy"):
+    take_umbrella()
 
 
 
 
 # ---------------------------------------------------------------------------------------------------
-
-
-
-
 
 
 
@@ -217,16 +197,21 @@ while(running == True):
 
 
     if weather == "sunny":
-        screen.blit(sunny_scaled_surface, sunny_centered_rect)
+        screen.blit(sunny_scaled_surface, (floor(user_screen_width / 2), 0))
 
     else:       # weather == "rainy"
-        screen.blit(rainy_scaled_surface, rainy_centered_rect)
-        screen.blit(base_scaled_surface, base_centered_rect)     # Draw_base()
+        screen.blit(rainy_scaled_surface, (floor(user_screen_width / 2), 0))
+        screen.blit(base_scaled_surface, (floor(user_screen_width / 2), 0))     # Draw_base()
 
         if draw_umbrella == True:
+            umbrella_centered_rect = umbrella_scaled_surface.get_rect(center = (floor(user_screen_width / 2), floor(user_screen_height / 2)))
+            # screen.blit(sad_face_scaled_surface, (floor(user_screen_width / 2), 0), center)
             screen.blit(umbrella_scaled_surface, umbrella_centered_rect)
 
+            # screen.blit(umbrella_scaled_surface, (floor(user_screen_width / 2), 0))
         else:
+            sad_face_centered_rect = sad_face_scaled_surface.get_rect(center = (floor(user_screen_width / 2), floor(user_screen_height / 2)))
+            # screen.blit(sad_face_scaled_surface, (floor(user_screen_width / 2), 0), center)
             screen.blit(sad_face_scaled_surface, sad_face_centered_rect)
     
 
@@ -234,7 +219,7 @@ while(running == True):
     frame_counter += 1    
 
 
-    if debug_mode == False:
+    if debug_mode == True:
         pygame.font.init()
         
         Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
