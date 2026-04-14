@@ -1,0 +1,7 @@
+Algorithm to bake a pizza
+
+1) Add dough
+2) Add tomato sauce
+3) Add cheese
+4) Put everything in the oven
+5) Enjoy your pizza! :)

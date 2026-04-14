@@ -1,0 +1,6 @@
+Algorithm to prepare tea!
+
+1) Boil water
+2) Pour the water in a cup
+3) put the teabag in the cup
+4) Enjoy! :)

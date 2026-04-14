@@ -1,0 +1,6 @@
+Algorithm to sign up a student
+
+name = "Lia"
+weekday = "Tuesday"
+shift = "Night"
+has_covered_entrance_fee = True
