@@ -1,10 +1,7 @@
-temperature_de_la_pava = 20
+temperatura_de_la_pava = 20
 
-temperature_de_la_pava = temperature_de_la_pava + 1 # Boil the water
+while (temperatura_de_la_pava < 100):
+    temperatura_de_la_pava = temperatura_de_la_pava + 1
 
-while (temperature_de_la_pava < 100):
-    temperature_de_la_pava = temperature_de_la_pava + 1
+print(temperatura_de_la_pava)
 
-print(temperature_de_la_pava)
-
-    

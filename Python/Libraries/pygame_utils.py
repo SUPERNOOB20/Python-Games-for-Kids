@@ -59,7 +59,9 @@ def creates_images(given_dict: dict):
 
         else:
 
-            if len(value) > 2:
+            # print("AAAAA")
+
+            if len(value) > 3:
                 warnings.warn(f"WARNING: More than 2 values in the image parsing of {given_dict}, in {key}. \nIf you don't know what you're doing, please ask your teacher!")
 
             handle = value[0]
