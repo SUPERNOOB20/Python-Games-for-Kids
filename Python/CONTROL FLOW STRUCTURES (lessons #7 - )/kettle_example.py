@@ -1,7 +1,7 @@
-temperatura_de_la_pava = 20
+kettle_temperature = 20
 
-while (temperatura_de_la_pava < 100):
-    temperatura_de_la_pava = temperatura_de_la_pava + 1
+while (kettle_temperature < 100):
+    kettle_temperature = kettle_temperature + 1
 
-print(temperatura_de_la_pava)
+print(kettle_temperature)
 
