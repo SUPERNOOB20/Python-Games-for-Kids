@@ -145,7 +145,7 @@ def stop_cars():
 # Task: traffic_lights can either be "red" or "green".
 # Use the stop_cars() function for cars to stop if the lights are red.
 
-
+traffic_lights == "green"
 
 def handle_traffic_lights():
 
@@ -155,7 +155,6 @@ def handle_traffic_lights():
 
     if (traffic_lights == "red"):
         stop_cars()
-
 
 
 
