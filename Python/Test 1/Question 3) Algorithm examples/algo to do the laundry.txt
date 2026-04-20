@@ -1,7 +1,7 @@
 Algorithm to do the Laundry
 
 1) PUT all the DIRTY CLOTHES IN the washing machine
-2) Add LAUNDRY SOAP
+2) Add LAUNDRY SOAP (detergent)
 3) Add FABRIC SOFTENER
 4) TURN the washing machine ON
 5) Wait 1 hour.
