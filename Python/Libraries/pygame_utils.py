@@ -65,7 +65,9 @@ def creates_images(given_dict: dict):
                 warnings.warn(f"WARNING: More than 2 values in the image parsing of {given_dict}, in {key}. \nIf you don't know what you're doing, please ask your teacher!")
 
             handle = value[0]
-            image_size = (value[1], value[2])
+            image_size = value[2]
+            print("Current image_size:", image_size)
+
 
             key_surf = pygame.image.load(handle).convert_alpha()
             key_scaled_surf = pygame.transform.scale(surface = key_surf, size = image_size)
@@ -76,14 +78,38 @@ def creates_images(given_dict: dict):
 
 
 
-# Input: dict {handle: filename}
+# Input: dict {handle: filename} (WIP)
 # or
-# Input: dict {handle: [filename, anchor, x, y]}
+# Input: dict {handle: [filename, (anchor, anchorpos), (x, y)]}
 #
 # anchor to set anchor
 # image_size to set size
-def creates_images_and_rects(*given_dicts, anchor, image_size):
-    
+#
+# Creates the images, but returns ONLY the rects.
+def creates_images_and_rects(given_dict):
+
+    created_images: dict = {}
+
+    for key, value in given_dict.items():
+                
+        handle = value[0]
+        anchor = value[1]
+        anchorpos = value[2]
+        image_size: tuple = value[3]
+
+
+        key_surf = pygame.image.load(handle).convert_alpha()
+        key_scaled_surf = pygame.transform.scale(surface = key_surf, size = image_size)
+
+        rect_handle = f"{handle} + _rect"
+
+        if anchor == "center":
+            rect_handle = key_scaled_surf.get_rect(center = anchorpos)
+        else:
+            warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
+
+        created_images[key] = rect_handle
+
     return
 
 

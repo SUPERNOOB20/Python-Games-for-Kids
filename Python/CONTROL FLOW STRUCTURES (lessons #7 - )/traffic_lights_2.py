@@ -58,7 +58,7 @@ import pygame       # imports pygame-ce
 
 
 from adaptive_screensize_utils_b import *
-
+import pygame_utils
 
 
 
@@ -79,27 +79,18 @@ animation_duration = 120
 cars_transformed_width = user_screen_width * scale_factor
 cars_transformed_height = cars_raw_size[1] / scale_factor
 
-cars_raw_surface = pygame.image.load("cars.png").convert_alpha()
-cars_scaled_surface = pygame.transform.scale(surface = cars_raw_surface, size = (cars_transformed_width * car_scale_factor, cars_transformed_height * car_scale_factor))
-
-base_raw_surface = pygame.image.load("base.png").convert_alpha()
-base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width, user_screen_height))
-
 true_scale_factor_width = 1920 / user_screen_width
 true_scale_factor_height = 1080 / user_screen_height
 
-red_light_raw_surface = pygame.image.load("red_light.png").convert_alpha()
-red_light_scaled_surface = pygame.transform.scale(surface = red_light_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
+width = user_screen_width / true_scale_factor_width
+height = user_screen_height / true_scale_factor_height
 
-green_light_raw_surface = pygame.image.load("green_light.png").convert_alpha()
-green_light_scaled_surface = pygame.transform.scale(surface = green_light_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
-
-post_raw_surface = pygame.image.load("post.png").convert_alpha()
-post_scaled_surface = pygame.transform.scale(surface = post_raw_surface, size = (user_screen_width / true_scale_factor_width, user_screen_height / true_scale_factor_height))
-
-background_raw_surface = pygame.image.load("background.png").convert_alpha()
-background_scaled_surface = pygame.transform.scale(surface = background_raw_surface, size = (user_screen_width, user_screen_height))
-
+images: dict = pygame_utils.creates_images({"cars_scaled_surface": ["cars.png", cars_transformed_width * car_scale_factor, cars_transformed_height * car_scale_factor],
+                                            "base_scaled_surface": ["base.png", user_screen_width, user_screen_height],
+                                            "red_light_scaled_surface": ["red_light.png", width, height],
+                                            "green_light_scaled_surface": ["green_light.png", width, height],
+                                            "post_scaled_surface": ["post.png", width, height],
+                                            "background_scaled_surface": ["background.png", user_screen_width, user_screen_height]})
 
 clock = pygame.time.Clock()
 
@@ -145,7 +136,7 @@ def stop_cars():
 # Task: traffic_lights can either be "red" or "green".
 # Use the stop_cars() function for cars to stop if the lights are red.
 
-traffic_lights == "green"
+
 
 def handle_traffic_lights():
 
@@ -153,8 +144,9 @@ def handle_traffic_lights():
     # ---------------------------------------------------------------------------------------------------
     # v  Do the exercise HERE!
 
-    if (semaforo == "red"):
-        stop_cars()
+    
+    
+
 
 
 
@@ -203,7 +195,7 @@ while(running == True):
 
     screen.fill((255, 255, 255))
 
-    screen.blit(background_scaled_surface, (0, 0))
+    screen.blit(images["background_scaled_surface"], (0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -212,7 +204,7 @@ while(running == True):
     # keyboard.on_press_key("esc", lambda _: pygame.quit())
     keyboard.on_press_key("esc", lambda _: stop_running())
 
-    screen.blit(base_scaled_surface, (0, 0))
+    screen.blit(images["base_scaled_surface"])
 
     move_cars()
 
@@ -227,10 +219,10 @@ while(running == True):
         car_frame_counter += 1
 
     if cars_x_movement == True:
-        screen.blit(cars_scaled_surface, (cars_x_pos + step_func, cars_y_pos))
+        screen.blit(images["cars_scaled_surface"], (cars_x_pos + step_func, cars_y_pos))
         cars_x_pos += step_func
     else:
-        screen.blit(cars_scaled_surface, (cars_x_pos, cars_y_pos))
+        screen.blit(images["cars_scaled_surface"], (cars_x_pos, cars_y_pos))
 
     if debug_mode == True:
         pygame.font.init()
@@ -241,12 +233,12 @@ while(running == True):
         
 
     
-    screen.blit(post_scaled_surface, (int_horizontal_position(20), int_vertical_position(20)))
+    screen.blit(images["post_scaled_surface"], (int_horizontal_position(20), int_vertical_position(20)))
 
     if traffic_lights == "red":
-        screen.blit(red_light_scaled_surface, (int_horizontal_position(20), int_vertical_position(19.7)))
+        screen.blit(images["red_light_scaled_surface"], (int_horizontal_position(20), int_vertical_position(19.7)))
     else:       # traffic_lights == "green"
-        screen.blit(green_light_scaled_surface, (int_horizontal_position(20), int_vertical_position(20.3)))
+        screen.blit(images["green_light_scaled_surface"], (int_horizontal_position(20), int_vertical_position(20.3)))
     
     
 
