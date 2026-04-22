@@ -28,9 +28,7 @@ My reasoning for this is that I wholeheartedly believe it will be more useful fo
 GUIs might come off as "shiny appealing things" at first glance, but I believe that logical thinking will give them better foundations for their lives
 (it's not hard to code GUIs yourself if you have practiced coding basic things with Control Flow Structures, but it will be hard to code basic
 things with Control Flow Structures if you've only been reaching for the low-hanging fruit of GUIs thus far).<br><br>
-Ideally, the activities should be interactive enough for them to find problem-solving engaging. That's why I spend a lot of my time making GUI-based activities.
-So, I make the GUIs to show them problems to solve in an attractive and interactive way, and they solve said problems with what they have learnt throught the term.
-That's the approach I'm aiming for in this course.
+So, the solution is simple: I make the GUIs, they take care of the problem-solving. I think this is the approach that works best, and it's the one I'm aiming for in this course.
 <br>
 <br>
 
