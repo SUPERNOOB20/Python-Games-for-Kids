@@ -85,12 +85,14 @@ true_scale_factor_height = 1080 / user_screen_height
 width = user_screen_width / true_scale_factor_width
 height = user_screen_height / true_scale_factor_height
 
-images: dict = pygame_utils.creates_images({"cars_scaled_surface": ["cars.png", cars_transformed_width * car_scale_factor, cars_transformed_height * car_scale_factor],
-                                            "base_scaled_surface": ["base.png", user_screen_width, user_screen_height],
-                                            "red_light_scaled_surface": ["red_light.png", width, height],
-                                            "green_light_scaled_surface": ["green_light.png", width, height],
-                                            "post_scaled_surface": ["post.png", width, height],
-                                            "background_scaled_surface": ["background.png", user_screen_width, user_screen_height]})
+size = (width, height)
+
+images: dict = pygame_utils.creates_images({"cars_scaled_surface": ["cars.png", (cars_transformed_width * car_scale_factor, cars_transformed_height * car_scale_factor)],
+                                            "base_scaled_surface": ["base.png", (user_screen_width, user_screen_height)],
+                                            "red_light_scaled_surface": ["red_light.png", size],
+                                            "green_light_scaled_surface": ["green_light.png", size],
+                                            "post_scaled_surface": ["post.png", size],
+                                            "background_scaled_surface": ["background.png", (user_screen_width, user_screen_height)]})
 
 clock = pygame.time.Clock()
 
@@ -144,8 +146,9 @@ def handle_traffic_lights():
     # ---------------------------------------------------------------------------------------------------
     # v  Do the exercise HERE!
 
-    if (traffic_lights == "red"):
+    if traffic_lights == "red":
         stop_cars()
+    
 
 
 
