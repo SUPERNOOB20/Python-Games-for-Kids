@@ -28,6 +28,7 @@ My reasoning for this is that I wholeheartedly believe it will be more useful fo
 GUIs might come off as "shiny appealing things" at first glance, but I believe that logical thinking will give them better foundations for their lives
 (it's not hard to code GUIs yourself if you have practiced coding basic things with Control Flow Structures, but it will be hard to code basic
 things with Control Flow Structures if you've only been reaching for the low-hanging fruit of GUIs thus far).<br><br>
+What I'm trying to say is that problem-solving, even if it might come off as boring and tedious to many people, is the key for absolutely anything you want to code; but learning to code GUIs will only be useful for you when coding GUIs, and nothing else.<br><br>
 So, the solution is simple: I make the GUIs, they take care of the problem-solving. I think this is the approach that works best, and it's the one I'm aiming for in this course.
 <br>
 <br>
