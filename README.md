@@ -23,8 +23,8 @@ We will not get to learn more advanced topics such as Event Handling in depth.
 - Control Flow Structures (branching) and Control Flow Graphs
 - Functions
 - Modules
-- Whatever we have extra time to do. I would rather have them practice their coding instead of moving on to extra topics like GUIs, but we'll see.
-The reason for this is that I wholeheartedly believe it will be more useful for them to have a solid base with solving problems.
+- Whatever we have extra time to do. I would rather have them practice their coding instead of moving on to extra topics like GUIs, but we'll see. <br>
+My reasoning for this is that I wholeheartedly believe it will be more useful for them to have a solid base with solving problems.
 GUIs might come off as "shiny appealing things" at first glance, but I believe that logical thinking will give them better foundations for their lives
 (it's not hard to code GUIs yourself if you have practiced coding basic things with Control Flow Structures, but it will be hard to code basic
 things with Control Flow Structures if you've only been reaching for the low-hanging fruit of GUIs thus far).
