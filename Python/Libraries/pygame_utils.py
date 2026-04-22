@@ -65,7 +65,7 @@ def creates_images(given_dict: dict):
             # vv if len(value) == 2:
             handle = value[0]
             image_size = value[1]
-            print("Current image_size:", image_size)
+            # print("Current image_size:", image_size)
 
 
             key_surf = pygame.image.load(handle).convert_alpha()
