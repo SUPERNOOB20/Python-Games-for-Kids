@@ -47,10 +47,6 @@ os.chdir("Assets")
 from adaptive_screensize_utils_b import *
 # import colour_utils
 
-import pygame_utils
-
-
-
 
 
 
@@ -62,25 +58,34 @@ scale_factor = asset_height / user_screen_height
 pygame.init()
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
+sunny_raw_surface = pygame.image.load("sunny.png").convert_alpha()
+sunny_scaled_surface = pygame.transform.scale(surface = sunny_raw_surface, size = (user_screen_width / scale_factor, user_screen_height))
+
+rainy_raw_surface = pygame.image.load("rainy.png").convert_alpha()
+rainy_scaled_surface = pygame.transform.scale(surface = rainy_raw_surface, size = (user_screen_width / scale_factor, user_screen_height))
+
+sad_face_raw_surface = pygame.image.load("sad_face.png").convert_alpha()
+sad_face_scaled_surface = pygame.transform.scale(surface = sad_face_raw_surface, size = (user_screen_width / scale_factor, user_screen_height))
+
+umbrella_face_raw_surface = pygame.image.load("umbrella.png").convert_alpha()
+umbrella_scaled_surface = pygame.transform.scale(surface = umbrella_face_raw_surface, size = (user_screen_width / scale_factor, user_screen_height))
+
+base_raw_surface = pygame.image.load("base.png").convert_alpha()
+base_scaled_surface = pygame.transform.scale(surface = base_raw_surface, size = (user_screen_width / scale_factor, user_screen_height))
 
 
 # vv   Centers all the images on screen ":3
 # ------------------------------------------------------------------------------------------------------------------------------
 screen_center = (floor(user_screen_width / 2), floor(user_screen_height / 2))
+
+sunny_centered_rect = sunny_scaled_surface.get_rect(center = screen_center)
+rainy_centered_rect = rainy_scaled_surface.get_rect(center = screen_center)
+sad_face_centered_rect = sad_face_scaled_surface.get_rect(center = screen_center)
+umbrella_centered_rect = umbrella_scaled_surface.get_rect(center = screen_center)
+base_centered_rect = base_scaled_surface.get_rect(center = screen_center)
 # ------------------------------------------------------------------------------------------------------------------------------
 
-x_and_y = (user_screen_width / scale_factor, user_screen_height)
 
-images: dict = pygame_utils.creates_images_and_rects({"sunny_scaled_surface": ["sunny.png", "center", screen_center, x_and_y],
-                                                      "rainy_scaled_surface": ["rainy.png", "center", screen_center, x_and_y],
-                                                      "sad_face_scaled_surface": ["sad_face.png", "center", screen_center, x_and_y],
-                                                      "umbrella_scaled_surface": ["umbrella.png", "center", screen_center, x_and_y],
-                                                      "base_scaled_surface": ["base.png", "center", screen_center, x_and_y]})
-
-def draw(thingy: str):
-    draw_this = f"{thingy}_scaled_surface"
-    screen.blit(images[draw_this][0], images[draw_this][1])
-    return
 
 frame_counter = 0               # Times global events (in this case, the weather animation loop :3)
 
@@ -139,8 +144,9 @@ def take_umbrella():
 # ---------------------------------------------------------------------------------------------------
 # v  Do the exercise HERE!
 
-if (weather == "rainy"):
-    take_umbrella()
+
+
+
 
 
 
@@ -211,17 +217,17 @@ while(running == True):
 
 
     if weather == "sunny":
-        draw("sunny")
+        screen.blit(sunny_scaled_surface, sunny_centered_rect)
 
     else:       # weather == "rainy"
-        draw("rainy")
-        draw("base")       # Draw_base()
+        screen.blit(rainy_scaled_surface, rainy_centered_rect)
+        screen.blit(base_scaled_surface, base_centered_rect)     # Draw_base()
 
         if draw_umbrella == True:
-            draw("umbrella")
+            screen.blit(umbrella_scaled_surface, umbrella_centered_rect)
 
         else:
-            draw("sad_face")
+            screen.blit(sad_face_scaled_surface, sad_face_centered_rect)
     
 
 
