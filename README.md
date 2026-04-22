@@ -1,7 +1,7 @@
 These are coding activities prepared for kids and teens during my time at York.
 You can find my laborious and thorough Class Planning for those lessons too.
 
----- Contents
+## Contents
 
 The lessons are of 30 minutes, and they have 1 lesson per week, across the span of 3 months total.
 This is what I'm aiming for them to learn in those 3 months:
@@ -31,9 +31,9 @@ things with Control Flow Structures if you've only been reaching for the low-han
 Ideally, the activities should be interactive enough for them to find problem-solving engaging. That's why I spend a lot of my time making GUI-based activities.
 So, I make the GUIs to show them problems to solve in an attractive and interactive way, and they solve said problems with what they have learnt throught the term.
 That's the approach I'm aiming for in this course.
-
-
----- Games
+<br>
+<br>
+## Games
 
 At the moment, there's games with:
 
