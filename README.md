@@ -11,4 +11,15 @@ Upcoming games:
 
 - Scratch (Jumping Game)
 
+
+At present, I'm focusing on various activities to teach Control Flow Structures in Python.
+These are simple programming challenges that the students should try to solve on their own:
+- traffic lights
+- weather
+- kettle (WIP)
+- weekends and weekdays (WIP)
+- disco bodyguard (CLI is finished, might do a GUI version someday).
+
+
+
 Suitable for all ages. Like around 7 - 15, but you are free to play around regardless of age!!! <3
