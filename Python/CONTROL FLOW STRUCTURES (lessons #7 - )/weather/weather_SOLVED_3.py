@@ -72,12 +72,15 @@ screen_center = (floor(user_screen_width / 2), floor(user_screen_height / 2))
 x_and_y = (user_screen_width / scale_factor, user_screen_height)
 
 images: dict = pygame_utils.creates_images_and_rects({"sunny_scaled_surface": ["sunny.png", "center", screen_center, x_and_y],
-                                            "rainy_scaled_surface": ["rainy.png", "center", screen_center, x_and_y],
-                                            "sad_face_scaled_surface": ["sad_face.png", "center", screen_center, x_and_y],
-                                            "umbrella_scaled_surface": ["umbrella.png", "center", screen_center, x_and_y],
-                                            "base_scaled_surface": ["base.png", "center", screen_center, x_and_y]})
+                                                      "rainy_scaled_surface": ["rainy.png", "center", screen_center, x_and_y],
+                                                      "sad_face_scaled_surface": ["sad_face.png", "center", screen_center, x_and_y],
+                                                      "umbrella_scaled_surface": ["umbrella.png", "center", screen_center, x_and_y],
+                                                      "base_scaled_surface": ["base.png", "center", screen_center, x_and_y]})
 
-
+def draw(thingy: str):
+    draw_this = f"{thingy}_scaled_surface"
+    screen.blit(images[draw_this][0], images[draw_this][1])
+    return
 
 frame_counter = 0               # Times global events (in this case, the weather animation loop :3)
 
@@ -208,16 +211,17 @@ while(running == True):
 
 
     if weather == "sunny":
-        screen.blit(images["sunny_scaled_surface"][0], images["sunny_scaled_surface"][1])
+        draw("sunny")
 
     else:       # weather == "rainy"
-        screen.blit(images["base_scaled_surface"][0], images["base_scaled_surface"][1])       # Draw_base()
+        draw("rainy")
+        draw("base")       # Draw_base()
 
         if draw_umbrella == True:
-            screen.blit(images["umbrella_scaled_surface"][0], images["umbrella_scaled_surface"][1])
+            draw("umbrella")
 
         else:
-            screen.blit(images["sad_face_scaled_surface"][0], images["sad_face_scaled_surface"][1])
+            draw("sad_face")
     
 
 

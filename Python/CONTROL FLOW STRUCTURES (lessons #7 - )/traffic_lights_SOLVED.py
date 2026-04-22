@@ -153,8 +153,19 @@ def handle_traffic_lights():
     # ---------------------------------------------------------------------------------------------------
     # v  Do the exercise HERE!
 
-    if (semaforo == "red"):
+    if (traffic_lights == "red"):
         stop_cars()
+        this
+        code
+        will
+        run
+        only
+        when the lights are red_light_scaled_surface
+
+this ConnectionAbortedError
+will
+RuntimeError
+ALWAY
 
 
 

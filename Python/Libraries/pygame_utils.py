@@ -85,7 +85,7 @@ def creates_images(given_dict: dict):
 # anchor to set anchor
 # image_size to set size
 #
-# Creates the images, but returns ONLY the rects.
+# Returns {handle: (surface, rect)}.
 def creates_images_and_rects(given_dict):
 
     created_images: dict = {}
@@ -108,9 +108,11 @@ def creates_images_and_rects(given_dict):
         else:
             warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
 
-        created_images[key] = rect_handle
+        created_images[key] = [key_scaled_surf, rect_handle]
 
-    return
+    print("created images and rects:")
+
+    return created_images
 
 
 
@@ -118,6 +120,8 @@ def creates_images_and_rects(given_dict):
 # Otherwise, calls "creates_images_and_rects()" (for _ in [])
 # Returns a GroupSingle if the input dict has len() == 1.
 # Returns a Group if the input dict has len() > 1
+#
+# THIS FEATURE IS WIP, do not use it yet.
 def creates_sprites(*given_dicts, **kwgiven_dicts):
     class MySprite(pygame.sprite.Sprite):
         def __init__(self, type):
@@ -131,3 +135,25 @@ def creates_sprites(*given_dicts, **kwgiven_dicts):
         case 2:
             sprite_instance = pygame.sprite.Group()
     return sprite_instance
+
+
+
+
+
+# vv  Here's a set of "shortcuts" to screen.blit().
+# vv  Might end up deleting or deprecating if it's not convenient.
+
+
+# vv  images should be a dict of {foo: [bar]}
+def draw_with_rect(screen, images, thingy: str):
+    draw_this = f"{thingy}_scaled_surface"
+    screen.blit(images[draw_this][0], images[draw_this][1])
+    return
+
+
+# Draws without rect.
+# images should be a dict of {foo: bar}
+def draw(screen, images, thingy: str):
+    draw_this = f"{thingy}_scaled_surface"
+    screen.blit(images[draw_this], (0, 0))
+    return
