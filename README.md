@@ -20,6 +20,6 @@ These are simple programming challenges that the students should try to solve on
 - weekends and weekdays (WIP)
 - disco bodyguard (CLI is finished, might do a GUI version someday).
 
-
+You can also find some handy resources like Scratch Cheatsheets and PowerPoint presentations explaining Python stuff.
 
 Suitable for all ages. Like around 7 - 15, but you are free to play around regardless of age!!! <3
