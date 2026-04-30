@@ -32,24 +32,20 @@ def change_path_to_module_location():
 
     sys.path.append(true_path + "/../../..")
 
-    os.chdir(new_true_path)
-
-
     new_true_path = os.path.join(true_path, '..')
+    new_true_path = os.path.join(new_true_path, '..')
     new_true_path = os.path.join(new_true_path, 'Libraries')
 
     sys.path.append(new_true_path)
+    print(sys.path)
 
     return
 
 change_path_to_module_location()
 
 
-
-os.chdir("CONTROL FLOW STRUCTURES (lessons #7 - )")
-# print("current_dir: ", os.getcwd())
-os.chdir("Control Flow Bug")
-os.chdir("Assets")
+print("current dir:", os.getcwd())
+os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
 
 
 
@@ -59,14 +55,27 @@ import pygame       # imports pygame-ce
 
 
 
+
 import pygame_utils
+import adaptive_screensize_utils_b
 
 
+pygame.init()
 
-images: dict = pygame_utils.creates_images({"bg": ["bg.png", (cars_transformed_width * car_scale_factor, cars_transformed_height * car_scale_factor)],
-                                            "tie_man_1": ["tie_man_1.png", (user_screen_width, user_screen_height)]})
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+
+# User's current screen resolution
+user_res = (adaptive_screensize_utils_b.user_screen_width, adaptive_screensize_utils_b.user_screen_height)
+
+images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
+
+images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", user_res],
+                                                                 "ground1": ["ground1.png", user_res],
+                                                                 "ground2": ["ground2.png", user_res],
+                                                                 "water": ["water.png", user_res]})
 
 
+# WIP:  Find a way to assign tie_man_1's rect to tie_man_2 and tie_man_3
 
 
 
@@ -99,12 +108,14 @@ def run_the_game():
     # How do we fix this...?
 
 
+
+    """
     if (terrain == "water"):
         action = "swim"
 
     if (terrain == "ground"):
         action = "jump"
-
+    """
 
 
 
@@ -168,6 +179,9 @@ while(running == True):
 
 
     player_gravity += 1
+
+    snap 
+
     screen.blit(images["tie_man_1"], (player_x, player_y + player_gravity))
 
 
