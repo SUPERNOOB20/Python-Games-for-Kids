@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="loopy loop ;3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.684102"
+     inkscape:cx="200.99342"
+     inkscape:cy="762.31322"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Canvas"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3"
+       inkscape:label="Loopy loop! :3"
+       inkscape:export-filename="loopy_loop.png"
+       inkscape:export-xdpi="509.91574"
+       inkscape:export-ydpi="509.91574">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+         d="m 107.20442,105.01657 c 0,0 -2.77967,73.0785 -26.801106,68.37017 -13.240994,-2.59531 -12.700046,-37.9107 0.546961,-40.47514 23.668965,-4.58199 27.895035,66.72928 27.895035,66.72928"
+         id="path1"
+         sodipodi:nodetypes="cssc"
+         inkscape:export-filename="loopy_loop.png"
+         inkscape:export-xdpi="509.91574"
+         inkscape:export-ydpi="509.91574"
+         inkscape:label="arrow" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 95.308009,187.60773 14.084261,15.04144 12.16989,-20.64779"
+         id="path3"
+         sodipodi:nodetypes="ccc"
+         inkscape:export-filename="loopy_loop.png"
+         inkscape:export-xdpi="509.91574"
+         inkscape:export-ydpi="509.91574"
+         inkscape:label="loop" />
+    </g>
+  </g>
+</svg>

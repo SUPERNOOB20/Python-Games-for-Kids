@@ -1,7 +1,7 @@
 # Library with tools for pygame-ce.
 
 import pygame
-import adaptive_screensize_utils
+import adaptive_screensize_utils_b
 import warnings
 
 import os

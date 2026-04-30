@@ -80,7 +80,7 @@ def do_not_come_in():
 
 if (age < 18):
     do_not_come_in()
-else:
+else:   # if age >= 18
     come_in()
 
 
