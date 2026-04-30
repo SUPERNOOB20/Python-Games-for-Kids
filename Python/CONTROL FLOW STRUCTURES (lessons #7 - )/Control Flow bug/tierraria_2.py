@@ -57,7 +57,7 @@ import pygame       # imports pygame-ce
 
 
 import pygame_utils
-import adaptive_screensize_utils_b
+from adaptive_screensize_utils_b import *
 
 
 pygame.init()
@@ -65,17 +65,31 @@ pygame.init()
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
 # User's current screen resolution
-user_res = (adaptive_screensize_utils_b.user_screen_width, adaptive_screensize_utils_b.user_screen_height)
+user_res = (user_screen_width, user_screen_height)
 
 images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
-images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", user_res],
-                                                                 "ground1": ["ground1.png", user_res],
-                                                                 "ground2": ["ground2.png", user_res],
-                                                                 "water": ["water.png", user_res]})
+images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, user_res],
+                                                                 "ground1": ["ground1.png", "bottom", user_screen_height, user_res],
+                                                                 "ground2": ["ground2.png", "bottom", user_screen_height, user_res],
+                                                                 "water": ["water.png", "bottom", user_screen_height, user_res],
+                                                                 "water_ground": ["water.png", "bottom", user_screen_height, user_res]})
+
+
+
+print("\n")
+print("images_with_rects dict:", images_with_rects)
+print("\n")
+
 
 
 # WIP:  Find a way to assign tie_man_1's rect to tie_man_2 and tie_man_3
+
+
+
+clock = pygame.time.Clock()
+
+pygame.display.set_caption("Tierraria 2 - More ties than the original! :3")
 
 
 
@@ -153,6 +167,46 @@ def stop_running():
     return
 
 
+
+
+
+# WIP: Tell bottom and left collisions apart with vertices (anchors)
+
+"""
+def check_collisions_bottom(player_rect, object_rect):
+
+    if (player_rect.bottom >= ground_rect.top) and (player bottomleft.x < ground bottomright.x):
+
+        player bottom = ground top      # Snaps the player to the ground.
+
+    return
+
+
+def check_collisions_left(player_rect, object_rect):
+
+    if (player bottom >= ground top) and (player bottomleft.x < ground bottomright.x):
+
+        player bottom = ground top      # Snaps the player to the ground.
+
+
+    return
+"""
+
+def check_collisions():
+    
+    check_collisions_bottom(player, ground1)
+    check_collisions_bottom(player, ground2)
+
+    check_collisions_left(player, ground1)
+
+    check_collisions_bottom(player, water_ground)
+
+    return
+
+        
+
+
+
 # Initializes player position (sets the "spawn" for the player)
 player_x = int_horizontal_position(20)
 player_y = int_vertical_position(60)
@@ -180,9 +234,10 @@ while(running == True):
 
     player_gravity += 1
 
-    snap 
+    # check_collisions()
 
-    screen.blit(images["tie_man_1"], (player_x, player_y + player_gravity))
+
+    screen.blit(images_with_rects["tie_man_1"][0], (player_x, player_y + player_gravity))
 
 
 
