@@ -69,7 +69,7 @@ user_res = (user_screen_width, user_screen_height)
 
 images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
-images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, user_res],
+images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, (3 * vw, 8 * vh)],
                                                                  "ground1": ["ground1.png", "bottom", user_screen_height, user_res],
                                                                  "ground2": ["ground2.png", "bottom", user_screen_height, user_res],
                                                                  "water": ["water.png", "bottom", user_screen_height, user_res],
@@ -172,25 +172,25 @@ def stop_running():
 
 # WIP: Tell bottom and left collisions apart with vertices (anchors)
 
-"""
+
 def check_collisions_bottom(player_rect, object_rect):
 
-    if (player_rect.bottom >= ground_rect.top) and (player bottomleft.x < ground bottomright.x):
+    if (player_rect.bottom >= object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 
-        player bottom = ground top      # Snaps the player to the ground.
+        player_rect.bottom = object_rect.top      # Snaps the player to the ground.
 
     return
 
 
 def check_collisions_left(player_rect, object_rect):
 
-    if (player bottom >= ground top) and (player bottomleft.x < ground bottomright.x):
+    if (player_rect.bottom >= object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 
-        player bottom = ground top      # Snaps the player to the ground.
+        player_rect.bottom = object_rect.right      # Snaps the player to the ground.
 
 
     return
-"""
+
 
 def check_collisions():
     
@@ -220,6 +220,13 @@ while(running == True):
     screen.fill((255, 255, 255))
 
     screen.blit(images["bg"], (0, 0))
+    screen.blit(images["water_ground"], (0, 0))
+    screen.blit(images["water"], (0, 0))
+    screen.blit(images["ground2"], (0, 0))
+    screen.blit(images["ground1"], (0, 0))
+
+
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
