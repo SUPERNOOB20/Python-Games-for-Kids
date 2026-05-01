@@ -73,9 +73,10 @@ images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["
                                                                  "ground1": ["ground1.png", "bottom", user_screen_height, user_res],
                                                                  "ground2": ["ground2.png", "bottom", user_screen_height, user_res],
                                                                  "water": ["water.png", "bottom", user_screen_height, user_res],
-                                                                 "water_ground": ["water.png", "bottom", user_screen_height, user_res]})
+                                                                 "water_ground": ["water_ground.png", "bottom", user_screen_height, user_res]})
 
-
+# player_x = images_with_rects["tie_man_1"][0]
+# player_y = images_with_rects["tie_man_1"][1]
 
 print("\n")
 print("images_with_rects dict:", images_with_rects)
@@ -84,8 +85,8 @@ print("\n")
 
 
 # WIP:  Find a way to assign tie_man_1's rect to tie_man_2 and tie_man_3
-
-
+# images["tie_man_2"] = "tie_man_2": ["tie_man_2.png", (3 * vw, 8 * vh)]
+# images["tie_man_3"] = "tie_man_3": ["tie_man_3.png", (3 * vw, 8 * vh)]
 
 clock = pygame.time.Clock()
 
@@ -173,33 +174,35 @@ def stop_running():
 # WIP: Tell bottom and left collisions apart with vertices (anchors)
 
 
-def check_collisions_bottom(player_rect, object_rect):
+def check_collisions_bottom(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
     if (player_rect.bottom >= object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 
-        player_rect.bottom = object_rect.top      # Snaps the player to the ground.
+        player_rect.bottom = object_rect.top - 1      # Snaps the player to the ground.
 
     return
 
 
-def check_collisions_left(player_rect, object_rect):
+def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
     if (player_rect.bottom >= object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 
-        player_rect.bottom = object_rect.right      # Snaps the player to the ground.
+        player_rect.bottom = object_rect.right + 1      # Snaps the player to the ground.
 
 
     return
 
 
+# It's important to check for bottom collisions before the left ones
+# (I'm handling bottom-left clips (1 corner clips) as bottom collisions)
 def check_collisions():
     
-    check_collisions_bottom(player, ground1)
-    check_collisions_bottom(player, ground2)
+    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"])
+    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"])
+    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["water_ground"])
 
-    check_collisions_left(player, ground1)
-
-    check_collisions_bottom(player, water_ground)
+    check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"])
+    check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"])
 
     return
 
@@ -220,10 +223,10 @@ while(running == True):
     screen.fill((255, 255, 255))
 
     screen.blit(images["bg"], (0, 0))
-    screen.blit(images["water_ground"], (0, 0))
-    screen.blit(images["water"], (0, 0))
-    screen.blit(images["ground2"], (0, 0))
-    screen.blit(images["ground1"], (0, 0))
+    screen.blit(images_with_rects["water_ground"], (0, 0))
+    screen.blit(images_with_rects["water"], (0, 0))
+    screen.blit(images_with_rects["ground2"], (0, 0))
+    screen.blit(images_with_rects["ground1"], (0, 0))
 
 
 
