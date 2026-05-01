@@ -218,7 +218,7 @@ images_with_rects["tie_man_1"][1].bottomleft = (int_horizontal_position(20), int
 
 
 
-debug_mode = False
+debug_mode = True
 
 while(running == True):
 
@@ -249,7 +249,7 @@ while(running == True):
     check_collisions()
 
     # Makes the player fall (when airborne).
-    images_with_rects["tie_man_1"][1][2] = images_with_rects["tie_man_1"][1][2] + player_gravity
+    images_with_rects["tie_man_1"][1][1] = images_with_rects["tie_man_1"][1][1] + player_gravity
 
     screen.blit(images_with_rects["tie_man_1"][0], images_with_rects["tie_man_1"][1])
 
@@ -262,6 +262,10 @@ while(running == True):
         Render_Text((str(traffic_lights)), (255,0,0), (100,0))    # Show FPS
         # print("FPS:", int(clock.get_fps()))
         
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_b:
+                    print("player rect:", images_with_rects["tie_man_1"][1])
 
     
     
