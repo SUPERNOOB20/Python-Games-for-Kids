@@ -197,12 +197,12 @@ def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 # (I'm handling bottom-left clips (1 corner clips) as bottom collisions)
 def check_collisions():
     
-    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"])
-    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"])
-    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["water_ground"])
+    check_collisions_bottom(images_with_rects["tie_man_1"][0], images_with_rects["ground_1"][0])
+    check_collisions_bottom(images_with_rects["tie_man_1"][0], images_with_rects["ground_2"][0])
+    check_collisions_bottom(images_with_rects["tie_man_1"][0], images_with_rects["water_ground"][0])
 
-    check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"])
-    check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"])
+    check_collisions_left(images_with_rects["tie_man_1"][0], images_with_rects["ground_1"][0])
+    check_collisions_left(images_with_rects["tie_man_1"][0], images_with_rects["ground_2"][0])
 
     return
 
@@ -223,10 +223,10 @@ while(running == True):
     screen.fill((255, 255, 255))
 
     screen.blit(images["bg"], (0, 0))
-    screen.blit(images_with_rects["water_ground"], (0, 0))
-    screen.blit(images_with_rects["water"], (0, 0))
-    screen.blit(images_with_rects["ground2"], (0, 0))
-    screen.blit(images_with_rects["ground1"], (0, 0))
+    screen.blit(images_with_rects["water_ground"][0], (0, 0))
+    screen.blit(images_with_rects["water"][0], (0, 0))
+    screen.blit(images_with_rects["ground2"][0], (0, 0))
+    screen.blit(images_with_rects["ground1"][0], (0, 0))
 
 
 
