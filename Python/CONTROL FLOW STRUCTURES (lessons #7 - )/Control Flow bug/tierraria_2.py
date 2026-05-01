@@ -197,12 +197,12 @@ def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 # (I'm handling bottom-left clips (1 corner clips) as bottom collisions)
 def check_collisions():
     
-    check_collisions_bottom(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_1"][0].get_rect())
-    check_collisions_bottom(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_2"][0].get_rect())
-    check_collisions_bottom(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["water_ground"][0].get_rect())
+    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"][1])
+    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"][1])
+    check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["water_ground"][1])
 
-    check_collisions_left(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_1"][0].get_rect())
-    check_collisions_left(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_2"][0].get_rect())
+    check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"][1])
+    check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"][1])
 
     return
 
