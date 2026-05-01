@@ -37,14 +37,14 @@ def change_path_to_module_location():
     new_true_path = os.path.join(new_true_path, 'Libraries')
 
     sys.path.append(new_true_path)
-    print(sys.path)
+    # print(sys.path)
 
     return
 
 change_path_to_module_location()
 
 
-print("current dir:", os.getcwd())
+# print("current dir:", os.getcwd())
 os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
 
 
@@ -78,9 +78,9 @@ images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["
 # player_x = images_with_rects["tie_man_1"][0]
 # player_y = images_with_rects["tie_man_1"][1]
 
-print("\n")
-print("images_with_rects dict:", images_with_rects)
-print("\n")
+# print("\n")
+# print("images_with_rects dict:", images_with_rects)
+# print("\n")
 
 
 
@@ -211,8 +211,10 @@ def check_collisions():
 
 
 # Initializes player position (sets the "spawn" for the player)
-player_x = int_horizontal_position(20)
-player_y = int_vertical_position(20)
+# images_with_rects["tie_man_1"][1].bottomleft = int_horizontal_position(20)          # player_x
+# images_with_rects["tie_man_1"][1].bottomleft = int_vertical_position(10)            # player_y
+
+images_with_rects["tie_man_1"][1].bottomleft = (int_horizontal_position(20), int_vertical_position(10))            # (player_x, player_y)
 
 
 
@@ -246,8 +248,10 @@ while(running == True):
 
     check_collisions()
 
+    # Makes the player fall (when airborne).
+    images_with_rects["tie_man_1"][1][2] = images_with_rects["tie_man_1"][1][2] + player_gravity
 
-    screen.blit(images_with_rects["tie_man_1"][0], (player_x, player_y + player_gravity))
+    screen.blit(images_with_rects["tie_man_1"][0], images_with_rects["tie_man_1"][1])
 
 
 

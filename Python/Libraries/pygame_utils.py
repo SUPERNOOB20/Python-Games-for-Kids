@@ -45,7 +45,7 @@ def creates_images(given_dict: dict):
 
     created_images: dict = {}
 
-    print("current dict:", given_dict)
+    # print("current dict:", given_dict)
 
     for key, value in given_dict.items():
 
@@ -113,7 +113,7 @@ def creates_images_and_rects(given_dict):
 
         created_images[key] = [key_scaled_surf, rect_handle]
 
-    print("created images and rects:")
+    # print("created images and rects:")
 
     return created_images
 
