@@ -195,16 +195,16 @@ def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
 # It's important to check for bottom collisions before the left ones
 # (I'm handling bottom-left clips (1 corner clips) as bottom collisions)
-def check_collisions():
+def check_collisions(player_rect):
     
-    images_with_rects["tie_man_1"][1] = check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"][1])
-    images_with_rects["tie_man_1"][1] = check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"][1])
-    images_with_rects["tie_man_1"][1] = check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["water_ground"][1])
+    player_rect = check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"][1])
+    player_rect = check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"][1])
+    player_rect = check_collisions_bottom(images_with_rects["tie_man_1"][1], images_with_rects["water_ground"][1])
 
-    images_with_rects["tie_man_1"][1] = check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"][1])
-    images_with_rects["tie_man_1"][1] = check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"][1])
+    player_rect = check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_1"][1])
+    player_rect = check_collisions_left(images_with_rects["tie_man_1"][1], images_with_rects["ground_2"][1])
 
-    return
+    return player_rect
 
         
 
@@ -214,7 +214,7 @@ def check_collisions():
 # images_with_rects["tie_man_1"][1].bottomleft = int_horizontal_position(20)          # player_x
 # images_with_rects["tie_man_1"][1].bottomleft = int_vertical_position(10)            # player_y
 
-images_with_rects["tie_man_1"][1].bottomleft = (int_horizontal_position(20), int_vertical_position(10))            # (player_x, player_y)
+images_with_rects["tie_man_1"][1].bottomleft = (int_horizontal_position(20), int_vertical_position(30))            # (player_x, player_y)
 
 
 
@@ -246,7 +246,7 @@ while(running == True):
 
     player_gravity += 1
 
-    check_collisions()
+    player_rect = check_collisions(images_with_rects["tie_man_1"][1])
 
     # Makes the player fall (when airborne).
     images_with_rects["tie_man_1"][1][1] = images_with_rects["tie_man_1"][1][1] + player_gravity
@@ -265,8 +265,10 @@ while(running == True):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_b:
+                    print("\n")
                     print("player rect:", images_with_rects["tie_man_1"][1])
-
+                    print("player rect - bottom:", images_with_rects["tie_man_1"][1].bottom)
+                    print("\n")
     
     
 
