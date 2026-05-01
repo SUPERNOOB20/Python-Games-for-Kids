@@ -70,8 +70,8 @@ user_res = (user_screen_width, user_screen_height)
 images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
 images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, (3 * vw, 8 * vh)],
-                                                                 "ground1": ["ground1.png", "bottom", user_screen_height, user_res],
-                                                                 "ground2": ["ground2.png", "bottom", user_screen_height, user_res],
+                                                                 "ground_1": ["ground_1.png", "bottom", user_screen_height, user_res],
+                                                                 "ground_2": ["ground_2.png", "bottom", user_screen_height, user_res],
                                                                  "water": ["water.png", "bottom", user_screen_height, user_res],
                                                                  "water_ground": ["water_ground.png", "bottom", user_screen_height, user_res]})
 
@@ -197,12 +197,12 @@ def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 # (I'm handling bottom-left clips (1 corner clips) as bottom collisions)
 def check_collisions():
     
-    check_collisions_bottom(images_with_rects["tie_man_1"][0], images_with_rects["ground_1"][0])
-    check_collisions_bottom(images_with_rects["tie_man_1"][0], images_with_rects["ground_2"][0])
-    check_collisions_bottom(images_with_rects["tie_man_1"][0], images_with_rects["water_ground"][0])
+    check_collisions_bottom(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_1"][0].get_rect())
+    check_collisions_bottom(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_2"][0].get_rect())
+    check_collisions_bottom(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["water_ground"][0].get_rect())
 
-    check_collisions_left(images_with_rects["tie_man_1"][0], images_with_rects["ground_1"][0])
-    check_collisions_left(images_with_rects["tie_man_1"][0], images_with_rects["ground_2"][0])
+    check_collisions_left(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_1"][0].get_rect())
+    check_collisions_left(images_with_rects["tie_man_1"][0].get_rect(), images_with_rects["ground_2"][0].get_rect())
 
     return
 
@@ -212,7 +212,7 @@ def check_collisions():
 
 # Initializes player position (sets the "spawn" for the player)
 player_x = int_horizontal_position(20)
-player_y = int_vertical_position(60)
+player_y = int_vertical_position(20)
 
 
 
@@ -223,10 +223,10 @@ while(running == True):
     screen.fill((255, 255, 255))
 
     screen.blit(images["bg"], (0, 0))
-    screen.blit(images_with_rects["water_ground"][0], (0, 0))
     screen.blit(images_with_rects["water"][0], (0, 0))
-    screen.blit(images_with_rects["ground2"][0], (0, 0))
-    screen.blit(images_with_rects["ground1"][0], (0, 0))
+    screen.blit(images_with_rects["ground_2"][0], (0, 0))
+    screen.blit(images_with_rects["ground_1"][0], (0, 0))
+    screen.blit(images_with_rects["water_ground"][0], (0, 0))
 
 
 
@@ -244,7 +244,7 @@ while(running == True):
 
     player_gravity += 1
 
-    # check_collisions()
+    check_collisions()
 
 
     screen.blit(images_with_rects["tie_man_1"][0], (player_x, player_y + player_gravity))
