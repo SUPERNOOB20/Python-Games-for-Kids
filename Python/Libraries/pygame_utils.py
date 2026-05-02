@@ -85,6 +85,9 @@ def creates_images(given_dict: dict):
 # image_size to set size
 #
 # Returns {handle: (surface, rect)}.
+#
+# PRO TIP: DON'T FORGET TO FLIP THE ANCHORS VERTICALLY.
+# Yes, I know, pygame is the worst. No idea who thought that was a good idea.
 def creates_images_and_rects(given_dict):
 
     created_images: dict = {}
@@ -100,22 +103,23 @@ def creates_images_and_rects(given_dict):
         key_surf = pygame.image.load(handle).convert_alpha()
         key_scaled_surf = pygame.transform.scale(surface = key_surf, size = image_size)
 
-        my_rect = key_scaled_surf.get_rect()
+        rect_handle = key_scaled_surf.get_rect()
 
         if anchor == "center":
-            rect_handle = my_rect.move_to(center = anchorpos)
+            rect_handle.center = anchorpos
         elif anchor == "bottom":
-            rect_handle = my_rect.move_to(bottom = anchorpos)
+            rect_handle.bottom = anchorpos
         elif anchor == "bottomleft":
-            rect_handle = my_rect.move_to(bottomleft = anchorpos)
+            rect_handle.bottomleft = anchorpos
+            # rect_handle.move(anchorpos[0], anchorpos[1])
         elif anchor == "bottomright":
-            rect_handle = my_rect.move_to(bottomright = anchorpos)
+            rect_handle.bottomright = anchorpos
         elif anchor == "top":
-            rect_handle = my_rect.move_to(top = anchorpos)
+            rect_handle.top = anchorpos
         elif anchor == "topleft":
-            rect_handle = my_rect.move_to(topleft = anchorpos)
+            rect_handle.topleft = anchorpos
         elif anchor == "topright":
-            rect_handle = my_rect.move_to(topright = anchorpos)
+            rect_handle.topright = anchorpos
         else:
             warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
 
