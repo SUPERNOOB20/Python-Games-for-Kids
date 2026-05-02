@@ -85,9 +85,6 @@ def creates_images(given_dict: dict):
 # image_size to set size
 #
 # Returns {handle: (surface, rect)}.
-#
-# PRO TIP: DON'T FORGET TO FLIP THE ANCHORS VERTICALLY.
-# Yes, I know, pygame is the worst. No idea who thought that was a good idea.
 def creates_images_and_rects(given_dict):
 
     created_images: dict = {}
