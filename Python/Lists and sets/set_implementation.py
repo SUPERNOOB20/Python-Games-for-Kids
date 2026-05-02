@@ -1,6 +1,5 @@
 #####   This file acts as a "tutorial" for teaching the set data structure...!
 
-# Python already has a set
 # A set is a list of many elements where none of the elements are repeated.
 
 # Can you implement a set in Python...?
@@ -43,7 +42,7 @@ print(eliminates_repeated_elements(list))
 
 
 
-# Python already has an implementation of sets!
+# Well, surprise surprise... Python already has an implementation of sets!
 
 # Note that lists go in square brackets [], with their elements separated by commas.
 # Note that sets  go in curly brackets  {}, with their elements separated by commas.
