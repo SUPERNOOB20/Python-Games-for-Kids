@@ -185,8 +185,8 @@ def check_collisions_bottom(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
         player_rect.bottom = object_rect.top - 1      # Snaps the player to the ground.
 
-        # global player_gravity
-        # player_gravity = 0
+        global player_gravity
+        player_gravity = 0
         
 
     return player_rect
@@ -198,8 +198,8 @@ def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
         player_rect.bottom = object_rect.right + 1      # Snaps the player to the ground.
 
-        # global player_gravity
-        # player_gravity = 0
+        global player_gravity
+        player_gravity = 0
 
 
     return player_rect
