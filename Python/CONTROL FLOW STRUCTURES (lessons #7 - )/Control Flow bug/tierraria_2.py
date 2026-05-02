@@ -71,10 +71,12 @@ user_res = (user_screen_width, user_screen_height)
 images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
 images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, (3 * vw, 8 * vh)],
-                                                                 "ground_1": ["ground_1.png", "bottomleft", user_screen_height, (55 * vw, 53.706972639 * vh)],
-                                                                 "ground_2": ["ground_2.png", "bottomleft", user_screen_height, (42.9 * vw, 69.9911738747 * vh)],
-                                                                 "water": ["water.png", "bottomright", user_screen_height, (39.3 * vw, 57.7228596646 * vh)],
-                                                                 "water_ground": ["water_ground.png", "bottom", user_screen_height, (user_screen_width, 82.0388349515 * vh)]})
+                                                                 "ground_1": ["ground_1.png", "bottomleft", (user_screen_height, user_screen_width), (55 * vw, 53.706972639 * vh)],
+                                                                 "ground_2": ["ground_2.png", "bottomleft", (user_screen_height, user_screen_width), (42.9 * vw, 69.9911738747 * vh)],
+                                                                 "water": ["water.png", "bottomright", (user_screen_height, user_screen_width), (39.3 * vw, 57.7228596646 * vh)],
+                                                                 "water_ground": ["water_ground.png", "bottom", user_screen_height, (user_screen_width, 17.9611650485 * vh)]})
+
+print("images_with_rects dict:", images_with_rects)
 
 # player_x = images_with_rects["tie_man_1"][0]
 # player_y = images_with_rects["tie_man_1"][1]
@@ -232,24 +234,31 @@ while(running == True):
 
     screen.fill((255, 255, 255))
 
+    """
     screen.blit(images["bg"], (0, 0))
     screen.blit(images_with_rects["water"][0], (0, 0))
     screen.blit(images_with_rects["ground_2"][0], (0, 0))
     screen.blit(images_with_rects["ground_1"][0], (0, 0))
     screen.blit(images_with_rects["water_ground"][0], (0, 0))
+    """
 
-
+    screen.blit(images["bg"], (0, 0))
+    screen.blit(images_with_rects["water"][0], images_with_rects["water"][1])
+    screen.blit(images_with_rects["ground_2"][0], images_with_rects["ground_2"][1])
+    screen.blit(images_with_rects["ground_1"][0], images_with_rects["ground_1"][1])
+    screen.blit(images_with_rects["water_ground"][0], images_with_rects["water_ground"][1])
 
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.key == pygame.K_b and debug_mode == True:
-            print("\n")
-            print("player rect:", images_with_rects["tie_man_1"][1])
-            print("player rect - bottom:", images_with_rects["tie_man_1"][1].bottom)
-            print("gravity:", player_gravity)
-            print("\n")
+        if event.type == pygame.KEYDOWN:
+            if (event.key == pygame.K_b) and (debug_mode == True):
+                print("\n")
+                print("player rect:", images_with_rects["tie_man_1"][1])
+                print("player rect - bottom:", images_with_rects["tie_man_1"][1].bottom)
+                print("gravity:", player_gravity)
+                print("\n")
 
 
     # keyboard.on_press_key("esc", lambda _: pygame.quit())

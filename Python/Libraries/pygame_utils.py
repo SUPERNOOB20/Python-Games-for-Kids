@@ -108,6 +108,8 @@ def creates_images_and_rects(given_dict):
             rect_handle = key_scaled_surf.get_rect(bottom = anchorpos)
         elif anchor == "bottomleft":
             rect_handle = key_scaled_surf.get_rect(bottomleft = anchorpos)
+        elif anchor == "bottomright":
+            rect_handle = key_scaled_surf.get_rect(bottomright = anchorpos)
         elif anchor == "top":
             rect_handle = key_scaled_surf.get_rect(top = anchorpos)
         elif anchor == "topleft":
