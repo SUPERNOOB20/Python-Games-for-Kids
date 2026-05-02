@@ -72,11 +72,11 @@ images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
 # print("vh and vw:", vh, vw)
 
-images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, (3 * vw, 8 * vh)],
-                                                                 "ground_1": ["ground_1.png", "bottomleft", (0, user_screen_height), (45 * vw, 46.293027361 * vh)],
-                                                                 "ground_2": ["ground_2.png", "bottomleft", (0, user_screen_height), (57.1 * vw, 30.0088261253 * vh)],
-                                                                 "water": ["water.png", "bottomright", (user_screen_width, user_screen_height), (60.7 * vw, 42.2771403354 * vh)],
-                                                                 "water_ground": ["water_ground.png", "top", user_screen_height, (user_screen_width, 17.9611650485 * vh)]})
+images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1":    ["tie_man_1.png",     "bottom",       user_screen_height / 2,                   (3 * vw, 8 * vh)                            ],
+                                                                 "ground_1":     ["ground_1.png",      "bottomleft",   (0, user_screen_height),                  (45 * vw, 46.293027361 * vh)                ],
+                                                                 "ground_2":     ["ground_2.png",      "bottomleft",   (0, user_screen_height),                  (57.1 * vw, 30.0088261253 * vh)             ],
+                                                                 "water":        ["water.png",         "bottomright",  (user_screen_width, user_screen_height),  (60.7 * vw, 42.2771403354 * vh)             ],
+                                                                 "water_ground": ["water_ground.png",  "top",          user_screen_height,                       (user_screen_width,   17.9611650485 * vh)   ]})
 
 print("images_with_rects dict:", images_with_rects)
 
