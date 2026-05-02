@@ -118,28 +118,7 @@ def creates_images_and_rects(given_dict):
             rect_handle = key_scaled_surf.get_rect(topright = anchorpos)
         else:
             warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
-        
 
-        """
-        if anchor == "center":
-            rect_handle.center = anchorpos
-        elif anchor == "bottom":
-            rect_handle.bottom = anchorpos
-        elif anchor == "bottomleft":
-            rect_handle.bottomleft = anchorpos
-            # rect_handle.move(anchorpos[0], anchorpos[1])
-        elif anchor == "bottomright":
-            rect_handle.bottomright = anchorpos
-        elif anchor == "top":
-            rect_handle.top = anchorpos
-        elif anchor == "topleft":
-            rect_handle.topleft = anchorpos
-        elif anchor == "topright":
-            rect_handle.topright = anchorpos
-        else:
-            warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
-        """
-            
 
         created_images[key] = [key_scaled_surf, rect_handle]
 
