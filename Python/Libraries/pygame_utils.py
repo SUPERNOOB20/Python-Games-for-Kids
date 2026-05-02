@@ -100,22 +100,22 @@ def creates_images_and_rects(given_dict):
         key_surf = pygame.image.load(handle).convert_alpha()
         key_scaled_surf = pygame.transform.scale(surface = key_surf, size = image_size)
 
-        rect_handle = f"{handle} + _rect"
+        my_rect = key_scaled_surf.get_rect()
 
         if anchor == "center":
-            rect_handle = key_scaled_surf.get_rect(center = anchorpos)
+            rect_handle = my_rect.move_to(center = anchorpos)
         elif anchor == "bottom":
-            rect_handle = key_scaled_surf.get_rect(bottom = anchorpos)
+            rect_handle = my_rect.move_to(bottom = anchorpos)
         elif anchor == "bottomleft":
-            rect_handle = key_scaled_surf.get_rect(bottomleft = anchorpos)
+            rect_handle = my_rect.move_to(bottomleft = anchorpos)
         elif anchor == "bottomright":
-            rect_handle = key_scaled_surf.get_rect(bottomright = anchorpos)
+            rect_handle = my_rect.move_to(bottomright = anchorpos)
         elif anchor == "top":
-            rect_handle = key_scaled_surf.get_rect(top = anchorpos)
+            rect_handle = my_rect.move_to(top = anchorpos)
         elif anchor == "topleft":
-            rect_handle = key_scaled_surf.get_rect(topleft = anchorpos)
+            rect_handle = my_rect.move_to(topleft = anchorpos)
         elif anchor == "topright":
-            rect_handle = key_scaled_surf.get_rect(topright = anchorpos)
+            rect_handle = my_rect.move_to(topright = anchorpos)
         else:
             warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
 

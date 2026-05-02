@@ -70,9 +70,11 @@ user_res = (user_screen_width, user_screen_height)
 
 images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
+# print("vh and vw:", vh, vw)
+
 images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1": ["tie_man_1.png", "bottom", user_screen_height / 2, (3 * vw, 8 * vh)],
-                                                                 "ground_1": ["ground_1.png", "bottomleft", (user_screen_height, user_screen_width), (55 * vw, 53.706972639 * vh)],
-                                                                 "ground_2": ["ground_2.png", "bottomleft", (user_screen_height, user_screen_width), (42.9 * vw, 69.9911738747 * vh)],
+                                                                 "ground_1": ["ground_1.png", "bottomleft", (user_screen_height, 0), (55 * vw, 53.706972639 * vh)],
+                                                                 "ground_2": ["ground_2.png", "bottomleft", (user_screen_height, 0), (42.9 * vw, 69.9911738747 * vh)],
                                                                  "water": ["water.png", "bottomright", (user_screen_height, user_screen_width), (39.3 * vw, 57.7228596646 * vh)],
                                                                  "water_ground": ["water_ground.png", "bottom", user_screen_height, (user_screen_width, 17.9611650485 * vh)]})
 
