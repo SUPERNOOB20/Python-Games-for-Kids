@@ -103,8 +103,27 @@ def creates_images_and_rects(given_dict):
         key_surf = pygame.image.load(handle).convert_alpha()
         key_scaled_surf = pygame.transform.scale(surface = key_surf, size = image_size)
 
-        rect_handle = key_scaled_surf.get_rect()
+        rect_handle = ""
+        
+        if anchor == "center":
+            rect_handle = key_scaled_surf.get_rect(center = anchorpos)
+        elif anchor == "bottom":
+            rect_handle = key_scaled_surf.get_rect(bottom = anchorpos)
+        elif anchor == "bottomleft":
+            rect_handle = key_scaled_surf.get_rect(bottomleft = anchorpos)
+        elif anchor == "bottomright":
+            rect_handle = key_scaled_surf.get_rect(bottomright = anchorpos)
+        elif anchor == "top":
+            rect_handle = key_scaled_surf.get_rect(top = anchorpos)
+        elif anchor == "topleft":
+            rect_handle = key_scaled_surf.get_rect(topleft = anchorpos)
+        elif anchor == "topright":
+            rect_handle = key_scaled_surf.get_rect(topright = anchorpos)
+        else:
+            warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
+        
 
+        """
         if anchor == "center":
             rect_handle.center = anchorpos
         elif anchor == "bottom":
@@ -122,6 +141,8 @@ def creates_images_and_rects(given_dict):
             rect_handle.topright = anchorpos
         else:
             warnings.warn(f"WARNING: Unknown (or yet to be implemented) anchor: {anchor}")
+        """
+            
 
         created_images[key] = [key_scaled_surf, rect_handle]
 
