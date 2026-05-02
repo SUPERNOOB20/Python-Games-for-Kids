@@ -7,22 +7,6 @@ from random import randint
 frame_counter = 0           # Times global events
 car_frame_counter = 0       # Times cars' animation loop :3
 
-traffic_lights = "green"      # Lo inicializo en "green". ¿Por qué? Porque sí :p
-
-def cambiar_las_luces_del_semaforo():
-    global traffic_lights
-
-    traffic_lights_change = randint(0, 1)
-
-    if (traffic_lights_change == 0):
-        traffic_lights = "red"
-    else:
-        traffic_lights = "green"
-    return
-
-
-
-
 
 def change_path_to_module_location():
 
@@ -78,14 +62,7 @@ images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1":   
                                                                  "water":        ["water.png",         "bottomright",  (user_screen_width, user_screen_height),  (60.7 * vw, 42.2771403354 * vh)             ],
                                                                  "water_ground": ["water_ground.png",  "top",          user_screen_height,                       (user_screen_width,   17.9611650485 * vh)   ]})
 
-print("images_with_rects dict:", images_with_rects)
-
-# player_x = images_with_rects["tie_man_1"][0]
-# player_y = images_with_rects["tie_man_1"][1]
-
-# print("\n")
 # print("images_with_rects dict:", images_with_rects)
-# print("\n")
 
 
 
@@ -99,7 +76,7 @@ pygame.display.set_caption("Tierraria 2 - More ties than the original! :3")
 
 
 
-
+standing_on_ground = False
 
 
 
@@ -110,6 +87,13 @@ def gravity():
     return
 
 def jump():
+
+    global standing_on_ground
+    if standing_on_ground == True:
+
+        global player_gravity
+        player_gravity -= 20
+
     return
 
 
@@ -183,6 +167,9 @@ def check_collisions_bottom(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
     if (player_rect.bottom >= object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 
+        global standing_on_ground
+        standing_on_ground = True
+
         player_rect.bottom = object_rect.top - 1      # Snaps the player to the ground.
 
         global player_gravity
@@ -228,21 +215,15 @@ def check_collisions(player_rect):
 
 images_with_rects["tie_man_1"][1].bottomleft = (int_horizontal_position(20), int_vertical_position(30))            # (player_x, player_y)
 
-
+left_key_down = False
+right_key_down = False
+space_key_down = False
 
 debug_mode = True
 
 while(running == True):
 
     screen.fill((255, 255, 255))
-
-    """
-    screen.blit(images["bg"], (0, 0))
-    screen.blit(images_with_rects["water"][0], (0, 0))
-    screen.blit(images_with_rects["ground_2"][0], (0, 0))
-    screen.blit(images_with_rects["ground_1"][0], (0, 0))
-    screen.blit(images_with_rects["water_ground"][0], (0, 0))
-    """
 
     screen.blit(images["bg"], (0, 0))
     screen.blit(images_with_rects["water"][0], images_with_rects["water"][1])
@@ -252,15 +233,42 @@ while(running == True):
 
 
     for event in pygame.event.get():
+
         if event.type == pygame.QUIT:
             running = False
+
         if event.type == pygame.KEYDOWN:
+
+            # THANKS TO https://stackoverflow.com/questions/45571647/press-and-hold-for-pygame FOR THIS
+            if (event.key == pygame.K_SPACE):
+                space_key_down = True
+            if (event.key == pygame.K_LEFT):
+                left_key_down = True
+            if (event.key == pygame.K_RIGHT):
+                right_key_down = True
+
             if (event.key == pygame.K_b) and (debug_mode == True):
                 print("\n")
                 print("player rect:", images_with_rects["tie_man_1"][1])
                 print("player rect - bottom:", images_with_rects["tie_man_1"][1].bottom)
                 print("gravity:", player_gravity)
                 print("\n")
+
+        if event.type == pygame.KEYUP:
+            if (event.key == pygame.K_SPACE):
+                space_key_down = False
+            if (event.key == pygame.K_LEFT):
+                left_key_down = False
+            if (event.key == pygame.K_RIGHT):
+                right_key_down = False
+
+
+    if space_key_down:
+        jump()
+    if left_key_down:
+        images_with_rects["tie_man_1"][1][0] -= 0.3 * vw
+    if right_key_down:
+        images_with_rects["tie_man_1"][1][0] += 0.3 * vw
 
 
     # keyboard.on_press_key("esc", lambda _: pygame.quit())
@@ -272,6 +280,7 @@ while(running == True):
 
     player_gravity += 1
 
+    standing_on_ground = False
     images_with_rects["tie_man_1"][1] = check_collisions(images_with_rects["tie_man_1"][1])
 
     # Makes the player fall (when airborne).
@@ -285,7 +294,6 @@ while(running == True):
         pygame.font.init()
         
         Render_Text(str(int(clock.get_fps())), (255,0,0), (0,0))    # Show FPS
-        Render_Text((str(traffic_lights)), (255,0,0), (100,0))    # Show FPS
         # print("FPS:", int(clock.get_fps()))
 
 
