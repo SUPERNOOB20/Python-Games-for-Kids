@@ -8,10 +8,10 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
-   sodipodi:docname="Data structures cheatsheet.svg"
-   inkscape:export-filename="Data Structures Cheatsheet.png"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"
+   sodipodi:docname="Data structures cheatsheet - extra.svg"
+   inkscape:export-filename="Data Structures Cheatsheet - Extra.png"
+   inkscape:export-xdpi="171.04378"
+   inkscape:export-ydpi="171.04378"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,17 +26,24 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.684102"
-     inkscape:cx="545.97122"
-     inkscape:cy="768.16031"
+     inkscape:zoom="0.342051"
+     inkscape:cx="369.82789"
+     inkscape:cy="749.88818"
      inkscape:window-width="1366"
      inkscape:window-height="745"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffffff" />
   <defs
      id="defs1">
+    <rect
+       x="793.74129"
+       y="960.38311"
+       width="197.33899"
+       height="119.86517"
+       id="rect12" />
     <rect
        x="35.082488"
        y="953.07426"
@@ -112,14 +119,14 @@
        inkscape:label="Data structures cheatsheet"><tspan
          x="228.10449"
          y="112.21094"
-         id="tspan20"><tspan
+         id="tspan22"><tspan
    style="font-weight:normal;font-family:Consolas;-inkscape-font-specification:'Consolas Italic'"
-   id="tspan18">Data Structures</tspan> </tspan><tspan
+   id="tspan20">Data Structures</tspan> </tspan><tspan
          x="338.5551"
          y="172.60938"
-         id="tspan23"><tspan
+         id="tspan24"><tspan
            style="font-size:37.3333px"
-           id="tspan22">Cheatsheet</tspan></tspan></text>
+           id="tspan23">Cheatsheet</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:italic;font-weight:bold;font-size:6.35px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:1.19062px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
@@ -138,11 +145,11 @@
        style="font-style:italic;font-weight:bold;font-size:24px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:4.5px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:9.07087;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"><tspan
          x="545.29688"
          y="344.07422"
-         id="tspan24">Repeated
+         id="tspan25">Repeated
 </tspan><tspan
          x="538.74023"
          y="374.07422"
-         id="tspan25">elements?</tspan></text>
+         id="tspan26">elements?</tspan></text>
     <path
        style="fill:none;fill-opacity:1;stroke:#1b008f;stroke-width:2.41804;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
        d="M 276.11786,135.30302 H 4.2724662"
@@ -191,9 +198,9 @@
        style="font-style:italic;font-weight:bold;font-size:48px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:4.5px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect11);display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:9.07087;stroke-linecap:round;stroke-linejoin:round"><tspan
          x="869.08301"
          y="425.03125"
-         id="tspan27"><tspan
+         id="tspan28"><tspan
            style="font-weight:normal;-inkscape-font-specification:'Constantia Italic'"
-           id="tspan26">Usage</tspan></tspan></text>
+           id="tspan27">Usage</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:italic;font-weight:bold;font-size:12.7px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:1.19062px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#6c005f;fill-opacity:1;stroke:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"
@@ -266,19 +273,19 @@
          id="tspan19">set {}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-weight:bold;font-size:12.7px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:1.19062px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#6c4800;fill-opacity:1;stroke:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"
-       x="41.411674"
-       y="262.07745"
+       style="font-style:italic;font-weight:bold;font-size:12.7px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:1.19062px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#001f6c;fill-opacity:1;stroke:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"
+       x="38.236671"
+       y="262.60663"
        id="text19-4"><tspan
          sodipodi:role="line"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.7px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold Italic';fill:#6c4800;fill-opacity:1;stroke-width:2.4"
-         x="41.411674"
-         y="262.07745"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.7px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold Italic';fill:#001f6c;fill-opacity:1;stroke-width:2.4"
+         x="38.236671"
+         y="262.60663"
          id="tspan19-1">ordered</tspan><tspan
          sodipodi:role="line"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.7px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold Italic';fill:#6c4800;fill-opacity:1;stroke-width:2.4"
-         x="42.006985"
-         y="278.05786"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.7px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold Italic';fill:#001f6c;fill-opacity:1;stroke-width:2.4"
+         x="38.831982"
+         y="278.58704"
          id="tspan12">set ()</tspan></text>
     <text
        xml:space="preserve"
@@ -384,5 +391,17 @@
        d="M 275.36245,242.4629 H 5.0278792"
        id="path3"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.33683273,0,0,0.33683273,-63.332822,-66.922756)"
+       id="text12"
+       style="font-style:italic;font-weight:bold;font-size:24px;font-family:Constantia;-inkscape-font-specification:'Constantia Bold Italic';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect12);display:inline;fill:#001f6c;fill-opacity:1;stroke-width:1.88976;stroke-linecap:round;stroke-linejoin:round"><tspan
+         x="838.88574"
+         y="981.40625"
+         id="tspan29">queues of
+</tspan><tspan
+         x="814.79199"
+         y="1011.4062"
+         id="tspan32">unique things</tspan></text>
   </g>
 </svg>

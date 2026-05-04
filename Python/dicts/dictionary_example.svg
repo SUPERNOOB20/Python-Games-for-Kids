@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="dictionary_example.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.684102"
+     inkscape:cx="437.06932"
+     inkscape:cy="548.89475"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffffff" />
+  <defs
+     id="defs1">
+    <rect
+       x="339.02989"
+       y="248.07065"
+       width="173.64945"
+       height="35.143342"
+       id="rect2" />
+    <rect
+       x="93.026493"
+       y="396.91304"
+       width="675.27271"
+       height="378.57331"
+       id="rect1" />
+    <rect
+       x="339.02988"
+       y="248.07065"
+       width="173.64944"
+       height="35.143341"
+       id="rect2-4" />
+    <rect
+       x="339.02988"
+       y="248.07065"
+       width="173.64944"
+       height="35.143341"
+       id="rect2-5" />
+  </defs>
+  <g
+     inkscape:label="my_dictionary"
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:export-filename="dictionary_example.png"
+     inkscape:export-xdpi="718.70001"
+     inkscape:export-ydpi="718.70001">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.6667px;font-family:Constantia;-inkscape-font-specification:'Constantia, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#000000;fill-opacity:1;stroke-width:5.66929;stroke-linecap:round;stroke-linejoin:round"
+       inkscape:label="black_base"><tspan
+         x="118.71608"
+         y="420.27151"
+         id="tspan3">my_dictionary = {key_1: information_about_key_1,
+</tspan><tspan
+         x="116.46792"
+         y="453.60489"
+         id="tspan4">			                             key_2: information_about_key_2,
+</tspan><tspan
+         x="116.3312"
+         y="486.93826"
+         id="tspan5">			                             key_3: information_about_key_3}</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-15.919742,56.916433)"
+       id="text2-1"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.6667px;font-family:Constantia;-inkscape-font-specification:'Constantia, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5);display:inline;fill:#660037;fill-opacity:1;stroke-width:5.66929;stroke-linecap:round;stroke-linejoin:round"
+       inkscape:label="key_3"><tspan
+         x="391.93518"
+         y="271.42972"
+         id="tspan6">key_3</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-15.782204,48.107325)"
+       id="text2-2"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.6667px;font-family:Constantia;-inkscape-font-specification:'Constantia, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-4);display:inline;fill:#004866;fill-opacity:1;stroke-width:5.66929;stroke-linecap:round;stroke-linejoin:round"
+       inkscape:label="key_2"><tspan
+         x="391.55757"
+         y="271.42972"
+         id="tspan7">key_2</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-15.101007,39.301617)"
+       id="text2"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.6667px;font-family:Constantia;-inkscape-font-specification:'Constantia, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);display:inline;fill:#096600;fill-opacity:1;stroke-width:5.66929;stroke-linecap:round;stroke-linejoin:round"
+       inkscape:label="key_1"><tspan
+         x="393.15263"
+         y="271.42972"
+         id="tspan8">key_1</tspan></text>
+  </g>
+</svg>
