@@ -1,38 +1,77 @@
+# -------------------- SECTION 1: PATHS, MODULES, DEPENDENCIES ---------------------------------
+
 import keyboard
 import os
 import sys
 
 from random import randint
 
-frame_counter = 0           # Times global events
-car_frame_counter = 0       # Times cars' animation loop :3
+
+def check_OS():
+    from sys import platform
+    
+    user_OS = ""
+
+    # linux
+    if platform == ("linux" or "linux2"):
+        user_OS = "linux"
+
+    # OS X
+    elif platform == "darwin":
+        print("Warning: Mac OS not supported! Will attempt to run the game regardless...")
+        user_OS = "windows"     # Unimplemented. Just treat it as Windows for the moment being cuz why not.
+
+    # Windows...    
+    elif platform == "win32":
+        user_OS = "windows"
+    
+
+    else:
+        raise("Warning: Your Operating System, \033[92m{platform}\033[00m, is not supported :c")
+
+    return user_OS
 
 
-def change_path_to_module_location():
 
-    true_path = os.path.dirname(os.path.realpath(__file__))
 
-    new_true_path = os.path.join(true_path, '..')
+user_OS = check_OS()
 
-    sys.path.append(true_path + "/../../..")
+def change_path_to_module_location(current_OS):
 
-    new_true_path = os.path.join(true_path, '..')
-    new_true_path = os.path.join(new_true_path, '..')
-    new_true_path = os.path.join(new_true_path, 'Libraries')
+    if current_OS == "windows":
 
-    sys.path.append(new_true_path)
-    # print(sys.path)
+        true_path = os.path.dirname(os.path.realpath(__file__))
 
-    try:
-        os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
-    except:
-        cheesy_nop = 0
+        new_true_path = os.path.join(true_path, '..')
+
+        sys.path.append(true_path + "/../../..")
+
+        new_true_path = os.path.join(true_path, '..')
+        new_true_path = os.path.join(new_true_path, '..')
+        new_true_path = os.path.join(new_true_path, 'Libraries')
+
+        sys.path.append(new_true_path)
+        # print(sys.path)
+
+        try:
+            os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
+        except:
+            print("Error: \033[91mAssets\033[00m folder not found :c")
+
+
+    else:   # Linux
+        true_path = os.path.dirname(os.path.realpath(__file__))
+
+        new_true_path = os.path.join(true_path, '..')
+
+        sys.path.append(true_path + "/../../../venv_for_linux/lib")
+
 
     return
 
 
 def change_path_in_foreign_computer():
-    for i in range(40):
+    for i in range(40):     # Just a naive, brute-force approach to absolute paths, pay it no mind.
         os.chdir("/../")
     os.chdir("D:/York 2026/Programming Games for Kids & Teens/Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
 
@@ -40,10 +79,10 @@ def change_path_in_foreign_computer():
 
 
 
-change_path_to_module_location()
-change_path_in_foreign_computer()
+change_path_to_module_location(user_OS)
+# change_path_in_foreign_computer()     # This is the code I run at York (yes, I just brute-force the absolute path...).
 
-
+os.chdir("Assets")
 print("current dir:", os.getcwd())
 
 
@@ -60,6 +99,17 @@ import pygame_utils
 from adaptive_screensize_utils_b import *
 
 # print("IMPORT TEST:", 1 * vw)
+
+
+# -------------------- SECTION 2: GAME ---------------------------------
+
+
+# Finally... the game! :D
+
+
+frame_counter = 0           # Times global events
+car_frame_counter = 0       # Times cars' animation loop :3
+
 
 pygame.init()
 
@@ -83,7 +133,7 @@ images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1":   
 
 
 
-class Cloud_1:
+class Cloud:
     # __slots__ = ['anchorpos_x = user_screen_width', 'anchorpos_y = user_screen_height', 'x = 60.7 * vw', 'y = 42.2771403354 * vh']
     def __init__(self, anchorpos_x = user_screen_width, anchorpos_y = user_screen_height * 0.2, x = 60.7 * vw, y = 42.2771403354 * vh):
         images_with_rects[str(self)] = ["cloud_1.png",      "bottomleft",   (anchorpos_x, anchorpos_y),    (x, y)]
@@ -306,6 +356,12 @@ def draw_clouds(spawn_timer, screen):
 # images_with_rects["tie_man_1"][1].bottomleft = int_vertical_position(10)            # player_y
 
 images_with_rects["tie_man_1"][1].bottomleft = (int_horizontal_position(20), int_vertical_position(30))            # (player_x, player_y)
+
+
+
+
+
+# -------------------- SECTION 3: GAME LOOP ---------------------------------
 
 left_key_down = False
 right_key_down = False
