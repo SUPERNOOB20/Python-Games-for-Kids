@@ -2,22 +2,50 @@ adaptive screensize asset calculations:
 
 formula: cropped_size * 100 / original_size = adaptive_size (in %)
 
+----------------------------------------------------
+
 ground 1:
 4000 | 1800 = 45 vw
 2266 | 1049 = 46.293027361 vh
 anchor: topright
+
+----------------------------------------------------
 
 ground 2:
 4000 | 2284 =  57.1 vw
 2266 | 680  =  30.0088261253 vh
 anchor: topright
 
+----------------------------------------------------
+
 water:
 4000 | 2428 = 60.7 vw
 2266 | 958  =  42.2771403354 vh
 anchor: topleft
 
+----------------------------------------------------
+
 water_ground:
 4000
 2266 / 407 = 17.9611650485 vh
 anchor: top
+
+----------------------------------------------------
+
+cloud_1:
+original asset size:
+resized (random resize): 40% - 60%
+
+4000 / (6322 * random_resize / 100) = vw
+2266 / (2000 * random_resize / 100) = vh
+anchor:bottomleft
+
+----------------------------------------------------
+
+cloud_67:
+original asset size: 
+resized (random resize): 40% - 60%
+
+4000 / (6322 * random_resize / 100) = vw
+2266 / (2000 * random_resize / 100) = vh
+anchor: bottomleft

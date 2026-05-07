@@ -59,7 +59,7 @@ import pygame       # imports pygame-ce
 import pygame_utils
 from adaptive_screensize_utils_b import *
 
-print("IMPORT TEST:", 1 * vw)
+# print("IMPORT TEST:", 1 * vw)
 
 pygame.init()
 
@@ -72,11 +72,72 @@ images: dict = pygame_utils.creates_images({"bg": ["bg.png", user_res]})
 
 # print("vh and vw:", vh, vw)
 
+#                                                                 handle(key)    filename              anchor          anchorpos                                 size
 images_with_rects: dict = pygame_utils.creates_images_and_rects({"tie_man_1":    ["tie_man_1.png",     "bottom",       user_screen_height / 2,                   (3 * vw, 8 * vh)                            ],
                                                                  "ground_1":     ["ground_1.png",      "bottomleft",   (0, user_screen_height),                  (45 * vw, 46.293027361 * vh)                ],
                                                                  "ground_2":     ["ground_2.png",      "bottomleft",   (0, user_screen_height),                  (57.1 * vw, 30.0088261253 * vh)             ],
                                                                  "water":        ["water.png",         "bottomright",  (user_screen_width, user_screen_height),  (60.7 * vw, 42.2771403354 * vh)             ],
-                                                                 "water_ground": ["water_ground.png",  "top",          user_screen_height,                       (user_screen_width,   17.9611650485 * vh)   ]})
+                                                                 "water_ground": ["water_ground.png",  "top",          user_screen_height,                       (user_screen_width,   17.9611650485 * vh)   ],
+                                                                 "cloud_1":      ["cloud_1.png",       "bottomleft",   (user_screen_width, user_screen_height),  (60.7 * vw, 42.2771403354 * vh)             ],
+                                                                 "cloud_67":     ["cloud_67.png",      "bottomleft",   (user_screen_width, user_screen_height),  (60.7 * vw, 42.2771403354 * vh)             ]})
+
+
+
+class Cloud_1:
+    # __slots__ = ['anchorpos_x = user_screen_width', 'anchorpos_y = user_screen_height', 'x = 60.7 * vw', 'y = 42.2771403354 * vh']
+    def __init__(self, anchorpos_x = user_screen_width, anchorpos_y = user_screen_height * 0.2, x = 60.7 * vw, y = 42.2771403354 * vh):
+        images_with_rects[str(self)] = ["cloud_1.png",      "bottomleft",   (anchorpos_x, anchorpos_y),    (x, y)]
+
+    
+
+
+    @property
+    def x(self):
+        return self._x
+    
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+    @x.deleter
+    def x(self):
+        del self._x
+
+
+
+    @property
+    def y(self):
+        return self._y
+    
+    @y.setter
+    def y(self, value):
+        self._y = value
+
+    @y.deleter
+    def y(self):
+        del self._y
+
+
+
+    @property
+    def xy(self):
+        return (self._x, self._y)
+    
+    @xy.setter
+    def y(self, x_value, y_value):
+        self._x = x_value
+        self._y = y_value
+
+    @xy.deleter
+    def y(self):
+        del self._x
+        del self._y
+    
+
+
+
+
+
 
 # print("images_with_rects dict:", images_with_rects)
 
@@ -197,8 +258,8 @@ def check_collisions_bottom(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
 def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
-    print("object top:", object_rect.top)
-    print("player top:", object_rect.top)
+    # print("object top:", object_rect.top)
+    # print("player top:", object_rect.top)
 
     if (player_rect.top > object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 
@@ -226,6 +287,19 @@ def check_collisions(player_rect):
         
 
 
+def draw_clouds(spawn_timer, screen):
+
+    if (spawn_timer % 200) == 0:
+
+        random_rescale = randint(-10,10)
+
+        current_cloud = Cloud()
+
+        screen.blit(images_with_rects["cloud_1"][0], images_with_rects["cloud_1"][1].scale_by(random_rescale))
+        screen.blit(images_with_rects["cloud_67"][0], images_with_rects["cloud_67"][1].scale_by(random_rescale))
+
+    return
+
 
 # Initializes player position (sets the "spawn" for the player)
 # images_with_rects["tie_man_1"][1].bottomleft = int_horizontal_position(20)          # player_x
@@ -249,6 +323,7 @@ while(running == True):
     screen.blit(images_with_rects["ground_1"][0], images_with_rects["ground_1"][1])
     screen.blit(images_with_rects["water_ground"][0], images_with_rects["water_ground"][1])
 
+    draw_clouds(frame_counter, screen)
 
     for event in pygame.event.get():
 
@@ -324,4 +399,4 @@ while(running == True):
     
 
     pygame.display.flip()
-    clock.tick(60)  # Caps the events loop at a 60fps ceiling. Doesn't work at other framerates, for some reason... (oof with delta time)
+    clock.tick(60)      # Caps the events loop at a 60fps ceiling (oof with delta time).
