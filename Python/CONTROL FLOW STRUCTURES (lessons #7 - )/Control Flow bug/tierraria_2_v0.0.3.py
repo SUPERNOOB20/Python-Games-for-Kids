@@ -8,21 +8,27 @@ from random import randint
 
 
 def check_OS():
-    from sys import platform
     
+    platform = sys.platform
     user_OS = ""
+
 
     # linux
     if platform == ("linux" or "linux2"):
         user_OS = "linux"
 
-    # OS X
+    # Macintosh's OS
     elif platform == "darwin":
-        print("Warning: Mac OS not supported! Will attempt to run the game regardless...")
+        print("Warning: macOS not supported! Will attempt to run the game regardless...")
+        user_OS = "windows"     # Unimplemented. Just treat it as Windows for the moment being cuz why not.
+
+    # iOS
+    elif platform == "ios":
+        print("Warning: iOS not supported! Will attempt to run the game regardless...")
         user_OS = "windows"     # Unimplemented. Just treat it as Windows for the moment being cuz why not.
 
     # Windows...    
-    elif platform == "win32":
+    elif platform[:3] == "win":
         user_OS = "windows"
     
 
