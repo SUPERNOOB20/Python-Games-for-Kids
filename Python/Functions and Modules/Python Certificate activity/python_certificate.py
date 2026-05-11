@@ -2,6 +2,8 @@
 
 
 import tkinter as tk
+from tkinter import font
+
 import keyboard
 from PIL import ImageTk, Image
 import os
@@ -60,9 +62,10 @@ def change_path_to_module_location(current_OS):
         # print(sys.path)
 
         try:
-            os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
+            # os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
+            os.chdir("../Functions and Modules/Python Certificate activity/Assets")
         except:
-            print("Error: \033[91mAssets\033[00m folder not found :c")
+            print(f"Error: \033[91mAssets\033[00m folder not found at {os.getcwd()} :c")
 
 
     else:   # Linux    
@@ -97,10 +100,16 @@ print("CURRENT DIR 2:", os.getcwd())
 from adaptive_screensize_utils_b import *
 
 change_path_to_module_location(user_OS)
-# change_path_in_foreign_computer()     # This is the code I run at York (yes, I just brute-force the absolute path...).
+
+"""
+change_path_in_foreign_computer()     # This is the code I run at York (yes, I just brute-force the absolute path...).
 
 os.chdir("Assets")
 print("current dir:", os.getcwd())
+"""
+
+
+
 
 
 """
@@ -133,17 +142,27 @@ def certificate(name = "Your Name Here", color = "000000"):
     certificate_img = ImageTk.PhotoImage(certificate_raw_img.resize(resized_for_this_screen))
 
     canvas = tk.Canvas(root, width = user_screen_width, height = user_screen_height)
-    print(int_horizontal_position(50))
-    canvas.create_text(int_horizontal_position(50), 40, text = "My Pizza!", font=("Helvetica", 40)) 
+    # canvas.create_text(int_horizontal_position(50), 40, text = "My Pizza!", font=("Helvetica", 40)) 
+
+    
+
+    canvas.create_image(0, 0, image=certificate_img, anchor=tk.NW)
 
 
+    normal_font             = tk.font.Font(family = "Segoe UI",         size=40, slant = "italic")
+    handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size=40)
+    italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size=40, slant = "italic")
 
-    """
-    def add_eggs():
-        canvas.create_image(int_horizontal_position(25), 80, image=eggs_img, anchor=tk.NW)
-        return
+ 
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(5), text = "Azul Cian", font = normal_font, fill="blue", anchor="center")
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(5), text = "hereby grants the title of", font = italic_handwritten_font, anchor="center")
 
-    """
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(25), text = "Python Programmer", font = ("Helvetica", 72), anchor="center")
+
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(50), text = "to the student", font = italic_handwritten_font, anchor="center")
+
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}", font = italic_handwritten_font, anchor="center")
+
 
 
 
@@ -154,3 +173,7 @@ def certificate(name = "Your Name Here", color = "000000"):
     canvas.pack()
 
     root.mainloop()
+
+    return
+
+certificate()
