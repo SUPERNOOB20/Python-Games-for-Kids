@@ -4,6 +4,17 @@
 # "vw" (viewport width) and "vh" (viewport hieght) in Python.
 
 # pip install screeninfo
+
+import sys
+
+if sys.platform == "linux":
+
+    import os
+    true_path = os.path.dirname(os.path.realpath(__file__))
+    new_true_path = os.path.join(true_path, '../venv_for_linux/lib/python3.12/site-packages/screeninfo/')
+    # new_true_path = os.path.join(new_true_path, '../venv_for_linux/lib64/python3.12/site-packages/screeninfo/')
+    sys.path.append(new_true_path)
+
 from screeninfo import get_monitors
 from math import floor
 
