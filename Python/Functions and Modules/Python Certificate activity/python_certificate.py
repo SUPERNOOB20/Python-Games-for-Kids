@@ -154,14 +154,14 @@ def certificate(name = "Your Name Here", color = "000000"):
     italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size=40, slant = "italic")
 
  
-    canvas.create_text(int_horizontal_position(50), int_vertical_position(5), text = "Azul Cian", font = normal_font, fill="blue", anchor="center")
-    canvas.create_text(int_horizontal_position(50), int_vertical_position(5), text = "hereby grants the title of", font = italic_handwritten_font, anchor="center")
+    canvas.create_text(int_horizontal_position(30), int_vertical_position(5), text = "Azul Cian", font = normal_font, fill="blue", anchor="center")
+    canvas.create_text(int_horizontal_position(60), int_vertical_position(5), text = "hereby grants the title of", font = italic_handwritten_font, anchor="center")
 
     canvas.create_text(int_horizontal_position(50), int_vertical_position(25), text = "Python Programmer", font = ("Helvetica", 72), anchor="center")
 
     canvas.create_text(int_horizontal_position(50), int_vertical_position(50), text = "to the student", font = italic_handwritten_font, anchor="center")
 
-    canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}", font = italic_handwritten_font, anchor="center")
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}", font = ("Helvetica", 72), anchor="center")
 
 
 
@@ -176,4 +176,4 @@ def certificate(name = "Your Name Here", color = "000000"):
 
     return
 
-certificate()
+# certificate()
