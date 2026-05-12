@@ -1,5 +1,6 @@
 # -------------------- SECTION 1: PATHS, MODULES, DEPENDENCIES ---------------------------------
 
+import asyncio
 
 import tkinter as tk
 from tkinter import font
@@ -10,6 +11,7 @@ import os
 import sys
 
 from random import randint
+
 
 
 def check_OS():
@@ -125,13 +127,62 @@ go_back()
 
 # -------------------- SECTION 2: TKINTER ---------------------------------
 
-def certificate(name = "Your Name Here", color = "000000"):
+
+
+# Because tkinter offers little-to-no transparency support, I make a semi-transparent window for the blend mode.
+# I know. Nasty workaround. It is what it is.
+async def certificate(name = "Your Name Here", color = "000000"):
+    asyncio.run(blend_mode_window())
+    await asyncio.sleep(2)
+    asyncio.run(certificate_main(name, color))
+    await asyncio.sleep(2)
+    return
+
+
+
+async def blend_mode_window():
+    root2 = tk.Tk()
+    root2.attributes('-alpha', 0.2, '-fullscreen', True)
+    canvas2 = tk.Canvas(root2, width = user_screen_width, height = user_screen_height)
+
+    keyboard.on_press_key("esc", lambda _: root2.destroy())
+
+
+
+    # It's, uh, clockwise order. Starting from the top left corner. Yeah.
+    top_left_corner_x = 0
+    top_left_corner_y = 0
+
+    top_right_corner_x = user_screen_width
+    top_right_corner_y = 0
+
+    bottom_right_corner_x = user_screen_width
+    bottom_right_corner_y = user_screen_height
+
+    bottom_left_corner_x = 0
+    bottom_left_corner_y = user_screen_height
+
+    canvas2.create_polygon(top_left_corner_x, top_left_corner_y, top_right_corner_x, top_right_corner_y, bottom_right_corner_x, bottom_right_corner_y, bottom_left_corner_x, bottom_left_corner_y, fill="red")
+
+
+
+    canvas2.pack()
+    root2.mainloop()
+    return
+
+
+
+async def certificate_main(name = "Your Name Here", color = "000000"):
 
     root = tk.Tk()
     root.attributes('-fullscreen', True)
-    c = tk.Canvas(root, bg = 'black')
+    canvas = tk.Canvas(root, width = user_screen_width, height = user_screen_height)
+
+
+
 
     keyboard.on_press_key("esc", lambda _: root.destroy())
+    
 
 
     certificate_raw_img = Image.open("python_certificate.png")
@@ -141,43 +192,41 @@ def certificate(name = "Your Name Here", color = "000000"):
 
     certificate_img = ImageTk.PhotoImage(certificate_raw_img.resize(resized_for_this_screen))
 
-    canvas = tk.Canvas(root, width = user_screen_width, height = user_screen_height)
+    
     # canvas.create_text(int_horizontal_position(50), 40, text = "My Pizza!", font=("Helvetica", 40)) 
 
     
 
-    canvas.create_image(0, 0, image = certificate_img, anchor=tk.NW)
+    canvas.create_image(0, 0, image=certificate_img, anchor=tk.NW)
 
 
-    normal_font             = tk.font.Font(family = "Segoe UI",         size = 40, slant = "italic")
-    handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size = 40)
-    italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size = 40, slant = "italic")
+    normal_font             = tk.font.Font(family = "Segoe UI",         size=40, slant = "italic")
+    handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size=40)
+    italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size=40, slant = "italic")
 
- 
-    canvas.create_text(int_horizontal_position(30), int_vertical_position(5), text = "Azul Cian",                  font = normal_font, fill="blue", anchor="center")
+
+    
+
+
+    # Yes I should be using a Frame instead of the Canvas but please have some mercy on me.
+    canvas.create_text(int_horizontal_position(30), int_vertical_position(5), text = "Azul Cian", font = normal_font, fill="blue", anchor="center")
     canvas.create_text(int_horizontal_position(60), int_vertical_position(5), text = "hereby grants the title of", font = italic_handwritten_font, anchor="center")
 
-    canvas.create_text(int_horizontal_position(50), int_vertical_position(25), text = "Python Programmer",         font = ("Helvetica", 72), anchor="center")
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(25), text = "Python Programmer", font = ("Helvetica", 72), anchor="center")
 
-    canvas.create_text(int_horizontal_position(50), int_vertical_position(50), text = "to the student",            font = italic_handwritten_font, anchor="center")
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(50), text = "to the student", font = italic_handwritten_font, anchor="center")
 
-    canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}",                   font = ("Helvetica", 72), anchor="center")
+    canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}", font = ("Helvetica", 72), anchor="center")
 
 
+    
 
 
     # ------------------------------------------------------------------------------------
 
 
-
     canvas.pack()
-
     root.mainloop()
-
     return
 
-
-
-
-# if main:
-#   certificate()
+# certificate()

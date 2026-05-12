@@ -1,3 +1,3 @@
 from python_certificate import certificate
 
-certificate(name = "Mr. Potato")
+certificate(name = "Ms Maria Smith")
