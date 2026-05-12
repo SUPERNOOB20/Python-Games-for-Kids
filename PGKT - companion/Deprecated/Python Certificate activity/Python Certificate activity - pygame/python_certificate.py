@@ -1,10 +1,5 @@
 # -------------------- SECTION 1: PATHS, MODULES, DEPENDENCIES ---------------------------------
 
-import dependencies
-
-dependencies.add_libraries('../../Libraries')
-dependencies.add_assets("Assets")
-
 
 import keyboard
 
@@ -14,6 +9,123 @@ import sys
 
 from random import randint
 
+
+def check_OS():
+    
+    user_OS = ""
+
+    # linux
+    if sys.platform == ("linux" or "linux2"):
+        user_OS = "linux"
+
+    # OS X
+    elif sys.platform == "darwin":
+        print("Warning: Mac OS not supported! Will attempt to run the game regardless...")
+        user_OS = "windows"     # Unimplemented. Just treat it as Windows for the moment being cuz why not.
+
+    # Windows...    
+    elif sys.platform == "win32":
+        user_OS = "windows"
+    
+
+    else:
+        raise("Warning: Your Operating System, \033[92m{sys.platform}\033[00m, is not supported :c")
+
+    return user_OS
+
+
+
+
+user_OS = check_OS()
+
+def change_path_to_module_location(current_OS):
+
+    true_path = os.path.dirname(os.path.realpath(__file__))
+
+    new_true_path = os.path.join(true_path, '..')
+
+
+
+    if current_OS == "windows":
+
+        new_true_path = os.path.join(true_path, '..')
+
+        sys.path.append(true_path + "/../../..")
+
+        new_true_path = os.path.join(true_path, '..')
+        new_true_path = os.path.join(new_true_path, '..')
+        new_true_path = os.path.join(new_true_path, 'Libraries')
+
+        sys.path.append(new_true_path)
+        # print(sys.path)
+
+        try:
+            # os.chdir("Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
+            os.chdir("../Functions and Modules/Python Certificate activity/Assets")
+        except:
+            print(f"Error: \033[91mAssets\033[00m folder not found at {os.getcwd()} :c")
+
+
+    else:   # Linux    
+
+        sys.path.append(true_path + "/../../../venv_for_linux/lib")
+
+
+
+    return
+
+
+
+
+def change_path_in_foreign_computer():
+    for i in range(40):     # Just a naive, brute-force approach to absolute paths, pay it no mind.
+        os.chdir("/../")
+    os.chdir("D:/York 2026/Programming Games for Kids & Teens/Python/CONTROL FLOW STRUCTURES (lessons #7 - )/Control Flow bug/Assets")
+
+    return
+
+
+print("CURRENT DIR 1:", os.getcwd())
+
+current_path = os.path.dirname(os.path.realpath(__file__))
+new_path = os.path.join(current_path, '../../Libraries')
+sys.path.append(new_path)
+os.chdir(new_path)
+
+print("CURRENT DIR 2:", os.getcwd())
+
+
+from adaptive_screensize_utils_b import *
+
+change_path_to_module_location(user_OS)
+
+"""
+change_path_in_foreign_computer()     # This is the code I run at York (yes, I just brute-force the absolute path...).
+
+os.chdir("Assets")
+print("current dir:", os.getcwd())
+"""
+
+
+# Wait, what do you mean this isn't CMake? :p
+
+def add_libraries(expected_filepath = os.getc):
+    return
+
+def add_assets(expected_filepath = ):
+
+
+add_libraries()
+add_assets()
+
+
+"""
+go_to_libraries()
+
+from adaptive_screensize_utils_b import *
+
+go_back()
+"""
 
 
 
