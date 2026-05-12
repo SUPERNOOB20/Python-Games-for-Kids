@@ -123,70 +123,13 @@ go_back()
 
 
 
-# -------------------- SECTION 2: PYGAME ---------------------------------
-
-pill_highlighter = pygame.Surface((vw * 20, vh * 13), flags=pygame.SRCALPHA)   # pill size: 488x182
-
-pill_highlighter = pill_highlighter.premul_alpha()
-
-pill_highlighter = pill_highlighter.premul_alpha()
-
-# no_highlight_pill_with_highlight_surf = pill_with_highlight_surf.copy.deepcopy()
-
-# pill_with_highlight_surf.blit(pill_highlighter, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
-pill_with_highlight_surf.blit(pill_highlighter, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-
-
-
-
-
-def Render_Text(what, color, where):
-    font = pygame.font.SysFont('Arial', 30)
-    text = font.render(what, 1, pygame.Color(color))
-    screen.blit(text, where)
-
-    return
-
-
-clock = pygame.time.Clock()
-running = True
-
-def stop_running():
-
-    global running
-
-    running = False
-    return
-
-
-
-
+# -------------------- SECTION 2: TKINTER ---------------------------------
 
 def certificate(name = "Your Name Here", color = "000000"):
 
-    pygame.init()
-    
-    debug_mode = False
-
-    while(running == True):
-
-        screen.fill((255, 255, 255))
-
-        screen.blit(certificate_scaled_surface, (0, 0))
-
-
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                running = False
-
-            if event.type == pygame.KEYDOWN:
-
-                if (event.key == pygame.K_b) and (debug_mode == True):
-                    print("\n")
-                    print("Debug mode is active:")
-                    print("You can print your logs here")
-                    print("\n")
+    root = tk.Tk()
+    root.attributes('-fullscreen', True)
+    c = tk.Canvas(root, bg = 'black')
 
     keyboard.on_press_key("esc", lambda _: root.destroy())
 
@@ -196,18 +139,14 @@ def certificate(name = "Your Name Here", color = "000000"):
     # resized_for_this_screen: tuple = (int_vertical_position(50), int_vertical_position(50))
     resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
 
+    certificate_img = ImageTk.PhotoImage(certificate_raw_img.resize(resized_for_this_screen))
 
-    certificate_raw_surface = pygame.image.load("certificate.png").convert_alpha()
-    certificate_scaled_surface = pygame.transform.scale(surface = red_light_raw_surface, size = resized_for_this_screen)
+    canvas = tk.Canvas(root, width = user_screen_width, height = user_screen_height)
+    # canvas.create_text(int_horizontal_position(50), 40, text = "My Pizza!", font=("Helvetica", 40)) 
 
+    
 
-
-    choose_deck_prompt_surf = pygame.font.Font.render(CCWildWordsI_36pt, "Choose a deck to play with.", True, (255,255,255), None, 0)
-
-    choose_deck_prompt_rect = choose_deck_prompt_surf.get_rect(center = (floor(user_screen_width / 2), floor((user_screen_height / 2) - vh * 11)))
-    screen.blit(choose_deck_prompt_surf, choose_deck_prompt_rect)
-
-
+    canvas.create_image(0, 0, image = certificate_img, anchor=tk.NW)
 
 
     normal_font             = tk.font.Font(family = "Segoe UI",         size = 40, slant = "italic")
