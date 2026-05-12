@@ -8,7 +8,7 @@ def add_libraries(expected_filepath = os.getcwd()):
     try:
         sys.path.append(expected_filepath)
     except:
-        print(f"Error: \033[91mLibraries\033[00m folder not found.  at {os.getcwd()} :c")
+        print(f"\nError: \033[91mLibraries\033[00m folder not found at {expected_filepath} :c\n")
 
     return
 
@@ -19,6 +19,7 @@ def add_assets(expected_filepath = "Assets"):
     try:
         os.chdir(expected_filepath)
     except:
-        print(f"Error: \033[91mAssets\033[00m folder not found at {os.getcwd()} :c")
+        expected_directory = os.getcwd() + "/Assets"
+        print(f"\nError: \033[91mAssets\033[00m folder not found. \033[91m{expected_directory}\033[00m doesn't exist :c\n")
 
     return

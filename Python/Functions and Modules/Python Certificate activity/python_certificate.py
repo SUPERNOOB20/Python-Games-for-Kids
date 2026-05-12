@@ -1,16 +1,27 @@
 # -------------------- SECTION 1: PATHS, MODULES, DEPENDENCIES ---------------------------------
 
+import os
+
 import dependencies
 
-dependencies.add_libraries('../../Libraries')
+dependencies.add_libraries("../../Libraries")
 dependencies.add_assets("Assets")
 
+def current_folder(path: str = os.getcwd()):
+    parsed_path = path.split("/")
+
+    return parsed_path[len(parsed_path) - 1]
+
+
+if current_folder != "Programming Games for Kids & Teens":
+    print("\n")
+    raise Exception(f"\nERROR: You need to open the  ***\033[91mProgramming Games for Kids & Teens\033[00m***  folder!!!\n")
+
+os.chdir("Python\Functions and Modules\Python Certificate activity")
 
 import keyboard
 
 import pygame   # pygame-ce.
-import os
-import sys
 
 from random import randint
 
