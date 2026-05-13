@@ -197,8 +197,8 @@ def check_collisions_bottom(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
 def check_collisions_left(player_rect: pygame.Rect, object_rect: pygame.Rect):
 
-    print("object top:", object_rect.top)
-    print("player top:", object_rect.top)
+    # print("object top:", object_rect.top)
+    # print("player top:", object_rect.top)
 
     if (player_rect.top > object_rect.top) and (player_rect.bottomleft[0] < object_rect.bottomright[0]):
 

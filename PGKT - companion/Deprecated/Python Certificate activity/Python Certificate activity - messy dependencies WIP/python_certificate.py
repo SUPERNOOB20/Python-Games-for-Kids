@@ -10,8 +10,7 @@ def current_folder(path: str = os.getcwd()):
 
 
 if current_folder() != "Programming Games for Kids & Teens":
-    error_message = (f"\nERROR: You need to open the  ***\033[91mProgramming Games for Kids & Teens\033[00m***  folder!!!"
-                    "\nYou are currently in the {current_folder()} folder ':3")"
+    error_message = (f"\nERROR: You need to open the  ***\033[91mProgramming Games for Kids & Teens\033[00m***  folder!!!\nYou are currently in the {current_folder()} folder ':3")
     print("\n")
     raise Exception(error_message)
 
@@ -21,18 +20,21 @@ os.chdir("Python/Functions and Modules/Python Certificate activity")
 import dependencies
 
 this_directory = os.getcwd()
-library_path = os.path.abspath(os.path.join(this_directory, "../../Libraries"))
 
-dependencies.add_libraries(library_path)
+print("getcwd:", this_directory)
+print("AAAAAAAA", os.path.abspath(os.path.join(this_directory, "/Python/Libraries")))
+
+dependencies.add_libraries(os.path.abspath(os.path.join(this_directory, "/../../Libraries")))
 dependencies.add_assets("Assets")
 
 
+import sys
+print(sys.path)
 
 import keyboard
 from random import randint
 
-from adaptive_screensize_utils_b import user_screen_width
-from adaptive_screensize_utils_b import user_screen_height
+import adaptive_screensize_utils_b
 
 import pygame   # pygame-ce.
 
