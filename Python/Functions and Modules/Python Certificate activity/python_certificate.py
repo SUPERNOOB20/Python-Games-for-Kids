@@ -42,8 +42,12 @@ pygame.init()
 
 def render_text(what, color, where, screen, font = pygame.font.SysFont('Arial', 30)):
 
+    
+
     text = font.render(what, 1, pygame.Color(color))
-    screen.blit(text, where)
+    text_rect = text.get_rect()
+    text_rect.center = where
+    screen.blit(text, text_rect)
 
     return
 
@@ -169,8 +173,8 @@ def certificate(name = "Your Name Here", color = "000000"):
 
 
 
-        render_text(text1, "blue",  (int_horizontal_position(30), int_vertical_position(5)),  screen, font = normal_font)
-        render_text(text2, "black", (int_horizontal_position(60), int_vertical_position(5)),  screen, font = italic_handwritten_font)
+        render_text(text1, "blue",  (int_horizontal_position(40), int_vertical_position(5)),  screen, font = normal_font)
+        render_text(text2, "black", (int_horizontal_position(57), int_vertical_position(5)),  screen, font = italic_handwritten_font)
         render_text(text3, "black", (int_horizontal_position(50), int_vertical_position(25)), screen, font = pygame.font.SysFont("Helvetica", 72))
         render_text(text4, "black", (int_horizontal_position(50), int_vertical_position(50)), screen, font = italic_handwritten_font)
         render_text(text5, "black", (int_horizontal_position(50), int_vertical_position(75)), screen, font = pygame.font.SysFont("Helvetica", 72))
