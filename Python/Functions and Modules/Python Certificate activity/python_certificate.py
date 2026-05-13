@@ -1,5 +1,7 @@
 # -------------------- SECTION 1: PATHS, MODULES, DEPENDENCIES ---------------------------------
 
+
+from math import floor
 import os
 
 
@@ -11,7 +13,7 @@ def current_folder(path: str = os.getcwd()):
 
 if current_folder() != "Programming Games for Kids & Teens":
     error_message = (f"\nERROR: You need to open the  ***\033[91mProgramming Games for Kids & Teens\033[00m***  folder!!!"
-                    "\nYou are currently in the {current_folder()} folder ':3")"
+                    "\nYou are currently in the {current_folder()} folder ':3")
     print("\n")
     raise Exception(error_message)
 
@@ -30,9 +32,8 @@ dependencies.add_assets("Assets")
 
 import keyboard
 from random import randint
-
-from adaptive_screensize_utils_b import user_screen_width
-from adaptive_screensize_utils_b import user_screen_height
+from math import floor
+from adaptive_screensize_utils_b import user_screen_width, user_screen_height, int_horizontal_position, int_vertical_position, vw, vh
 
 import pygame   # pygame-ce.
 
@@ -71,7 +72,7 @@ certificate_highlighter = certificate_highlighter.premul_alpha()
 certificate_scaled_surface.blit(certificate_highlighter, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
 
-def Render_Text(what, color, where, screen):
+def render_text(what, color, where, screen, font = pygame.font.SysFont('Arial', 30)):
     font = pygame.font.SysFont('Arial', 30)
     text = font.render(what, 1, pygame.Color(color))
     screen.blit(text, where)
@@ -95,6 +96,8 @@ def stop_running():
 
 def certificate(name = "Your Name Here", color = "000000"):
 
+    global screen
+    global certificate_scaled_surface
     global debug_mode
     global running
 
@@ -118,7 +121,7 @@ def certificate(name = "Your Name Here", color = "000000"):
                     print("You can print your logs here")
                     print("\n")
 
-        keyboard.on_press_key("esc", lambda _: root.destroy())
+        keyboard.on_press_key("esc", lambda _: stop_running())
 
 
 
@@ -131,13 +134,21 @@ def certificate(name = "Your Name Here", color = "000000"):
 
         screen.blit(certificate_scaled_surface, (0, 0))
 
+        # ----------- INTERLUDIUM: FONTS ------------------------------------------------------------------------------------
+
+        # normal_font             = tk.font.Font(family = "Segoe UI",         size = 40, slant = "italic")
+        # handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size = 40)
+        # italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size = 40, slant = "italic")
+
+        normal_font             = pygame.font.SysFont('Segoe UI',         30, italic = True)
+        handwritten_font        = pygame.font.SysFont('Bradley Hand ITC', 30)
+        italic_handwritten_font = pygame.font.SysFont('Bradley Hand ITC', 30, italic = True)
 
 
-        normal_font             = tk.font.Font(family = "Segoe UI",         size = 40, slant = "italic")
-        handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size = 40)
-        italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size = 40, slant = "italic")
 
+        # -------------------------------------------------------------------------------------------------------------------
     
+        """
         canvas.create_text(int_horizontal_position(30), int_vertical_position(5), text = "Azul Cian",                  font = normal_font, fill="blue", anchor="center")
         canvas.create_text(int_horizontal_position(60), int_vertical_position(5), text = "hereby grants the title of", font = italic_handwritten_font, anchor="center")
 
@@ -146,8 +157,26 @@ def certificate(name = "Your Name Here", color = "000000"):
         canvas.create_text(int_horizontal_position(50), int_vertical_position(50), text = "to the student",            font = italic_handwritten_font, anchor="center")
 
         canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}",                   font = ("Helvetica", 72), anchor="center")
+        """
 
 
+
+        text1 = "Azul Cian"
+        text2 = "hereby grants the title of"
+
+        text3 = "Python Programmer"
+
+        text4 = "to the student"
+
+        text5 = name
+
+
+
+        render_text(text1, "blue", (int_horizontal_position(30), int_vertical_position(5)),  screen, normal_font)
+        render_text(text2, "blue", (int_horizontal_position(60), int_vertical_position(5)),  screen, italic_handwritten_font)
+        render_text(text3, "blue", (int_horizontal_position(50), int_vertical_position(25)), screen, ("Helvetica", 72))
+        render_text(text4, "blue", (int_horizontal_position(50), int_vertical_position(50)), screen, italic_handwritten_font)
+        render_text(text5, "blue", (int_horizontal_position(50), int_vertical_position(75)), screen, ("Helvetica", 72))
 
 
         # ------------------------------------------------------------------------------------
