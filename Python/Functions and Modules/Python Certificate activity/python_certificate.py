@@ -36,74 +36,66 @@ from math import floor
 from adaptive_screensize_utils_b import user_screen_width, user_screen_height, int_horizontal_position, int_vertical_position, vw, vh
 
 import pygame   # pygame-ce.
-
-
-
-# -------------------- SECTION 2: PYGAME ---------------------------------
-
 pygame.init()
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-
-
-
-SegoeUII_12pt = pygame.font.Font(filename="../Fonts/segoeuii.ttf", size=12)
-CCWildWordsI_36pt = pygame.font.Font(filename="../Fonts/CC Wild Words Italic.ttf", size=36)
-
-
-
-
-resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
-
-
-certificate_raw_surface = pygame.image.load("python_certificate.png").convert_alpha()
-certificate_scaled_surface = pygame.transform.scale(surface = certificate_raw_surface, size = resized_for_this_screen)
-
-
-
-# certificate_highlighter = pygame.Surface((user_screen_width, user_screen_height), flags=pygame.SRCALPHA)
-
-# certificate_highlighter = certificate_highlighter.premul_alpha()
-
-# certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
-
-# certificate_highlighter = certificate_highlighter.premul_alpha()
-
-# certificate_scaled_surface.blit(certificate_highlighter, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-
+# -------------------- SECTION 1.5: AUXILIARY FUNCTIONS ---------------------------------
 
 def render_text(what, color, where, screen, font = pygame.font.SysFont('Arial', 30)):
-    font = pygame.font.SysFont('Arial', 30)
+
     text = font.render(what, 1, pygame.Color(color))
     screen.blit(text, where)
 
     return
 
 
-clock = pygame.time.Clock()
-running = True
 
 def stop_running():
 
     global running
-
     running = False
+
     return
 
 
 
+# -------------------- SECTION 2: PYGAME ---------------------------------
+
+running = True
 
 
 def certificate(name = "Your Name Here", color = "000000"):
 
-    global screen
-    global certificate_scaled_surface
-    global debug_mode
     global running
+    
+    pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
+
+    SegoeUII_12pt = pygame.font.Font(filename="../Fonts/segoeuii.ttf", size=12)
+    CCWildWordsI_36pt = pygame.font.Font(filename="../Fonts/CC Wild Words Italic.ttf", size=36)
+
+    resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
+
+    certificate_raw_surface = pygame.image.load("python_certificate.png").convert_alpha()
+    certificate_scaled_surface = pygame.transform.scale(surface = certificate_raw_surface, size = resized_for_this_screen)
+
+    # certificate_highlighter = pygame.Surface((user_screen_width, user_screen_height), flags=pygame.SRCALPHA)
+
+    # certificate_highlighter = certificate_highlighter.premul_alpha()
+
+    # certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
+
+    # certificate_highlighter = certificate_highlighter.premul_alpha()
+
+    # certificate_scaled_surface.blit(certificate_highlighter, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+
+
+
+
+    clock = pygame.time.Clock()
+    
 
     debug_mode = False
-
     while(running == True):
 
         screen.fill((255, 255, 255))
@@ -140,10 +132,15 @@ def certificate(name = "Your Name Here", color = "000000"):
         # handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size = 40)
         # italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size = 40, slant = "italic")
 
-        normal_font             = pygame.font.SysFont('Segoe UI',         30, italic = True)
-        handwritten_font        = pygame.font.SysFont('Bradley Hand ITC', 30)
-        italic_handwritten_font = pygame.font.SysFont('Bradley Hand ITC', 30, italic = True)
 
+        # normal_font             = pygame.font.SysFont('Segoe UI',         30, italic = True)
+        # handwritten_font        = pygame.font.SysFont('Bradley Hand ITC', 30)
+        # italic_handwritten_font = pygame.font.SysFont('Bradley Hand ITC', 30, italic = True)
+
+
+        normal_font             = pygame.font.Font('../Fonts/segoeuii.ttf', 30)
+        handwritten_font        = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
+        italic_handwritten_font = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
 
 
         # -------------------------------------------------------------------------------------------------------------------
@@ -172,11 +169,11 @@ def certificate(name = "Your Name Here", color = "000000"):
 
 
 
-        render_text(text1, "blue", (int_horizontal_position(30), int_vertical_position(5)),  screen, normal_font)
-        render_text(text2, "blue", (int_horizontal_position(60), int_vertical_position(5)),  screen, italic_handwritten_font)
-        render_text(text3, "blue", (int_horizontal_position(50), int_vertical_position(25)), screen, ("Helvetica", 72))
-        render_text(text4, "blue", (int_horizontal_position(50), int_vertical_position(50)), screen, italic_handwritten_font)
-        render_text(text5, "blue", (int_horizontal_position(50), int_vertical_position(75)), screen, ("Helvetica", 72))
+        render_text(text1, "blue",  (int_horizontal_position(30), int_vertical_position(5)),  screen, font = normal_font)
+        render_text(text2, "black", (int_horizontal_position(60), int_vertical_position(5)),  screen, font = italic_handwritten_font)
+        render_text(text3, "black", (int_horizontal_position(50), int_vertical_position(25)), screen, font = pygame.font.SysFont("Helvetica", 72))
+        render_text(text4, "black", (int_horizontal_position(50), int_vertical_position(50)), screen, font = italic_handwritten_font)
+        render_text(text5, "black", (int_horizontal_position(50), int_vertical_position(75)), screen, font = pygame.font.SysFont("Helvetica", 72))
 
 
         # ------------------------------------------------------------------------------------
@@ -184,8 +181,8 @@ def certificate(name = "Your Name Here", color = "000000"):
 
 
         
-    pygame.display.flip()
-    clock.tick(60)  # Caps the events loop at a 60fps ceiling.
+        pygame.display.flip()
+        clock.tick(60)  # Caps the events loop at a 60fps ceiling.
     return
 
 
