@@ -67,7 +67,7 @@ def stop_running():
 running = True
 
 
-def certificate(name = "Your Name Here", color = "000000"):
+def certificate(name = "Your Name Here", background_color = (240, 115, 196, 50)):
 
     global running
     
@@ -83,11 +83,16 @@ def certificate(name = "Your Name Here", color = "000000"):
     certificate_raw_surface = pygame.image.load("python_certificate.png").convert_alpha()
     certificate_scaled_surface = pygame.transform.scale(surface = certificate_raw_surface, size = resized_for_this_screen)
 
-    # certificate_highlighter = pygame.Surface((user_screen_width, user_screen_height), flags=pygame.SRCALPHA)
 
-    # certificate_highlighter = certificate_highlighter.premul_alpha()
 
-    # certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
+    certificate_highlighter = pygame.Surface((user_screen_width, user_screen_height), flags=pygame.SRCALPHA)
+
+    certificate_highlighter = certificate_highlighter.premul_alpha()
+
+    certificate_highlighter.fill(color = background_color)
+    
+
+    certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_RGBA_MAX)
 
     # certificate_highlighter = certificate_highlighter.premul_alpha()
 
@@ -128,7 +133,8 @@ def certificate(name = "Your Name Here", color = "000000"):
         choose_deck_prompt_rect = choose_deck_prompt_surf.get_rect(center = (floor(user_screen_width / 2), floor((user_screen_height / 2) - vh * 11)))
         screen.blit(choose_deck_prompt_surf, choose_deck_prompt_rect)
 
-        screen.blit(certificate_scaled_surface, (0, 0))
+        # screen.blit(certificate_scaled_surface, (0, 0))
+        screen.blit(certificate_highlighter, (0, 0))
 
         # ----------- INTERLUDIUM: FONTS ------------------------------------------------------------------------------------
 
