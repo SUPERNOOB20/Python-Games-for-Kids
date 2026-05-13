@@ -61,15 +61,15 @@ certificate_scaled_surface = pygame.transform.scale(surface = certificate_raw_su
 
 
 
-certificate_highlighter = pygame.Surface((user_screen_width, user_screen_height), flags=pygame.SRCALPHA)
+# certificate_highlighter = pygame.Surface((user_screen_width, user_screen_height), flags=pygame.SRCALPHA)
 
-certificate_highlighter = certificate_highlighter.premul_alpha()
+# certificate_highlighter = certificate_highlighter.premul_alpha()
 
-certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
+# certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
 
-certificate_highlighter = certificate_highlighter.premul_alpha()
+# certificate_highlighter = certificate_highlighter.premul_alpha()
 
-certificate_scaled_surface.blit(certificate_highlighter, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+# certificate_scaled_surface.blit(certificate_highlighter, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
 
 def render_text(what, color, where, screen, font = pygame.font.SysFont('Arial', 30)):
