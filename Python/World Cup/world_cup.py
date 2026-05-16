@@ -189,20 +189,10 @@ def simulation():
                     y -= inner_vertical_gap * group_size
                     x += 16.3
                 
-                y += inner_vertical_gap * group_size + 2
+                x = 3
+                y += inner_vertical_gap * (group_size + 2) - 3
+                
 
-
-
-
-
-        """
-        a = 10
-        b = 18
-        while (a <= 80 & b <= 80):
-            render_text("0", "black",  (int_horizontal_position(a), int_vertical_position(b)),  screen, font = normal_font)
-            a += 5
-            b += 5
-        """
         # ------------------------------------------------------------------------------------
 
 
