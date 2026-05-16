@@ -70,6 +70,23 @@ def stop_running():
 
 # -------------------- SECTION 2: PYGAME ---------------------------------
 
+def create_teams(team_list):
+
+    team_dict = {}
+
+    for team in team_list:
+        team_dict[team] = 0
+
+    return team_dict
+
+
+
+
+
+
+
+
+
 running = True
 
 
@@ -135,7 +152,7 @@ def simulation():
         # italic_handwritten_font = pygame.font.SysFont('Bradley Hand ITC', 30, italic = True)
 
 
-        normal_font             = pygame.font.Font('../Fonts/segoeuii.ttf', 18)
+        normal_font             = pygame.font.Font('../Fonts/segoeuii.ttf', 17)
         handwritten_font        = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
         italic_handwritten_font = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
         bold_handwritten_font   = pygame.font.Font('../Fonts/CC Wild Words Italic.ttf', 48)
@@ -149,8 +166,8 @@ def simulation():
 
         render_text(text1, "pink",  (int_horizontal_position(25), int_vertical_position(5)),  screen, font = bold_handwritten_font)
 
-        x = 3
-        y = 27.8
+        x = 2.8
+        y = 27.3
         inner_vertical_gap = 6.5
 
         team_list = ["Mexico", "South Africa", "Czechia", "Corea",
@@ -166,6 +183,8 @@ def simulation():
                      "Portugal", "Congo DR", "Uzbekistan", "Colombia",
                      "England", "Croatia", "Ghana", "Panama"]
         
+        team_dict = create_teams(team_list)
+
         team_list_queue = team_list
 
         group_size = 4               # 4 teams in a group.
@@ -182,14 +201,15 @@ def simulation():
                 for i in range(0, groups_per_row):
 
                     for i in range(0, group_size):
-                        render_text(team_list_queue[0], "black",  (int_horizontal_position(x), int_vertical_position(y)),  screen, font = normal_font)
+                        render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
+                        render_text(str(team_dict[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
                         y += inner_vertical_gap
                         team_list_queue.pop(0)
                     
                     y -= inner_vertical_gap * group_size
                     x += 16.3
                 
-                x = 3
+                x = 2.8
                 y += inner_vertical_gap * (group_size + 2) - 3
                 
 
