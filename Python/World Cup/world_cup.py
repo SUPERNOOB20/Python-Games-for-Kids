@@ -80,19 +80,45 @@ def create_teams(team_list):
     return team_dict
 
 
+# Generates match outcomes at random.
+def generate_matches(number_of_matches):
+
+    matches: list = []
+
+    for i in range(0, number_of_matches):
+        a = randint(0, 7)
+        b = randint(0, 7)
+        random_match = (a, b)
+        matches.append(random_match)
+
+    return matches      # matches = [(2, 3), (1, 1), (7, 0), ... etc.]
+
+
+# Declares Group Stage's match results.
+# matches = [(2, 3), (1, 1), (7, 0), ... etc.]
+def gs_results(matches):
+
+    result = "tie"
+
+    for match in range(0, len(matches)):
+        if matches[match[0]] > matches[match[1]]:
+            "team 1 wins"
+        elif matches[match[0]] < matches[match[1]]:
+            "team 2 wins"
+
+    return result
 
 
 
 
 
-
-
-running = True
-
+running          = True
+simulation_state = 0
 
 def simulation():
 
     global running
+    global simulation_state
     
     pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -131,12 +157,17 @@ def simulation():
                     print("You can print your logs here")
                     print("\n")
 
+                if event.key == pygame.K_RETURN:
+                    simulation_state += 1
+
         keyboard.on_press_key("esc", lambda _: stop_running())
 
 
         
         screen.blit(field_scaled_surface, (0, 0))
-        screen.blit(groups_scaled_surface, (0, 0))
+
+        if simulation_state < 4:
+            screen.blit(groups_scaled_surface, (0, 0))
 
 
 
@@ -160,7 +191,7 @@ def simulation():
 
         # -------------------------------------------------------------------------------------------------------------------
 
-        text1 = "Played 0 out of 3 games"
+        text1 = f"Played {simulation_state} out of 3 games"
 
 
 
@@ -211,7 +242,9 @@ def simulation():
                 
                 x = 2.8
                 y += inner_vertical_gap * (group_size + 2) - 3
-                
+
+        # if simulation_state < 4:
+        #     list_of_results = gs_results(generate_matches(72))      # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
         # ------------------------------------------------------------------------------------
 
