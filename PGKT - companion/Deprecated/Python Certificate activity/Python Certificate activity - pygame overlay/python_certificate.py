@@ -29,7 +29,8 @@ dependencies.add_libraries(library_path)
 dependencies.add_assets("Assets")
 
 
-
+import numpy as np
+import cv2
 import keyboard
 from random import randint
 from math import floor
@@ -62,20 +63,33 @@ def stop_running():
 
 
 
+
+
 # -------------------- SECTION 2: PYGAME ---------------------------------
 
 running = True
 
 
-def certificate(name: str = "Your Name Here", background_color: tuple = (0, 0, 0), color_intensity: float = 1):
+def certificate(name = "Your Name Here", background_color = (240, 115, 196)):
 
-    float_color_intensity: float = color_intensity * 255
+    a = cv2.imread("python_certificate.png", cv2.IMREAD_UNCHANGED)
+    b = a
 
-    if (float_color_intensity < 0) or (float_color_intensity > 255):
+    a = a.astype(float)/255  
 
-        error_message = f"ERROR: color_intensity has to be between 0 and 1, not {color_intensity}!!!"
+    # blue, green, red = cv2.split(b)
+    b = cv2.merge(background_color)
+    b = b.astype(float)/255
 
-        raise Exception(error_message)
+    mask = a >= 0.5 # generate boolean mask of everywhere a > 0.5 
+    ab = np.zeros_like(a) # generate an output container for the blended image 
+
+    # now do the blending 
+    ab[~mask] = (2*a*b)[~mask] # 2ab everywhere a<0.5
+    ab[mask] = (1-2*(1-a)*(1-b))[mask] # else this 
+
+
+
 
 
 
@@ -90,7 +104,8 @@ def certificate(name: str = "Your Name Here", background_color: tuple = (0, 0, 0
 
     resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
 
-    certificate_raw_surface = pygame.image.load("python_certificate.png").convert_alpha()
+    # certificate_raw_surface = pygame.image.load("python_certificate.png").convert_alpha()
+    certificate_raw_surface = pygame.image.frombytes(ab)
     certificate_scaled_surface = pygame.transform.scale(surface = certificate_raw_surface, size = resized_for_this_screen)
 
 
@@ -99,7 +114,7 @@ def certificate(name: str = "Your Name Here", background_color: tuple = (0, 0, 0
 
     certificate_highlighter = certificate_highlighter.premul_alpha()
 
-    certificate_highlighter.fill(color = (background_color[0], background_color[1], background_color[2], float_color_intensity))
+    certificate_highlighter.fill(color = (background_color[0],background_color[1], background_color[2], 200))
     
 
     certificate_highlighter.blit(certificate_scaled_surface, (0, 0), special_flags=pygame.BLEND_RGBA_MAX)
@@ -146,35 +161,13 @@ def certificate(name: str = "Your Name Here", background_color: tuple = (0, 0, 0
         # screen.blit(certificate_scaled_surface, (0, 0))
         screen.blit(certificate_highlighter, (0, 0))
 
-        # ----------- INTERLUDIUM: FONTS ------------------------------------------------------------------------------------
 
-        # normal_font             = tk.font.Font(family = "Segoe UI",         size = 40, slant = "italic")
-        # handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size = 40)
-        # italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size = 40, slant = "italic")
-
-
-        # normal_font             = pygame.font.SysFont('Segoe UI',         30, italic = True)
-        # handwritten_font        = pygame.font.SysFont('Bradley Hand ITC', 30)
-        # italic_handwritten_font = pygame.font.SysFont('Bradley Hand ITC', 30, italic = True)
-
+        # ----------- EPILOGUE: FONTS ------------------------------------------------------------------------------------
 
         normal_font             = pygame.font.Font('../Fonts/segoeuii.ttf', 30)
         handwritten_font        = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
         italic_handwritten_font = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
 
-
-        # -------------------------------------------------------------------------------------------------------------------
-    
-        """
-        canvas.create_text(int_horizontal_position(30), int_vertical_position(5), text = "Azul Cian",                  font = normal_font, fill="blue", anchor="center")
-        canvas.create_text(int_horizontal_position(60), int_vertical_position(5), text = "hereby grants the title of", font = italic_handwritten_font, anchor="center")
-
-        canvas.create_text(int_horizontal_position(50), int_vertical_position(25), text = "Python Programmer",         font = ("Helvetica", 72), anchor="center")
-
-        canvas.create_text(int_horizontal_position(50), int_vertical_position(50), text = "to the student",            font = italic_handwritten_font, anchor="center")
-
-        canvas.create_text(int_horizontal_position(50), int_vertical_position(75), text = f"{name}",                   font = ("Helvetica", 72), anchor="center")
-        """
 
 
 
