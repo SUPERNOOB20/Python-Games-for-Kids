@@ -1,0 +1,24 @@
+You can import modules in 2 different ways:
+
+• import
+
+or...
+
+• from my_module import my_function
+
+or even:
+
+• from my_module import *	# Imports EVERYTHING from my_module
+
+
+
+To those three different ways of importing modules, you can add:
+
+• as alias
+
+Where "alias" is anything you want! For example:
+
+
+import calculus as calc		# Imports calculus.py with the name "calc".
+
+calc.add(2, 3)			# Calls the add() function at calculus.py with 2 and 3 as parameters

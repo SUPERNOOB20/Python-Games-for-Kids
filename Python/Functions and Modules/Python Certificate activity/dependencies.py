@@ -1,9 +1,10 @@
 import sys
 import os
+import pathlib
 
 
 # Wait, what do you mean this isn't CMake? :p
-def add_libraries(expected_filepath = os.path.abspath(__file__)):
+def add_libraries(expected_filepath = pathlib.Path(__file__).parent.resolve()):
 
     try:
         sys.path.append(expected_filepath)      # Snobs will frown upon this forbidden jutsu but PLEASE CUT ME SOME SLACK.
@@ -16,10 +17,13 @@ def add_libraries(expected_filepath = os.path.abspath(__file__)):
 
 def add_assets(expected_filepath = "Assets"):
 
+    absolute_filepath = os.path.join(pathlib.Path(__file__).parent.resolve(), expected_filepath)
+
     try:
-        os.chdir(expected_filepath)
+        os.chdir(absolute_filepath)
     except:
-        expected_directory = os.path.abspath(__file__) + "/Assets"
+        expected_directory = absolute_filepath
         print(f"\nError: \033[91mAssets\033[00m folder not found.\n\033[91m{expected_directory}\033[00m doesn't exist :c\n")
+        print(f"Error: Couldn't find {absolute_filepath}")
 
     return

@@ -4,26 +4,16 @@
 from math import floor
 import os
 
-
-def current_folder(path: str = os.getcwd()):
-    parsed_path = path.split("\\")
-
-    return parsed_path[len(parsed_path) - 1]
-
-
-if current_folder() != "Programming Games for Kids & Teens":
-    error_message = (f"\nERROR: You need to open the  ***\033[91mProgramming Games for Kids & Teens\033[00m***  folder!!!"
-                    "\nYou are currently in the {current_folder()} folder ':3")
-    print("\n")
-    raise Exception(error_message)
-
-os.chdir("Python/Functions and Modules/Python Certificate activity")
-
-
 import dependencies
 
-this_directory = os.getcwd()
-library_path = os.path.abspath(os.path.join(this_directory, "../../Libraries"))
+import pathlib
+
+this_directory = pathlib.Path(__file__).parent.resolve()
+library_path = os.path.abspath(os.path.join(this_directory, ".."))
+library_path = os.path.abspath(os.path.join(library_path, ".."))
+library_path = os.path.abspath(os.path.join(library_path, "Libraries"))
+
+print("path:", library_path)
 
 dependencies.add_libraries(library_path)
 dependencies.add_assets("Assets")
@@ -33,6 +23,7 @@ dependencies.add_assets("Assets")
 import keyboard
 from random import randint
 from math import floor
+print(os.getcwd())
 from adaptive_screensize_utils_b import user_screen_width, user_screen_height, int_horizontal_position, int_vertical_position, vw, vh
 
 import pygame   # pygame-ce.
