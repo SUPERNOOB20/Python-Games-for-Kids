@@ -74,10 +74,75 @@ def create_teams(team_list):
 
     team_dict = {}
 
-    for team in team_list:
-        team_dict[team] = 0
+    for i in range (0, len(team_list)):
+
+        team_dict[i] = (team_list[i], 0)        # {team_ID: (team_name, team_points)}
 
     return team_dict
+
+
+def func_a(x):
+
+    y = 1
+
+    if x > 3:
+        y = 2
+    elif x > 5:
+        y = 3
+
+    y += ((x // 7) * 4)     # Round robin for all groups. I don't know how to explain it, but it basically offsets y to account for every single group in group stage.
+
+    return y
+
+
+def func_b(x):
+
+    y = 1
+
+    if x > 3:
+        y = 2
+    elif x > 5:
+        y = 3
+
+    y += ((x // 7) * 4)     # Round robin for all groups. I don't know how to explain it, but it basically offsets y to account for every single group in group stage.
+
+    return y
+
+
+
+
+def factorial(a):
+
+    product = 1
+
+    while a > 0:
+        product *= a
+        a -= 1
+
+    return product
+
+
+def binomial_coefficient(a, b):
+    return factorial(a) / (factorial(b) * factorial(a-b))
+
+
+def round_robin(team_list, group_size = 4):
+
+    number_of_matches = binomial_coefficient(group_size, 2)
+
+    matched_teams = []
+
+    for match_ID in range(0, len(team_list)):
+        team_a = func_a(match_ID)
+        team_b = func_b(match_ID)
+
+    matched_teams.append((team_a, team_b))
+
+    for k in team_list:
+        matched_teams
+
+    return matched_teams
+
 
 
 # Generates match outcomes at random.
@@ -94,20 +159,26 @@ def generate_matches(number_of_matches):
     return matches      # matches = [(2, 3), (1, 1), (7, 0), ... etc.]
 
 
-# Declares Group Stage's match results.
+# Declares Group Stage's match results, and adjusts the points accordingly.
 # matches = [(2, 3), (1, 1), (7, 0), ... etc.]
-def gs_results(matches):
-
-    result = "tie"
+def gs_results(matches, team_dict):
 
     for match in range(0, len(matches)):
+
+        team_a = team_dict[matches[match[0]]]
+        team_b = team_dict[matchesmatch[1]]
+
+    
         if matches[match[0]] > matches[match[1]]:
             "team 1 wins"
         elif matches[match[0]] < matches[match[1]]:
             "team 2 wins"
 
-    return result
 
+        # result: tie
+        team_dict[]
+
+    return
 
 
 
@@ -201,20 +272,21 @@ def simulation():
         y = 27.3
         inner_vertical_gap = 6.5
 
-        team_list = ["Mexico", "South Africa", "Czechia", "Corea",
-                     "Canada", "Bosnia\nand Herzegovina", "Qatar", "Switzerland",
-                     "Brazil", "Morocco", "Haiti", "Scotland",
-                     "USA", "Paraguay", "Australia", "Türkiye",
-                     "Germany", "Curaçao", "Côte d'Ivoire", "Ecuador",
-                     "Netherlands", "Japan", "Sweden", "Tunisia",
-                     "Belgium", "Egypt", "Iran", "New Zeland",
-                     "Spain", "Cabo Verde", "Saudi Arabi", "Uruguay",
-                     "France", "Senegal", "Iraq", "Norway",
-                     "Argentina", "Algeria", "Austria", "Jordan",
-                     "Portugal", "Congo DR", "Uzbekistan", "Colombia",
-                     "England", "Croatia", "Ghana", "Panama"]
+        team_list = ["Mexico",        "South Africa",              "Czechia",          "Corea",
+                     "Canada",        "Bosnia\nand Herzegovina",   "Qatar",            "Switzerland",
+                     "Brazil",        "Morocco",                   "Haiti",            "Scotland",
+                     "USA",           "Paraguay",                  "Australia",        "Türkiye",
+                     "Germany",       "Curaçao",                   "Côte d'Ivoire",    "Ecuador",
+                     "Netherlands",   "Japan",                     "Sweden",           "Tunisia",
+                     "Belgium",       "Egypt",                     "Iran",             "New Zeland",
+                     "Spain",         "Cabo Verde",                "Saudi Arabi",      "Uruguay",
+                     "France",        "Senegal",                   "Iraq",             "Norway",
+                     "Argentina",     "Algeria",                   "Austria",          "Jordan",
+                     "Portugal",      "Congo DR",                  "Uzbekistan",       "Colombia",
+                     "England",       "Croatia",                   "Ghana",            "Panama"]
         
         team_dict = create_teams(team_list)
+        matches = round_robin(team_dict)
 
         team_list_queue = team_list
 
@@ -233,7 +305,7 @@ def simulation():
 
                     for i in range(0, group_size):
                         render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
-                        render_text(str(team_dict[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
+                        render_text(str(team_dict[team_list_queue[0][1]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
                         y += inner_vertical_gap
                         team_list_queue.pop(0)
                     
@@ -243,8 +315,8 @@ def simulation():
                 x = 2.8
                 y += inner_vertical_gap * (group_size + 2) - 3
 
-        # if simulation_state < 4:
-        #     list_of_results = gs_results(generate_matches(72))      # 72 = 6 * 12 (6 matches per group, 12 groups total).
+        if (simulation_state > 0) and (simulation_state < 4):
+            list_of_results = gs_results(generate_matches(72))      # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
         # ------------------------------------------------------------------------------------
 

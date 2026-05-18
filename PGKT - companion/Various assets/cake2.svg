@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="cake2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.96746633"
+     inkscape:cx="525.59969"
+     inkscape:cy="333.34493"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g16" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="chocolate_cake"
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:highlight-color="#8f6000">
+    <ellipse
+       style="fill:#94e0e9;fill-opacity:1;stroke:#51518c;stroke-width:1.277;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse3"
+       cx="196.28331"
+       cy="116.25539"
+       rx="41.269737"
+       ry="20.634871"
+       inkscape:label="plate"
+       inkscape:export-filename="C:\Users\Claudia\chocolate_cake.png"
+       inkscape:export-xdpi="191.78766"
+       inkscape:export-ydpi="191.78766" />
+    <ellipse
+       style="display:none;fill:#fff89b;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="ellipse1"
+       cx="196.4767"
+       cy="113.35468"
+       rx="32.817677"
+       ry="16.40884"
+       inkscape:label="cake bot (ref)"
+       sodipodi:insensitive="true" />
+    <path
+       style="fill:#fff89b;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 163.65902,87.828521 v 25.526159 c 0,0 -1.45807,16.40884 32.81768,16.40884 34.27575,0 32.81767,-16.40884 32.81767,-16.40884 V 87.828521 Z"
+       id="path2"
+       inkscape:label="cake middle"
+       sodipodi:nodetypes="cczccc" />
+    <path
+       id="path1"
+       style="fill:#733a00;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round"
+       inkscape:label="cake top"
+       d="m 229.29437,87.828522 c 0,0.807644 0.3448,1.618753 0.11937,2.395155 -2.30403,7.935388 -16.42763,14.013683 -32.93704,14.013683 -18.1247,0 -32.81768,-7.346486 -32.81768,-16.408838 0,-9.062352 14.69298,-16.408841 32.81768,-16.40884 18.1247,2e-6 32.81767,7.346489 32.81767,16.40884 z"
+       sodipodi:nodetypes="scssss" />
+    <path
+       id="ellipse2"
+       style="fill:none;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.22, 0.88;stroke-dashoffset:0"
+       inkscape:label="cake top"
+       d="m 229.29437,96.295196 c 0,9.062364 -14.69297,16.408854 -32.81767,16.408854 -18.1247,0 -32.81768,-7.34649 -32.81768,-16.408854"
+       sodipodi:nodetypes="csc" />
+    <path
+       id="path3"
+       style="fill:none;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.22, 0.88;stroke-dashoffset:0"
+       inkscape:label="cake top"
+       d="m 229.29437,104.76189 c 0,9.06239 -14.69297,16.40888 -32.81767,16.40888 -18.1247,0 -32.81768,-7.34649 -32.81768,-16.40888"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:#733a00;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 163.65902,87.828521 c 0,0 -0.56891,10.206627 1.5233,10.761258 1.269,0.336403 3.22689,-2.258082 3.22689,-2.258082 0,0 -0.3785,6.750253 2.10598,7.727693 2.00431,0.78853 5.49133,-3.40539 5.49133,-3.40539 0,0 1.76354,6.46478 4.49072,7.09738 2.58746,0.60019 6.79,-4.17045 6.79,-4.17045 0,0 5.38101,6.47582 9.07188,6.3583 3.27517,-0.10429 7.67487,-6.14287 7.67487,-6.14287 0,0 3.67018,4.25949 5.99916,3.81828 2.45333,-0.46477 4.41045,-6.05486 4.41045,-6.05486 0,0 3.10952,3.02133 4.75115,2.36287 1.72286,-0.69104 1.89059,-5.238087 1.89059,-5.238087 0,0 2.69015,1.769287 3.71576,0.999138 0.96773,-0.726682 0.0724,-3.629853 0.0724,-3.629853 0,0 1.59641,1.928852 2.38898,1.442008 1.03424,-0.635293 -0.26904,-3.631369 -0.26904,-3.631369 0,0 1.55086,2.23942 2.325,1.678672 1.19867,-0.868259 -0.0108,-5.319854 0.1132,-5.319854"
+       id="path6"
+       inkscape:label="cake_top_2"
+       sodipodi:nodetypes="cscscscscscscscscsc" />
+  </g>
+  <g
+     inkscape:label="white_cake"
+     inkscape:groupmode="layer"
+     id="g16"
+     inkscape:highlight-color="#f3f3f3">
+    <ellipse
+       style="fill:#94e0e9;fill-opacity:1;stroke:#51518c;stroke-width:1.277;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse11"
+       cx="88.531929"
+       cy="116.25539"
+       rx="41.269737"
+       ry="20.634871"
+       inkscape:label="plate"
+       inkscape:export-filename="C:\Users\Claudia\chocolate_cake.png"
+       inkscape:export-xdpi="191.78766"
+       inkscape:export-ydpi="191.78766" />
+    <ellipse
+       style="display:none;fill:#fff89b;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="ellipse12"
+       cx="88.725319"
+       cy="113.35468"
+       rx="32.817677"
+       ry="16.40884"
+       inkscape:label="cake bot (ref)"
+       sodipodi:insensitive="true" />
+    <path
+       style="fill:#fff89b;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 55.907639,87.828521 v 25.526159 c 0,0 -1.45807,16.40884 32.81768,16.40884 34.275751,0 32.817671,-16.40884 32.817671,-16.40884 V 87.828521 Z"
+       id="path12"
+       inkscape:label="cake middle"
+       sodipodi:nodetypes="cczccc" />
+    <path
+       id="path13"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round"
+       inkscape:label="cake top"
+       d="m 121.54299,87.828522 c 0,0.807644 0.3448,1.618753 0.11937,2.395155 -2.30403,7.935388 -16.42763,14.013683 -32.937041,14.013683 -18.1247,0 -32.81768,-7.346486 -32.81768,-16.408838 0,-9.062352 14.69298,-16.408841 32.81768,-16.40884 18.124701,2e-6 32.817671,7.346489 32.817671,16.40884 z"
+       sodipodi:nodetypes="scssss" />
+    <path
+       id="path14"
+       style="fill:none;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.22, 0.88;stroke-dashoffset:0"
+       inkscape:label="cake top"
+       d="m 121.54299,96.295196 c 0,9.062364 -14.69297,16.408854 -32.817671,16.408854 -18.1247,0 -32.81768,-7.34649 -32.81768,-16.408854"
+       sodipodi:nodetypes="csc" />
+    <path
+       id="path15"
+       style="fill:none;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.22, 0.88;stroke-dashoffset:0"
+       inkscape:label="cake top"
+       d="m 121.54299,104.76189 c 0,9.06239 -14.69297,16.40888 -32.817671,16.40888 -18.1247,0 -32.81768,-7.34649 -32.81768,-16.40888"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.22;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 55.907639,87.828521 c 0,0 -0.56891,10.206627 1.5233,10.761258 1.269,0.336403 3.22689,-2.258082 3.22689,-2.258082 0,0 -0.3785,6.750253 2.10598,7.727693 2.00431,0.78853 5.49133,-3.40539 5.49133,-3.40539 0,0 1.76354,6.46478 4.49072,7.09738 2.58746,0.60019 6.79,-4.17045 6.79,-4.17045 0,0 5.38101,6.47582 9.07188,6.3583 3.27517,-0.10429 7.67487,-6.14287 7.67487,-6.14287 0,0 3.67018,4.25949 5.999161,3.81828 2.45333,-0.46477 4.41045,-6.05486 4.41045,-6.05486 0,0 3.10952,3.02133 4.75115,2.36287 1.72286,-0.69104 1.89059,-5.238087 1.89059,-5.238087 0,0 2.69015,1.769287 3.71576,0.999138 0.96773,-0.726682 0.0724,-3.629853 0.0724,-3.629853 0,0 1.59641,1.928852 2.38898,1.442008 1.03424,-0.635293 -0.26904,-3.631369 -0.26904,-3.631369 0,0 1.55086,2.23942 2.325,1.678672 1.19867,-0.868259 -0.0108,-5.319854 0.1132,-5.319854"
+       id="path16"
+       inkscape:label="cake_top_2"
+       sodipodi:nodetypes="cscscscscscscscscsc" />
+  </g>
+</svg>
