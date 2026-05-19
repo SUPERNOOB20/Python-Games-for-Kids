@@ -3,29 +3,16 @@
 
 from math import floor
 import os
+import pathlib
 
+this_directory = pathlib.Path(__file__).parent.resolve()
 
-def current_folder(path: str = os.getcwd()):
-    parsed_path = path.split("\\")
-
-    return parsed_path[len(parsed_path) - 1]
-
-
-if current_folder() != "Programming Games for Kids & Teens":
-    error_message = (f"\nERROR: You need to open the  ***\033[91mProgramming Games for Kids & Teens\033[00m***  folder!!!"
-                    f"\nYou are currently in the {current_folder()} folder ':3")
-    print("\n")
-    raise Exception(error_message)
-
-
-# os.chdir("Python/World Cup")
-# os.chdir(os.getcwd())     # Why does this not work...? :c
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
+os.chdir(this_directory)
 
 
 import dependencies
 
-this_directory = os.getcwd()
+this_directory = pathlib.Path(__file__).parent.resolve()
 library_path = os.path.abspath(os.path.join(this_directory, "../Libraries"))
 
 dependencies.add_libraries(library_path)
@@ -70,6 +57,15 @@ def stop_running():
 
 # -------------------- SECTION 2: PYGAME ---------------------------------
 
+
+
+
+
+
+
+
+
+
 def create_teams(team_list):
 
     team_dict = {}
@@ -79,6 +75,7 @@ def create_teams(team_list):
         team_dict[i] = (team_list[i], 0)        # {team_ID: (team_name, team_points)}
 
     return team_dict
+
 
 
 def func_a(x):
@@ -93,7 +90,6 @@ def func_a(x):
     y += ((x // 7) * 4)     # Round robin for all groups. I don't know how to explain it, but it basically offsets y to account for every single group in group stage.
 
     return y
-
 
 def func_b(x):
 
@@ -110,7 +106,6 @@ def func_b(x):
 
 
 
-
 def factorial(a):
 
     product = 1
@@ -121,62 +116,89 @@ def factorial(a):
 
     return product
 
-
 def binomial_coefficient(a, b):
     return factorial(a) / (factorial(b) * factorial(a-b))
 
 
-def round_robin(team_list, group_size = 4):
+def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
 
-    number_of_matches = binomial_coefficient(group_size, 2)
-
-    matched_teams = []
-
-    for match_ID in range(0, len(team_list)):
-        team_a = func_a(match_ID)
-        team_b = func_b(match_ID)
-
-    matched_teams.append((team_a, team_b))
-
-    for k in team_list:
-        matched_teams
+    for match in range(0, len(matched_teams)):
+        for team in range(0, len(matched_teams)):
+            match[team] = 0
 
     return matched_teams
 
 
+def arrange_matches(team_dict, team_list, group_size = 4):
+    
+    number_of_matches = binomial_coefficient(group_size, 2)
+
+    matched_teams_IDs = []
+
+    for match_ID in range(0, number_of_matches):
+        team_a = func_a(match_ID)
+        team_b = func_b(match_ID)
+
+    matched_teams_IDs.append((team_a, team_b))
+
+    return matched_teams_IDs
+
+
+
+
 
 # Generates match outcomes at random.
-def generate_matches(number_of_matches):
+def generate_results(number_of_matches):
 
-    matches: list = []
+    match_results: list = []
 
     for i in range(0, number_of_matches):
         a = randint(0, 7)
         b = randint(0, 7)
         random_match = (a, b)
-        matches.append(random_match)
+        match_results.append(random_match)
 
-    return matches      # matches = [(2, 3), (1, 1), (7, 0), ... etc.]
+    return match_results      # match_results = [(2, 3), (1, 1), (7, 0), ... etc.]
 
 
+# matched_teams_IDs are the IDs of the teams that played = [(1, 2), (1, 3), (1, 4), (2, 3)... etc.]
+def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
+
+    matched_teams_IDs: list[tuple[int]] = arrange_matches(team_dict, team_list)
+    matched_team_names = team_IDs_to_names(matched_teams_IDs, team_list)
+
+    matches = {}
+
+    for i in range(0, range(match_results)):
+        for j in range(0, 1):
+            matches[match_results][i][j] = matched_team_names
+
+    return matches
+
+
+
+# Plays Group Stage.
 # Declares Group Stage's match results, and adjusts the points accordingly.
-# matches = [(2, 3), (1, 1), (7, 0), ... etc.]
-def gs_results(matches, team_dict):
+# .
+# matches: {match_results: teams_that_played}
+# for example: {(3, 1): ("Argentina", "Mexico"),
+#               (2, 7): ("Argentina", "Canada")}
+def play_gs(team_dict, team_list, matches):
 
     for match in range(0, len(matches)):
-
-        team_a = team_dict[matches[match[0]]]
-        team_b = team_dict[matchesmatch[1]]
-
+        result  = matches[match[0]]
+        team_a  = matches[match[1][0]]
+        team_b  = matches[match[1][1]]
     
-        if matches[match[0]] > matches[match[1]]:
-            "team 1 wins"
-        elif matches[match[0]] < matches[match[1]]:
-            "team 2 wins"
+        if result[0] > result[1]:
+            team_dict[team_a] += 3      # team 1 wins
 
+        elif result[0] < result[1]:
+            team_dict[team_b] += 3      # team 2 wins
 
-        # result: tie
-        team_dict[]
+        else:                           # result: tie (both teams get 1 point)            
+            team_dict[team_a] += 1
+            team_dict[team_b] += 1
 
     return
 
@@ -237,7 +259,7 @@ def simulation():
         
         screen.blit(field_scaled_surface, (0, 0))
 
-        if simulation_state < 4:
+        if simulation_state < 2:
             screen.blit(groups_scaled_surface, (0, 0))
 
 
@@ -286,7 +308,7 @@ def simulation():
                      "England",       "Croatia",                   "Ghana",            "Panama"]
         
         team_dict = create_teams(team_list)
-        matches = round_robin(team_dict)
+        # matches = round_robin(team_dict)
 
         team_list_queue = team_list
 
@@ -305,7 +327,7 @@ def simulation():
 
                     for i in range(0, group_size):
                         render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
-                        render_text(str(team_dict[team_list_queue[0][1]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
+                        render_text(str(team_dict[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
                         y += inner_vertical_gap
                         team_list_queue.pop(0)
                     
@@ -315,8 +337,9 @@ def simulation():
                 x = 2.8
                 y += inner_vertical_gap * (group_size + 2) - 3
 
-        if (simulation_state > 0) and (simulation_state < 4):
-            list_of_results = gs_results(generate_matches(72))      # 72 = 6 * 12 (6 matches per group, 12 groups total).
+        if (simulation_state > 0) and (simulation_state < 2):
+            matches = create_matches(team_dict, team_list)
+            play_gs(team_dict, team_list, matches)
 
         # ------------------------------------------------------------------------------------
 
