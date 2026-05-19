@@ -72,7 +72,7 @@ def create_teams(team_list):
 
     for i in range (0, len(team_list)):
 
-        team_dict[i] = (team_list[i], 0)        # {team_ID: (team_name, team_points)}
+        team_dict[team_list[i]] = 0        # {team_ID: (team_name, team_points)}
 
     return team_dict
 
@@ -122,16 +122,21 @@ def binomial_coefficient(a, b):
 
 def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
 
-    for match in range(0, len(matched_teams)):
-        for team in range(0, len(matched_teams)):
-            match[team] = 0
+    matched_teams_names = matched_teams
 
-    return matched_teams
+    for match in range(0, len(matched_teams)):
+        for team in range(0, 1):
+            current_team = matched_teams[matched_teams][team] - 1
+            matched_teams_names[match][team] = team_list[current_team] 
+
+    return matched_teams_names
 
 
 def arrange_matches(team_dict, team_list, group_size = 4):
     
-    number_of_matches = binomial_coefficient(group_size, 2)
+    # number_of_matches = binomial_coefficient(group_size, 2)
+    # number_of_matches = int(binomial_coefficient(group_size, 2))
+    number_of_matches = 72      # Hard-coded for now - will fix in the future e.e
 
     matched_teams_IDs = []
 
@@ -326,6 +331,8 @@ def simulation():
                 for i in range(0, groups_per_row):
 
                     for i in range(0, group_size):
+                        print("team_dict:", team_dict)
+                        print("team_list_queue:", team_list_queue)
                         render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
                         render_text(str(team_dict[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
                         y += inner_vertical_gap
