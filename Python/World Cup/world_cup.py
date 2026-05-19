@@ -126,7 +126,8 @@ def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
 
     for match in range(0, len(matched_teams)):
         for team in range(0, 1):
-            current_team = matched_teams[matched_teams][team] - 1
+            current_team = matched_teams[match][team] - 1
+            print("current team:", current_team)
             matched_teams_names[match][team] = team_list[current_team] 
 
     return matched_teams_names
