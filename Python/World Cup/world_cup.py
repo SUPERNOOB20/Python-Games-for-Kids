@@ -124,10 +124,12 @@ def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
 
     matched_teams_names = matched_teams
 
+    print("\n", "matched_teams_names:", matched_teams_names, "\n")
+
     for match in range(0, len(matched_teams)):
         for team in range(0, 1):
             current_team = matched_teams[match][team] - 1
-            print("current team:", current_team)
+            # print("current team:", current_team)
             matched_teams_names[match][team] = team_list[current_team] 
 
     return matched_teams_names
@@ -136,8 +138,9 @@ def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
 def arrange_matches(team_dict, team_list, group_size = 4):
     
     # number_of_matches = binomial_coefficient(group_size, 2)
-    # number_of_matches = int(binomial_coefficient(group_size, 2))
-    number_of_matches = 72      # Hard-coded for now - will fix in the future e.e
+    # number_of_matches = 72                                                                                    # Hard-coded for now - will fix in the future e.e
+    number_of_matches = (int(binomial_coefficient(group_size, 2))) * int(len(team_list) / group_size)           # The future is now :3
+    
 
     matched_teams_IDs = []
 
@@ -145,7 +148,7 @@ def arrange_matches(team_dict, team_list, group_size = 4):
         team_a = func_a(match_ID)
         team_b = func_b(match_ID)
 
-    matched_teams_IDs.append((team_a, team_b))
+        matched_teams_IDs.append((team_a, team_b))
 
     return matched_teams_IDs
 
@@ -171,13 +174,16 @@ def generate_results(number_of_matches):
 def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
     matched_teams_IDs: list[tuple[int]] = arrange_matches(team_dict, team_list)
-    matched_team_names = team_IDs_to_names(matched_teams_IDs, team_list)
+    matched_team_names                  = team_IDs_to_names(matched_teams_IDs, team_list)
+
+    print("matched_teams_IDs:",   matched_teams_IDs)
+    print("matched_team_names:",  matched_team_names)
 
     matches = {}
 
-    for i in range(0, range(match_results)):
-        for j in range(0, 1):
-            matches[match_results][i][j] = matched_team_names
+    for i in range(0, len(match_results)):
+        match_outcome = (match_results[i][0], match_results[i][1])
+        matches[match_outcome] = matched_team_names[i]
 
     return matches
 
@@ -332,8 +338,8 @@ def simulation():
                 for i in range(0, groups_per_row):
 
                     for i in range(0, group_size):
-                        print("team_dict:", team_dict)
-                        print("team_list_queue:", team_list_queue)
+                        # print("team_dict:", team_dict)
+                        # print("team_list_queue:", team_list_queue)
                         render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
                         render_text(str(team_dict[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
                         y += inner_vertical_gap
