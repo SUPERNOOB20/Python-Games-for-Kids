@@ -135,12 +135,11 @@ def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
     return matched_teams_names
 
 
-def arrange_matches(team_dict, team_list, group_size = 4):
+def arrange_matches(team_list, group_size = 4):
     
     # number_of_matches = binomial_coefficient(group_size, 2)
-    # number_of_matches = 72                                                                                    # Hard-coded for now - will fix in the future e.e
-    number_of_matches = (int(binomial_coefficient(group_size, 2))) * int(len(team_list) / group_size)           # The future is now :3
-    
+    number_of_matches = 72                                                                                      # Hard-coded for now - will fix in the future e.e
+    # number_of_matches = (int(binomial_coefficient(group_size, 2))) * (int(len(team_list) / group_size))       # Pls fix this D:
 
     matched_teams_IDs = []
 
@@ -173,7 +172,7 @@ def generate_results(number_of_matches):
 # matched_teams_IDs are the IDs of the teams that played = [(1, 2), (1, 3), (1, 4), (2, 3)... etc.]
 def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
-    matched_teams_IDs: list[tuple[int]] = arrange_matches(team_dict, team_list)
+    matched_teams_IDs: list[tuple[int]] = arrange_matches(team_list)
     matched_team_names                  = team_IDs_to_names(matched_teams_IDs, team_list)
 
     print("matched_teams_IDs:",   matched_teams_IDs)
