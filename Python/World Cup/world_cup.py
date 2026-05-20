@@ -1,7 +1,7 @@
 # -------------------- SECTION 1: PATHS, MODULES, DEPENDENCIES ---------------------------------
 
 
-from math import floor
+
 import os
 import pathlib
 
@@ -93,11 +93,11 @@ def func_a(x):
 
 def func_b(x):
 
-    y = 1
+    y = 4
 
-    if x > 3:
+    if (x == 2) or (x == 4):
         y = 2
-    elif x > 5:
+    elif x == 1:
         y = 3
 
     y += ((x // 7) * 4)     # Round robin for all groups. I don't know how to explain it, but it basically offsets y to account for every single group in group stage.
@@ -122,17 +122,16 @@ def binomial_coefficient(a, b):
 
 def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
 
-    print("team list:", team_list)
+    # print("team list:", team_list)
 
     matched_teams_names = matched_teams_IDs
 
     for match in range(0, len(matched_teams_IDs)):
-        for team in range(0, 1):
-            current_team = matched_teams_IDs[match][team] - 1
-            print("\n", "current team:", current_team, "\n")
-            matched_teams_names[match][team] = team_list[current_team] 
+        first_team  = team_list[matched_teams_IDs[match][0] - 1]
+        second_team = team_list[matched_teams_IDs[match][1] - 1]
+        matched_teams_names[match] = (first_team, second_team)
 
-    print("\n", "matched_teams_names:", matched_teams_names, "\n")
+    # print("\n", "matched_teams_names:", matched_teams_names, "\n")
 
     return matched_teams_names
 
@@ -150,6 +149,10 @@ def arrange_matches(team_list, group_size = 4):
         team_b = func_b(match_ID)
 
         matched_teams_IDs.append((team_a, team_b))
+
+    print("\n")
+    print("bro...", matched_teams_IDs)
+    print("\n")
 
     return matched_teams_IDs
 
@@ -174,17 +177,26 @@ def generate_results(number_of_matches):
 # matched_teams_IDs are the IDs of the teams that played = [(1, 2), (1, 3), (1, 4), (2, 3)... etc.]
 def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
+    print("team dict:", team_dict)
+    print("\n")
+    print("team list:", team_list)
+    print("\n")
+
     matched_teams_IDs: list[tuple[int]] = arrange_matches(team_list)
     matched_team_names                  = team_IDs_to_names(matched_teams_IDs, team_list)
 
-    print("matched_teams_IDs:",   matched_teams_IDs)
-    print("matched_team_names:",  matched_team_names)
+    print("match_results:", match_results, "\n")
+    print("matched_teams_IDs:",   matched_teams_IDs, "\n")
+    print("matched_team_names:",  matched_team_names, "\n")
 
     matches = {}
 
     for i in range(0, len(match_results)):
         match_outcome = (match_results[i][0], match_results[i][1])
-        matches[match_outcome] = matched_team_names[i]
+        teams         = (matched_team_names[match_results[i][0]], matched_team_names[match_results[i][1]])
+
+
+        matches[i] = (match_outcome, teams)
 
     return matches
 
@@ -193,9 +205,9 @@ def create_matches(team_dict, team_list, match_results: list[tuple[int]] = gener
 # Plays Group Stage.
 # Declares Group Stage's match results, and adjusts the points accordingly.
 # .
-# matches: {match_results: teams_that_played}
-# for example: {(3, 1): ("Argentina", "Mexico"),
-#               (2, 7): ("Argentina", "Canada")}
+# matches: {match_ID: [match_results, teams_that_played]}
+# for example: {0: [(3, 1): ("Argentina", "Mexico")],
+#               1: [(2, 7): ("Argentina", "Canada")]}
 def play_gs(team_dict, team_list, matches):
 
     for match in range(0, len(matches)):
