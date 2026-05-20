@@ -77,6 +77,34 @@ def create_teams(team_list):
     return team_dict
 
 
+"""
+def func_a(x):
+
+    y = 1
+
+    if x > 3:
+        y = 2
+    elif x > 5:
+        y = 3
+
+    y += ((x // 7) * 4)     # Round robin for all groups. I don't know how to explain it, but it basically offsets y to account for every single group in group stage.
+
+    return y
+
+def func_b(x):
+
+    y = 4
+
+    if (x == 2) or (x == 4):
+        y = 2
+    elif x == 1:
+        y = 3
+
+    y += ((x // 7) * 4)     # Round robin for all groups. I don't know how to explain it, but it basically offsets y to account for every single group in group stage.
+
+    return y
+"""
+
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Not an ideal approach, but will have to make-do for the moment being...
@@ -90,8 +118,8 @@ for i in range(1, 12):      # 12 groups.
     for match in range(0, len(first_group)):
         a = first_group[match][0]
         b = first_group[match][1]
-        # print("a:", a)
-        # print("b:", b)
+        print("a:", a)
+        print("b:", b)
         next_group_team_a = a + (i * 4)
         next_group_team_b = b + (i * 4)
 
@@ -103,13 +131,25 @@ for i in range(1, 12):      # 12 groups.
 
 
 
-def round_robin(match_ID, number_of_matches = 72, group_size = 4):
-    global all_groups
+def round_robin(match_ID, number_of_matches, group_size = 4):
 
-    
 
     return
 
+"""
+def factorial(a):
+
+    product = 1
+
+    while a > 0:
+        product *= a
+        a -= 1
+
+    return product
+
+def binomial_coefficient(a, b):
+    return factorial(a) / (factorial(b) * factorial(a-b))
+"""
 
 def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
 
@@ -129,8 +169,6 @@ def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
 
 def arrange_matches(team_list, group_size = 4):
     
-    global all_groups
-
     # number_of_matches = binomial_coefficient(group_size, 2)
     number_of_matches = 72                                                                                      # Hard-coded for now - will fix in the future e.e
     # number_of_matches = (int(binomial_coefficient(group_size, 2))) * (int(len(team_list) / group_size))       # Pls fix this D:
@@ -140,9 +178,9 @@ def arrange_matches(team_list, group_size = 4):
     for match_ID in range(0, number_of_matches):
         # team_a = func_a(match_ID)
         # team_b = func_b(match_ID)
-        teams_a_and_b = all_groups[match_ID]
+        teams_a_and_b = round_robin(match_ID, number_of_matches)
 
-        matched_teams_IDs.append(teams_a_and_b)
+        matched_teams_IDs.append((team_a, team_b))
 
     print("\n")
     print("bro...", matched_teams_IDs)
