@@ -120,17 +120,19 @@ def binomial_coefficient(a, b):
     return factorial(a) / (factorial(b) * factorial(a-b))
 
 
-def team_IDs_to_names(matched_teams: list[tuple[int]], team_list):
+def team_IDs_to_names(matched_teams_IDs: list[list[int]], team_list):
 
-    matched_teams_names = matched_teams
+    print("team list:", team_list)
+
+    matched_teams_names = matched_teams_IDs
+
+    for match in range(0, len(matched_teams_IDs)):
+        for team in range(0, 1):
+            current_team = matched_teams_IDs[match][team] - 1
+            print("\n", "current team:", current_team, "\n")
+            matched_teams_names[match][team] = team_list[current_team] 
 
     print("\n", "matched_teams_names:", matched_teams_names, "\n")
-
-    for match in range(0, len(matched_teams)):
-        for team in range(0, 1):
-            current_team = matched_teams[match][team] - 1
-            # print("current team:", current_team)
-            matched_teams_names[match][team] = team_list[current_team] 
 
     return matched_teams_names
 
@@ -163,16 +165,16 @@ def generate_results(number_of_matches):
     for i in range(0, number_of_matches):
         a = randint(0, 7)
         b = randint(0, 7)
-        random_match = (a, b)
+        random_match = [a, b]
         match_results.append(random_match)
 
-    return match_results      # match_results = [(2, 3), (1, 1), (7, 0), ... etc.]
+    return match_results      # match_results = [[2, 3], [1, 1], [7, 0], ... etc.]
 
 
-# matched_teams_IDs are the IDs of the teams that played = [(1, 2), (1, 3), (1, 4), (2, 3)... etc.]
-def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
+# matched_teams_IDs are the IDs of the teams that played = [[1, 2], [1, 3], [1, 4], [2, 3]... etc.]
+def create_matches(team_dict, team_list, match_results: list[list[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
-    matched_teams_IDs: list[tuple[int]] = arrange_matches(team_list)
+    matched_teams_IDs: list[list[int]] = arrange_matches(team_list)
     matched_team_names                  = team_IDs_to_names(matched_teams_IDs, team_list)
 
     print("matched_teams_IDs:",   matched_teams_IDs)
@@ -181,7 +183,7 @@ def create_matches(team_dict, team_list, match_results: list[tuple[int]] = gener
     matches = {}
 
     for i in range(0, len(match_results)):
-        match_outcome = (match_results[i][0], match_results[i][1])
+        match_outcome = [match_results[i][0], match_results[i][1]]
         matches[match_outcome] = matched_team_names[i]
 
     return matches
@@ -321,7 +323,7 @@ def simulation():
         team_dict = create_teams(team_list)
         # matches = round_robin(team_dict)
 
-        team_list_queue = team_list
+        team_list_queue = (team_list).copy()
 
         group_size = 4               # 4 teams in a group.
         number_of_groups = 12        # 8 groups in the tournament.
@@ -349,6 +351,7 @@ def simulation():
                 
                 x = 2.8
                 y += inner_vertical_gap * (group_size + 2) - 3
+
 
         if (simulation_state > 0) and (simulation_state < 2):
             matches = create_matches(team_dict, team_list)
