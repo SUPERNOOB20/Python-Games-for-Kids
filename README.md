@@ -9,7 +9,7 @@ This is what I'm aiming for them to learn in those 3 months:
 --- Scratch:
 - All the instructions.
 - Sync and async code inside each object.
-- Sync and async code across multiple objects.
+- Sync and async code across multiple objects (broadcasting and receiving messages, for instance).
 - Sprites, backdrops.
 
 We will not get to learn more advanced topics such as Event Handling in depth.
@@ -23,6 +23,9 @@ We will not get to learn more advanced topics such as Event Handling in depth.
 - Control Flow Structures (branching) and Control Flow Graphs
 - Functions
 - Modules
+
+We will not get to learn more advanced topics such as GUIs (but I tried to bring as many GUI activities as possible for them to stay engaged throughout the course! :3).
+
 <br>
 <br>
 
