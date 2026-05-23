@@ -174,14 +174,14 @@ def arrange_matches(team_dict, team_list, group_size = 4):
     lineup = team_IDs_to_names(round_robin(), team_list)
 
     # len(results = 72s)
-    results = play_gs(team_dict, generate_results())
+    results = generate_results()
 
     gs_matches = {}
 
     for i in range(0, len(lineup)):
-        gs_matches[i] = [lineup[i], results[i]]
+        gs_matches[i] = [results[i], lineup[i]]
 
-    print("gs_matches:", gs_matches)
+    # print("gs_matches:", gs_matches)
 
     return gs_matches
 
@@ -294,7 +294,12 @@ def simulation():
 
         # -------------------------------------------------------------------------------------------------------------------
 
-        text1 = f"Played {simulation_state} out of 3 games"
+        text1 = ""
+
+        if simulation_state == 0:
+            text1 = f"Played 0 out of 3 games"
+        else:
+            text1 = f"Played 3 out of 3 games"
 
 
 
@@ -350,6 +355,9 @@ def simulation():
 
         if (simulation_state > 0) and (simulation_state < 2):
             matches = arrange_matches(team_dict, team_list)
+
+            # print("arranged_matches:", matches)
+
             play_gs(team_dict, matches)
 
         # ------------------------------------------------------------------------------------
