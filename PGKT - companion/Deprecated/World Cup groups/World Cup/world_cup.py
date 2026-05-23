@@ -64,23 +64,24 @@ def stop_running():
 
 def create_teams(team_list):
 
-    gs_scoreboard = {}
+    team_dict = {}
 
     for i in range (0, len(team_list)):
 
-        gs_scoreboard[team_list[i]] = 0        # {team_ID: (team_name, team_points)}
+        team_dict[team_list[i]] = 0        # {team_ID: (team_name, team_points)}
 
-    return gs_scoreboard
+    return team_dict
+
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Splits the team list into groups.
-def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
+# splits the team list into groups.
+def split_into_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
     if ((len(team_list)) % group_size) == 1:
         raise NotImplementedError
 
-    group_list: list[list[str]] = []
+    all_teams_in_groups: list[list[str]] = []
 
     for team in team_list:
 
@@ -89,40 +90,13 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
         for i in range (0, group_size):
             current_team.append(team)
         
-        group_list.append(current_team)
+        all_teams_in_groups.append(current_team)
 
-    return group_list
+    return all_teams_in_groups
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Arranges brackets in a way that no two teams of the same group get to play against each other in RO32:
-
-"""
-# WIP e.e
-def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
-
-    roll()
-
-    for team in range(0, len(qualified_teams)):
-        
-        for j in range (1, group_size + 1):
-            if group_list[team_a] == group_list[team_b]:
-                reroll()
-
-    for i in qualified_teams:
-        for j in q
-    if grou
-    return
-"""
-    
-def elimination():
-
-    return
-
-    
-"""
-# Provides another way of eliminating groups (going into the brackets)
-def alt_elimination(all_teams_in_groups, group_size = 4):
+def elimination(all_teams_in_groups, group_size = 4):
 
     number_of_qualified_teams = int(group_size / 2)
 
@@ -140,7 +114,7 @@ def alt_elimination(all_teams_in_groups, group_size = 4):
 
         
     return qualified_teams
-"""
+
 
 
 def round_robin(group_size = 4, number_of_groups = 12):
@@ -200,7 +174,7 @@ def generate_results(number_of_matches = 72):
 # example:
 # matches = {(3, 4): ('Mexico', 'Czechia'),
 #            (1, 0): ('Mexico', 'Corea'  )}
-def arrange_matches(gs_scoreboard, team_list, group_size = 4):
+def arrange_matches(team_dict, team_list, group_size = 4):
     
     global all_groups
 
@@ -234,7 +208,7 @@ def arrange_matches(gs_scoreboard, team_list, group_size = 4):
 # matches: {match_ID: [match_results, teams_that_played]}
 # for example: {0: [(3, 1): ("Argentina", "Mexico")],
 #               1: [(2, 7): ("Argentina", "Canada")]}
-def play_gs(gs_scoreboard, matches):
+def play_gs(team_dict, matches):
 
     for match in range(0, len(matches)):
         result  = matches[match][0]
@@ -242,14 +216,14 @@ def play_gs(gs_scoreboard, matches):
         team_b  = matches[match][1][1]
     
         if result[0] > result[1]:
-            gs_scoreboard[team_a] += 3      # team 1 wins
+            team_dict[team_a] += 3      # team 1 wins
 
         elif result[0] < result[1]:
-            gs_scoreboard[team_b] += 3      # team 2 wins
+            team_dict[team_b] += 3      # team 2 wins
 
         else:                           # result: tie (both teams get 1 point)            
-            gs_scoreboard[team_a] += 1
-            gs_scoreboard[team_b] += 1
+            team_dict[team_a] += 1
+            team_dict[team_b] += 1
 
     return
 
@@ -267,27 +241,7 @@ team_list = ["Mexico",        "South Africa",              "Czechia",          "
              "Portugal",      "Congo DR",                  "Uzbekistan",       "Colombia",
              "England",       "Croatia",                   "Ghana",            "Panama"]
         
-gs_scoreboard = create_teams(team_list)
-
-
-pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-
-
-SegoeUII_12pt = pygame.font.Font(filename="../Fonts/segoeuii.ttf", size=12)
-CCWildWordsI_36pt = pygame.font.Font(filename="../Fonts/CC Wild Words Italic.ttf", size=36)
-
-resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
-
-field_raw_surface = pygame.image.load("field.png").convert_alpha()
-field_scaled_surface = pygame.transform.scale(surface = field_raw_surface, size = resized_for_this_screen)
-
-groups_raw_surface = pygame.image.load("groups.png").convert_alpha()
-groups_scaled_surface = pygame.transform.scale(surface = groups_raw_surface, size = resized_for_this_screen)
-
-brackets_raw_surface = pygame.image.load("brackets.png").convert_alpha()
-brackets_scaled_surface = pygame.transform.scale(surface = brackets_raw_surface, size = resized_for_this_screen)
-
+team_dict = create_teams(team_list)
 
 
 enable_gs = True
@@ -301,12 +255,25 @@ def simulation():
     global running
     global simulation_state
 
-    global gs_scoreboard
+    global team_dict
     global team_list
     
     global enable_gs
     
+    pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
+
+    SegoeUII_12pt = pygame.font.Font(filename="../Fonts/segoeuii.ttf", size=12)
+    CCWildWordsI_36pt = pygame.font.Font(filename="../Fonts/CC Wild Words Italic.ttf", size=36)
+
+    resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
+
+    field_raw_surface = pygame.image.load("field.png").convert_alpha()
+    field_scaled_surface = pygame.transform.scale(surface = field_raw_surface, size = resized_for_this_screen)
+
+    groups_raw_surface = pygame.image.load("groups.png").convert_alpha()
+    groups_scaled_surface = pygame.transform.scale(surface = groups_raw_surface, size = resized_for_this_screen)
 
 
 
@@ -328,7 +295,7 @@ def simulation():
                     print("\n")
                     print("Debug mode is active:")
                     print("You can print your logs here")
-                    print("gs_scoreboard:", gs_scoreboard)
+                    print("team_dict:", team_dict)
                     print("\n")
 
                 if event.key == pygame.K_RETURN:
@@ -337,9 +304,12 @@ def simulation():
         keyboard.on_press_key("esc", lambda _: stop_running())
 
 
+        
         screen.blit(field_scaled_surface, (0, 0))
 
-        
+        if simulation_state < 2:
+            screen.blit(groups_scaled_surface, (0, 0))
+
 
 
         # ----------- INTERLUDIUM: FONTS ------------------------------------------------------------------------------------
@@ -362,64 +332,60 @@ def simulation():
 
         # -------------------------------------------------------------------------------------------------------------------
 
-        text1 = f"Played 0 out of 3 games"
+        text1 = ""
 
-        if (simulation_state < 2):
-
-            screen.blit(groups_scaled_surface, (0, 0))
-
+        if simulation_state == 0:
+            text1 = f"Played 0 out of 3 games"
+        else:
             text1 = f"Played 3 out of 3 games"
 
-            render_text(text1, "pink",  (int_horizontal_position(25), int_vertical_position(5)),  screen, font = bold_handwritten_font)
-
-            x = 2.8
-            y = 27.3
-            inner_vertical_gap = 6.5
 
 
+        render_text(text1, "pink",  (int_horizontal_position(25), int_vertical_position(5)),  screen, font = bold_handwritten_font)
 
-            team_list_queue = (team_list).copy()
+        x = 2.8
+        y = 27.3
+        inner_vertical_gap = 6.5
 
-            group_size = 4               # 4 teams in a group.
-            number_of_groups = 12        # 8 groups in the tournament.
-            number_of_rows = 2           # 2 rows of groups.
 
-            groups_per_row = int(number_of_groups / number_of_rows)
 
-            # This line of code isn't needed, it's just for extra safety :p
-            while len(team_list_queue) > 0:
+        team_list_queue = (team_list).copy()
 
-                for i in range(0, number_of_rows):
+        group_size = 4               # 4 teams in a group.
+        number_of_groups = 12        # 8 groups in the tournament.
+        number_of_rows = 2           # 2 rows of groups.
 
-                    for i in range(0, groups_per_row):
+        groups_per_row = int(number_of_groups / number_of_rows)
 
-                        for i in range(0, group_size):
-                            # print("gs_scoreboard:", gs_scoreboard)
-                            # print("team_list_queue:", team_list_queue)
-                            render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
-                            render_text(str(gs_scoreboard[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
-                            y += inner_vertical_gap
-                            team_list_queue.pop(0)
-                        
-                        y -= inner_vertical_gap * group_size
-                        x += 16.3
+        # This line of code isn't needed, it's just for extra safety :p
+        while len(team_list_queue) > 0:
+
+            for i in range(0, number_of_rows):
+
+                for i in range(0, groups_per_row):
+
+                    for i in range(0, group_size):
+                        # print("team_dict:", team_dict)
+                        # print("team_list_queue:", team_list_queue)
+                        render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
+                        render_text(str(team_dict[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
+                        y += inner_vertical_gap
+                        team_list_queue.pop(0)
                     
-                    x = 2.8
-                    y += inner_vertical_gap * (group_size + 2) - 3
+                    y -= inner_vertical_gap * group_size
+                    x += 16.3
+                
+                x = 2.8
+                y += inner_vertical_gap * (group_size + 2) - 3
 
+        if (simulation_state > 0) and (simulation_state < 2) and (enable_gs == True):
+            matches = arrange_matches(team_dict, team_list)
 
-            if (simulation_state > 0) and (simulation_state < 2) and (enable_gs == True):
-                matches = arrange_matches(gs_scoreboard, team_list)
+            # print("arranged_matches:", matches)
 
-                # print("arranged_matches:", matches)
+            play_gs(team_dict, matches)
 
-                play_gs(gs_scoreboard, matches)
-
-                enable_gs = False
-
-        elif simulation_state >= 2:
-            screen.blit(brackets_scaled_surface, (0, 0))
-
+            enable_gs = False
 
         # ------------------------------------------------------------------------------------
 
