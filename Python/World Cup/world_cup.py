@@ -28,6 +28,9 @@ from adaptive_screensize_utils_b import user_screen_width, user_screen_height, i
 import pygame   # pygame-ce.
 pygame.init()
 
+
+
+
 # -------------------- SECTION 1.5: AUXILIARY FUNCTIONS ---------------------------------
 
 def render_text(what, color, where, screen, font = pygame.font.SysFont('Arial', 30)):
@@ -55,16 +58,9 @@ def stop_running():
 
 
 
+
+
 # -------------------- SECTION 2: PYGAME ---------------------------------
-
-
-
-
-
-
-
-
-
 
 def create_teams(team_list):
 
@@ -79,27 +75,45 @@ def create_teams(team_list):
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Not an ideal approach, but will have to make-do for the moment being...
-all_groups: list[tuple[int]] =  []
+# splits the team list into groups.
+def split_into_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
-first_group: list[tuple[int]] = [(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
-all_groups.append(first_group)
+    if ((len(team_list)) % group_size) == 1:
+        raise NotImplementedError
 
-for i in range(1, 12):      # 12 groups.
+    all_teams_in_groups: list[list[str]] = []
 
-    for match in range(0, len(first_group)):
-        a = first_group[match][0]
-        b = first_group[match][1]
-        # print("a:", a)
-        # print("b:", b)
-        next_group_team_a = a + (i * 4)
-        next_group_team_b = b + (i * 4)
+    for team in team_list:
 
-        next_group = ((next_group_team_a, next_group_team_b))
+        current_team: list[str] = []
 
-        all_groups.append(next_group)
+        for i in range (0, group_size):
+            current_team.append(team)
+        
+        all_teams_in_groups.append(current_team)
+
+    return all_teams_in_groups
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def elimination(all_teams_in_groups, group_size = 4):
+
+    number_of_qualified_teams = int(group_size / 2)
+
+    qualified_teams = []
+
+
+    for group in all_teams_in_groups:
+
+        current_group = group.sort()
+
+        for i in range(0, (group_size - number_of_qualified_teams)):
+            current_group.pop(0)
+
+        qualified_teams.append(current_group.sort(reverse = True))
+
+        
+    return qualified_teams
 
 
 
@@ -116,7 +130,8 @@ def round_robin(group_size = 4, number_of_groups = 12):
                     all_groups.append((team + ((group - 1) * 4), matched_team + ((group - 1) * 4)))
 
 
-    return all_groups   # [(1, 2), (1, 3), (1, 4)
+    return all_groups   # [(1, 2), (1, 3), (1, 4), ...]
+
 
 
 def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
