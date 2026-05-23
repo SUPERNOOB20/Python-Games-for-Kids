@@ -9,7 +9,7 @@ This is what I'm aiming for them to learn in those 3 months:
 --- Scratch:
 - All the instructions.
 - Sync and async code inside each object.
-- Sync and async code across multiple objects.
+- Sync and async code across multiple objects (broadcasting and receiving messages, for instance).
 - Sprites, backdrops.
 
 We will not get to learn more advanced topics such as Event Handling in depth.
@@ -23,40 +23,49 @@ We will not get to learn more advanced topics such as Event Handling in depth.
 - Control Flow Structures (branching) and Control Flow Graphs
 - Functions
 - Modules
-- Whatever we have extra time to do. I would rather have them practice their coding instead of moving on to extra topics like GUIs, but we'll see. <br>
-My reasoning for this is that I wholeheartedly believe it will be more useful for them to have a solid base with solving problems.<br><br>
-GUIs might come off as "shiny appealing things" at first glance, but I believe that logical thinking will give them better foundations for their lives
-(it's not hard to code GUIs yourself if you have practiced coding basic things with Control Flow Structures, but it will be hard to code basic
-things with Control Flow Structures if you've only been reaching for the low-hanging fruit of GUIs thus far).<br><br>
-What I'm trying to say is that problem-solving, even if it might come off as boring and tedious to many people, is the key for absolutely anything you want to code; but learning to code GUIs will only be useful for you when coding GUIs, and nothing else.<br><br>
-So, the solution is simple: ***I make the GUIs, they take care of the problem-solving***. I think this is the approach that works best, and it's the one I'm aiming for in this course.
+
+We will not get to learn more advanced topics such as GUIs (but I tried to bring as many GUI activities as possible for them to stay engaged throughout the course! :3).
+
 <br>
 <br>
 
 ## Games
 
-At the moment, there's games with:
 
-- Scratch (Iko)
-- Python (Pizza Game) [Algorithms]
-- Python (Apples & Oranges) [Variables]
-
-Upcoming games:
-
-- Scratch (Jumping Game)
-
-
-At present, I'm focusing on various activities to teach Control Flow Structures in Python.
 These are simple programming challenges that the students should try to solve on their own:
-- traffic lights
-- weather
-- kettle (WIP)
-- weekends and weekdays (WIP)
-- disco bodyguard (CLI is finished, might do a GUI version someday).
 
-You might find some scuffed code in these activities because I tried to simplify the tasks as much as possible. It was difficult to restrain myself from surrounding their code with indentation, Control Flow Structures, functions, modules, etc. This was a challenge I did not see coming for myself, and I hope I learn from it.
-Once they learn about all those programming concepts, I can start preparing coding tasks for them in a much more tidy, professional way (we'll finally be able to import each other's modules to solve and correct coding exercises).
+Scratch:
+- Iko [Giving instructions to Scratch](https://scratch.mit.edu/projects/1323627854/)
+- the Cat and the Clones [Control](https://scratch.mit.edu/projects/1318597205/)
+- Rainbow bears
+- Bank game [Variables]
+- Guessing game [Revision of Control, Sensing, Operators, Variables](https://scratch.mit.edu/projects/1316300762/editor/)
+- Cakes - Shopping lists [Lists, My Blocks](https://scratch.mit.edu/projects/1318816704/editor/)
+- My Favourite Things [Lists](https://scratch.mit.edu/projects/1322189239/editor/)
+- Jumping Game [My Blocks tutorial](https://scratch.mit.edu/projects/1322736636/editor/)
+
+- Pizza Game [Algorithms] (GUI)
+- Apples & Oranges [Variables] (GUI)
+- Traffic lights
+- Weather
+- Kettle (CLI)
+- Weekends and weekdays (WIP)
+- Disco bodyguard (CLI is finished, might do a GUI version someday).
+- Login system (CLI)
+- Age restriction (CLI)
+- Football World Cup (CLI is finished, might finish the GUI version someday).
+
+Well, those are the main ones, anyway! There's many shorter activities in this repo just as well.
 
 You can also find some handy resources like Scratch Cheatsheets and PowerPoint presentations explaining Python stuff.
 
 Suitable for all ages. Like around 7 - 15, but you are free to play around regardless of age!!! <3
+
+Oh, and if you need some extra utilities for Python, I hope some of my libraries might come in handy...!
+
+## Contact
+Here's my personal number, if you need to contact me:
+> +5492396433300
+
+Alternatively, you can also find me in Discord, under the username of:
+> supernoob20
