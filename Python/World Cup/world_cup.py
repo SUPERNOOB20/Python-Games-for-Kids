@@ -179,40 +179,12 @@ def arrange_matches(team_list, group_size = 4):
     gs_matches = {}
 
     for i in range(0, len(lineup)):
-        gs_matches[[lineup][i]] = results[i]
+        gs_matches[i] = [lineup[i], results[i]]
 
     print("gs_matches:", gs_matches)
 
     return gs_matches
 
-
-"""
-# matched_teams_IDs are the IDs of the teams that played = [(1, 2), (1, 3), (1, 4), (2, 3)... etc.]
-def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
-
-    print("team dict:", team_dict)
-    print("\n")
-    print("team list:", team_list)
-    print("\n")
-
-    matched_teams_IDs: list[tuple[int]] = arrange_matches(team_list)
-    matched_team_names                  = team_IDs_to_names(matched_teams_IDs, team_list)
-
-    print("match_results:", match_results, "\n")
-    print("matched_teams_IDs:",   matched_teams_IDs, "\n")
-    print("matched_team_names:",  matched_team_names, "\n")
-
-    matches = {}
-
-    for i in range(0, len(match_results)):
-        match_outcome = (match_results[i][0], match_results[i][1])
-        teams         = (matched_team_names[match_results[i][0]], matched_team_names[match_results[i][1]])
-
-
-        matches[i] = (match_outcome, teams)
-
-    return matches
-"""
 
 
 # Plays Group Stage.
@@ -377,7 +349,7 @@ def simulation():
                 y += inner_vertical_gap * (group_size + 2) - 3
 
         if (simulation_state > 0) and (simulation_state < 2):
-            matches = create_matches(team_dict, team_list)
+            matches = arrange_matches(team_list)
             play_gs(team_dict, team_list, matches)
 
         # ------------------------------------------------------------------------------------
