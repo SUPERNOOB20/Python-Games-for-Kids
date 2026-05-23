@@ -103,20 +103,12 @@ for i in range(1, 12):      # 12 groups.
 
 
 
-def round_robin(group_size = 4, number_of_groups = 12):
+def round_robin(match_ID, number_of_matches = 72, group_size = 4):
+    global all_groups
 
-    all_groups: list[tuple[int]] =  []
+    
 
-    for group in range(1, number_of_groups + 1):
-        
-        for team in range (1, group_size + 1):
-
-            for matched_team in range(team, group_size + 1):
-                if team != matched_team:
-                    all_groups.append((team + ((group - 1) * 4), matched_team + ((group - 1) * 4)))
-
-
-    return all_groups   # [(1, 2), (1, 3), (1, 4)
+    return
 
 
 def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
@@ -126,8 +118,8 @@ def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
     matched_teams_names = matched_teams_IDs
 
     for match in range(0, len(matched_teams_IDs)):
-        first_team  = team_list[matched_teams_IDs[match][0] - 1]        # - 1 to offset the index.
-        second_team = team_list[matched_teams_IDs[match][1] - 1]        # - 1 to offset the index.
+        first_team  = team_list[matched_teams_IDs[match][0] - 1]
+        second_team = team_list[matched_teams_IDs[match][1] - 1]
         matched_teams_names[match] = (first_team, second_team)
 
     # print("\n", "matched_teams_names:", matched_teams_names, "\n")
@@ -135,14 +127,35 @@ def team_IDs_to_names(matched_teams_IDs: list[tuple[int]], team_list):
     return matched_teams_names
 
 
+def arrange_matches(team_list, group_size = 4):
+    
+    global all_groups
 
+    # number_of_matches = binomial_coefficient(group_size, 2)
+    number_of_matches = 72                                                                                      # Hard-coded for now - will fix in the future e.e
+    # number_of_matches = (int(binomial_coefficient(group_size, 2))) * (int(len(team_list) / group_size))       # Pls fix this D:
+
+    matched_teams_IDs = []
+
+    for match_ID in range(0, number_of_matches):
+        # team_a = func_a(match_ID)
+        # team_b = func_b(match_ID)
+        teams_a_and_b = all_groups[match_ID]
+
+        matched_teams_IDs.append(teams_a_and_b)
+
+    print("\n")
+    print("bro...", matched_teams_IDs)
+    print("\n")
+
+    return matched_teams_IDs
 
 
 
 
 
 # Generates match outcomes at random.
-def generate_results(number_of_matches = 72):
+def generate_results(number_of_matches):
 
     match_results: list = []
 
@@ -155,38 +168,6 @@ def generate_results(number_of_matches = 72):
     return match_results      # match_results = [(2, 3), (1, 1), (7, 0), ... etc.]
 
 
-# returns matches = {result: matched_teams}
-# example:
-# matches = {(3, 4): ('Mexico', 'Czechia'),
-#            (1, 0): ('Mexico', 'Corea'  )}
-def arrange_matches(team_list, group_size = 4):
-    
-    global all_groups
-
-    # ### number_of_matches = binomial_coefficient(group_size, 2)
-    # number_of_matches = 72                                                                                        # Hard-coded for now - will fix in the future e.e
-    # ### number_of_groups = int(len(team_list) / group_size)
-    # ### number_of_matches = (int(binomial_coefficient(group_size, 2))) * number_of_groups                         # Pls fix this D:
-
-
-    # "quien juega contra quien".
-    # len(lineup = 72)
-    lineup = team_IDs_to_names(round_robin(), team_list)
-
-    # len(results = 72s)
-    results = play_gs(generate_results())
-
-    gs_matches = {}
-
-    for i in range(0, len(lineup)):
-        gs_matches[[lineup][i]] = results[i]
-
-    print("gs_matches:", gs_matches)
-
-    return gs_matches
-
-
-"""
 # matched_teams_IDs are the IDs of the teams that played = [(1, 2), (1, 3), (1, 4), (2, 3)... etc.]
 def create_matches(team_dict, team_list, match_results: list[tuple[int]] = generate_results(72)):         # 72 = 6 * 12 (6 matches per group, 12 groups total).
 
@@ -212,7 +193,7 @@ def create_matches(team_dict, team_list, match_results: list[tuple[int]] = gener
         matches[i] = (match_outcome, teams)
 
     return matches
-"""
+
 
 
 # Plays Group Stage.
