@@ -213,6 +213,23 @@ def play_gs(team_dict, matches):
     return
 
 
+team_list = ["Mexico",        "South Africa",              "Czechia",          "Corea",
+             "Canada",        "Bosnia\nand Herzegovina",   "Qatar",            "Switzerland",
+             "Brazil",        "Morocco",                   "Haiti",            "Scotland",
+             "USA",           "Paraguay",                  "Australia",        "Türkiye",
+             "Germany",       "Curaçao",                   "Côte d'Ivoire",    "Ecuador",
+             "Netherlands",   "Japan",                     "Sweden",           "Tunisia",
+             "Belgium",       "Egypt",                     "Iran",             "New Zeland",
+             "Spain",         "Cabo Verde",                "Saudi Arabi",      "Uruguay",
+             "France",        "Senegal",                   "Iraq",             "Norway",
+             "Argentina",     "Algeria",                   "Austria",          "Jordan",
+             "Portugal",      "Congo DR",                  "Uzbekistan",       "Colombia",
+             "England",       "Croatia",                   "Ghana",            "Panama"]
+        
+team_dict = create_teams(team_list)
+
+
+enable_gs = True
 
 
 running          = True
@@ -222,6 +239,11 @@ def simulation():
 
     global running
     global simulation_state
+
+    global team_dict
+    global team_list
+    
+    global enable_gs
     
     pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -242,7 +264,7 @@ def simulation():
 
     clock = pygame.time.Clock()    
 
-    debug_mode = False
+    debug_mode = True
     while(running == True):
 
         screen.fill((255, 255, 255))
@@ -258,6 +280,7 @@ def simulation():
                     print("\n")
                     print("Debug mode is active:")
                     print("You can print your logs here")
+                    print("team_dict:", team_dict)
                     print("\n")
 
                 if event.key == pygame.K_RETURN:
@@ -309,20 +332,7 @@ def simulation():
         y = 27.3
         inner_vertical_gap = 6.5
 
-        team_list = ["Mexico",        "South Africa",              "Czechia",          "Corea",
-                     "Canada",        "Bosnia\nand Herzegovina",   "Qatar",            "Switzerland",
-                     "Brazil",        "Morocco",                   "Haiti",            "Scotland",
-                     "USA",           "Paraguay",                  "Australia",        "Türkiye",
-                     "Germany",       "Curaçao",                   "Côte d'Ivoire",    "Ecuador",
-                     "Netherlands",   "Japan",                     "Sweden",           "Tunisia",
-                     "Belgium",       "Egypt",                     "Iran",             "New Zeland",
-                     "Spain",         "Cabo Verde",                "Saudi Arabi",      "Uruguay",
-                     "France",        "Senegal",                   "Iraq",             "Norway",
-                     "Argentina",     "Algeria",                   "Austria",          "Jordan",
-                     "Portugal",      "Congo DR",                  "Uzbekistan",       "Colombia",
-                     "England",       "Croatia",                   "Ghana",            "Panama"]
-        
-        team_dict = create_teams(team_list)
+
 
         team_list_queue = (team_list).copy()
 
@@ -353,12 +363,14 @@ def simulation():
                 x = 2.8
                 y += inner_vertical_gap * (group_size + 2) - 3
 
-        if (simulation_state > 0) and (simulation_state < 2):
+        if (simulation_state > 0) and (simulation_state < 2) and (enable_gs == True):
             matches = arrange_matches(team_dict, team_list)
 
             # print("arranged_matches:", matches)
 
             play_gs(team_dict, matches)
+
+            enable_gs = False
 
         # ------------------------------------------------------------------------------------
 
