@@ -159,7 +159,7 @@ def generate_results(number_of_matches = 72):
 # example:
 # matches = {(3, 4): ('Mexico', 'Czechia'),
 #            (1, 0): ('Mexico', 'Corea'  )}
-def arrange_matches(team_list, group_size = 4):
+def arrange_matches(team_dict, team_list, group_size = 4):
     
     global all_groups
 
@@ -174,7 +174,7 @@ def arrange_matches(team_list, group_size = 4):
     lineup = team_IDs_to_names(round_robin(), team_list)
 
     # len(results = 72s)
-    results = play_gs(generate_results())
+    results = play_gs(team_dict, generate_results())
 
     gs_matches = {}
 
@@ -193,12 +193,12 @@ def arrange_matches(team_list, group_size = 4):
 # matches: {match_ID: [match_results, teams_that_played]}
 # for example: {0: [(3, 1): ("Argentina", "Mexico")],
 #               1: [(2, 7): ("Argentina", "Canada")]}
-def play_gs(team_dict, team_list, matches):
+def play_gs(team_dict, matches):
 
     for match in range(0, len(matches)):
-        result  = matches[match[0]]
-        team_a  = matches[match[1][0]]
-        team_b  = matches[match[1][1]]
+        result  = matches[match][0]
+        team_a  = matches[match][1][0]
+        team_b  = matches[match][1][1]
     
         if result[0] > result[1]:
             team_dict[team_a] += 3      # team 1 wins
@@ -349,8 +349,8 @@ def simulation():
                 y += inner_vertical_gap * (group_size + 2) - 3
 
         if (simulation_state > 0) and (simulation_state < 2):
-            matches = arrange_matches(team_list)
-            play_gs(team_dict, team_list, matches)
+            matches = arrange_matches(team_dict, team_list)
+            play_gs(team_dict, matches)
 
         # ------------------------------------------------------------------------------------
 
