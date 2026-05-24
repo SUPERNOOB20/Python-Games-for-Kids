@@ -62,7 +62,7 @@ def stop_running():
 
 # -------------------- SECTION 2: PYGAME ---------------------------------
 
-def create_teams(team_list):
+def create_scoreboard(team_list):
 
     gs_scoreboard = {}
 
@@ -95,41 +95,25 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Arranges brackets in a way that no two teams of the same group get to play against each other in RO32:
-# Qualified teams should be ordered by placement, like this:
-# qualified_teams = [[A tier], [B tier], [C tier]]
+# Hardcoded at 12 groups of 4 teams each, for now.
+def elimination(gs_scoreboard, team_tiers):
 
-"""
-# WIP e.e
-def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
+    qualified_teams = team_tiers.copy()
 
-    
+    qualified_teams.pop[3]      # tier 4 doesn't qualify :c
 
-    valid_bracket = False
+    tier_3 = []
+    for team in team_tiers[2]:  # grabs tier 3
+        tier_3.append(team)
+    tier_3.sort()
+    tier_3.pop(0)
+    tier_3.pop(0)
 
-    while valid_bracket == False:
-    
-        roll()
-        for tier in qualified_teams:
-            
-            for team in range(0, len(tier)):
-                
-                for i in range (1, group_size + 1):
-                    if group_list[team_a] == group_list[team_b]:
-                        valid_bracket = True
+    qualified_teams[2] = tier_3
 
-                    
-    for i in qualified_teams:
-        for j in q
-    if grou
-    return
-"""
-    
-def elimination():
+    return qualified_teams      # qualified_teams = [[GS tier 1], [GS tier 2], [GS tier 3]]
 
-    return
 
-    
 """
 # Provides another way of eliminating groups (going into the brackets)
 def alt_elimination(all_teams_in_groups, group_size = 4):
@@ -151,6 +135,67 @@ def alt_elimination(all_teams_in_groups, group_size = 4):
         
     return qualified_teams
 """
+
+
+
+
+# Arranges brackets in a way that no two teams of the same group get to play against each other in RO32:
+# Qualified teams should be ordered by placement, like this:
+# qualified_teams = [[GS tier 1], [GS tier 2], [GS tier 3]]
+# .
+# WIP e.e
+def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
+
+    valid_bracket = False
+
+    while valid_bracket == False:
+    
+        ro16_bracket = []
+
+        tier1 = qualified_teams[0]
+        for team in tier1:
+            ro16_bracket.append(team)
+        
+
+
+        tier2 = qualified_teams[1]
+        for i in range(0, 4):   # repeat 4 times.
+            ro16_bracket.append(tier2.pop(0))
+
+        # At this point of the code, we have 12 brackets with tier 1 teams, and 4 brackets with tier 2 teams.
+        # Let's fill the rest!
+
+        remaining_teams = []
+
+        tier3 = qualified_teams[2]
+        
+        for team in tier2:
+            remaining_teams.append()
+        for team in tier3:
+            remaining_teams.append()
+        
+        
+        assert len(ro16_bracket)    == len(remaining_teams)
+        assert len(remaining_teams) == 16
+        
+
+        for i in range (0, remaining_teams):
+            matched_team = qualified_teams[i]
+            ro16_bracket[i] = (matched_team, remaining_teams[i])
+
+        
+
+        for match in ro16_bracket:
+
+            if group_list[team_a] == group_list[team_b]:
+                valid_bracket = True
+
+
+    return ro16_bracket
+    
+
+    
+
 
 
 def round_robin(group_size = 4, number_of_groups = 12):
@@ -277,7 +322,7 @@ team_list = ["Mexico",        "South Africa",              "Czechia",          "
              "Portugal",      "Congo DR",                  "Uzbekistan",       "Colombia",
              "England",       "Croatia",                   "Ghana",            "Panama"]
         
-gs_scoreboard = create_teams(team_list)
+gs_scoreboard = create_scoreboard(team_list)
 
 
 pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
