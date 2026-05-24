@@ -96,19 +96,29 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Arranges brackets in a way that no two teams of the same group get to play against each other in RO32:
+# Qualified teams should be ordered by placement, like this:
+# qualified_teams = [[A tier], [B tier], [C tier]]
 
 """
 # WIP e.e
 def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
 
-    roll()
+    
 
-    for team in range(0, len(qualified_teams)):
-        
-        for j in range (1, group_size + 1):
-            if group_list[team_a] == group_list[team_b]:
-                reroll()
+    valid_bracket = False
 
+    while valid_bracket == False:
+    
+        roll()
+        for tier in qualified_teams:
+            
+            for team in range(0, len(tier)):
+                
+                for i in range (1, group_size + 1):
+                    if group_list[team_a] == group_list[team_b]:
+                        valid_bracket = True
+
+                    
     for i in qualified_teams:
         for j in q
     if grou
