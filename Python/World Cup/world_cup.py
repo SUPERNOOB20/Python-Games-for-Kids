@@ -187,7 +187,7 @@ def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
 
         for match in ro16_bracket:
 
-            if group_list[team_a] == group_list[team_b]:
+            if group_list[match][0] == group_list[match][1]:
                 valid_bracket = True
 
 
