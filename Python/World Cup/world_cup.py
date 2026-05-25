@@ -100,7 +100,7 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
     if local_print_enabled == True:
         from pprint import pprint  
-        pprint(group_list)
+        # pprint(group_list)
         local_print_enabled = False
 
     return group_list
@@ -108,7 +108,7 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Hardcoded at 12 groups of 4 teams each, for now.
-def elimination(gs_scoreboard, team_tiers):
+def elimination(team_tiers):
 
     qualified_teams = team_tiers.copy()
 
@@ -157,6 +157,8 @@ def alt_elimination(all_teams_in_groups, group_size = 4):
 # .
 # WIP e.e
 def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
+
+    print("qualified_teams:", qualified_teams)
 
     valid_bracket = False
 
@@ -318,7 +320,7 @@ def play_gs(gs_scoreboard, matches):
             gs_scoreboard[team_a] += 1
             gs_scoreboard[team_b] += 1
 
-    return
+    return gs_scoreboard
 
 
 team_list = ["Mexico",        "South Africa",    "Czechia",          "Corea",
@@ -335,6 +337,53 @@ team_list = ["Mexico",        "South Africa",    "Czechia",          "Corea",
              "England",       "Croatia",         "Ghana",            "Panama"]
         
 gs_scoreboard = create_scoreboard(team_list)
+group_list = create_groups(team_list)
+
+
+
+def render_gs(team_list, gs_scoreboard):
+    x = 2.8
+    y = 27.3
+    inner_vertical_gap = 6.5
+
+    team_list_queue = (team_list).copy()
+
+    group_size = 4               # 4 teams in a group.
+    number_of_groups = 12        # 8 groups in the tournament.
+    number_of_rows = 2           # 2 rows of groups.
+
+    groups_per_row = int(number_of_groups / number_of_rows)
+
+    # This line of code isn't needed, it's just for extra safety :p
+    while len(team_list_queue) > 0:
+
+        for i in range(0, number_of_rows):
+
+            for i in range(0, groups_per_row):
+
+                for i in range(0, group_size):
+                    # print("gs_scoreboard:", gs_scoreboard)
+                    # print("team_list_queue:", team_list_queue)
+                    render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
+                    render_text(str(gs_scoreboard[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
+                    y += inner_vertical_gap
+                    team_list_queue.pop(0)
+                
+                y -= inner_vertical_gap * group_size
+                x += 16.3
+            
+            x = 2.8
+            y += inner_vertical_gap * (group_size + 2) - 3
+    return
+
+
+
+
+
+
+
+
+
 
 
 pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
@@ -373,7 +422,7 @@ def simulation():
     
     global enable_gs
     
-
+    global group_list
 
 
 
@@ -435,52 +484,22 @@ def simulation():
 
             screen.blit(groups_scaled_surface, (0, 0))
 
+            # Renders the title.
             text1 = f"Played 3 out of 3 games"
-
             render_text(text1, "pink",  (int_horizontal_position(25), int_vertical_position(5)),  screen, font = bold_handwritten_font)
 
-            x = 2.8
-            y = 27.3
-            inner_vertical_gap = 6.5
+            # Renders the standings (the team names and their scores).
+            render_gs(team_list, gs_scoreboard)
 
 
 
-            team_list_queue = (team_list).copy()
-
-            group_size = 4               # 4 teams in a group.
-            number_of_groups = 12        # 8 groups in the tournament.
-            number_of_rows = 2           # 2 rows of groups.
-
-            groups_per_row = int(number_of_groups / number_of_rows)
-
-            # This line of code isn't needed, it's just for extra safety :p
-            while len(team_list_queue) > 0:
-
-                for i in range(0, number_of_rows):
-
-                    for i in range(0, groups_per_row):
-
-                        for i in range(0, group_size):
-                            # print("gs_scoreboard:", gs_scoreboard)
-                            # print("team_list_queue:", team_list_queue)
-                            render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
-                            render_text(str(gs_scoreboard[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
-                            y += inner_vertical_gap
-                            team_list_queue.pop(0)
-                        
-                        y -= inner_vertical_gap * group_size
-                        x += 16.3
-                    
-                    x = 2.8
-                    y += inner_vertical_gap * (group_size + 2) - 3
-
-
-            if (simulation_state > 0) and (simulation_state < 2) and (enable_gs == True):
+            if (simulation_state > 0) and (enable_gs == True):
                 matches = arrange_matches(gs_scoreboard, team_list)
 
                 # print("arranged_matches:", matches)
 
-                play_gs(gs_scoreboard, matches)
+                # Updates the scoreboard (hopefully)
+                gs_scoreboard = play_gs(gs_scoreboard, matches)
 
                 enable_gs = False
 
@@ -491,12 +510,12 @@ def simulation():
         # ------------------------------------------------------------------------------------
         # ----- Bracket stage
 
-        group_list = create_groups(team_list)
+        
 
-        qualified_teams = elimination(gs_scoreboard, team_tiers = group_list)
-        # brackets: list  = create_brackets(qualified_teams, group_list)
+        qualified_teams = elimination(team_tiers = group_list)
+        brackets: list  = create_brackets(qualified_teams, group_list)
 
-        # print(brackets)
+        print(brackets)
         
         pygame.display.flip()
         clock.tick(60)  # Caps the events loop at a 60fps ceiling.
