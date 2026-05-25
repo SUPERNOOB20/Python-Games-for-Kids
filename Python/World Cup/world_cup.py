@@ -60,6 +60,8 @@ def stop_running():
 
 
 
+local_print_enabled = True
+
 # -------------------- SECTION 2: PYGAME ---------------------------------
 
 def create_scoreboard(team_list):
@@ -93,13 +95,13 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
             group_list.append(current_team)    
 
 
-    local_print_enabled = True
+    global local_print_enabled
 
     if local_print_enabled == True:
         from pprint import pprint  
         pprint(group_list)
         local_print_enabled = False
-        
+
     return group_list
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
