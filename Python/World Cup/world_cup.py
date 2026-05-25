@@ -82,15 +82,24 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
     group_list: list[list[str]] = []
 
-    for team in team_list:
+    current_team: list[str] = []
 
-        current_team: list[str] = []
+    for team_index in range (0, len(team_list)):
 
-        for i in range (0, group_size):
-            current_team.append(team)
+        current_team.append(team_list[team_index])
+
+        if (team_index % 4 == 0) and (team_index > 1):
+            current_team = []
+            group_list.append(current_team)    
+
+
+    local_print_enabled = True
+
+    if local_print_enabled == True:
+        from pprint import pprint  
+        pprint(group_list)
+        local_print_enabled = False
         
-        group_list.append(current_team)
-
     return group_list
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -482,9 +491,9 @@ def simulation():
         group_list = create_groups(team_list)
 
         qualified_teams = elimination(gs_scoreboard, team_tiers = group_list)
-        brackets: list  = create_brackets(qualified_teams, group_list)
+        # brackets: list  = create_brackets(qualified_teams, group_list)
 
-        print(brackets)
+        # print(brackets)
         
         pygame.display.flip()
         clock.tick(60)  # Caps the events loop at a 60fps ceiling.
