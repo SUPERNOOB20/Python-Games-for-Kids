@@ -90,9 +90,10 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
         current_team.append(team_list[team_index])
 
-        if (team_index % 4 == 0) and (team_index > 1):
+        if ((team_index + 1) % 4 == 0) and (team_index > 0):
+            group_list.append(current_team)
             current_team = []
-            group_list.append(current_team)    
+                
 
 
     global local_print_enabled
@@ -320,18 +321,18 @@ def play_gs(gs_scoreboard, matches):
     return
 
 
-team_list = ["Mexico",        "South Africa",              "Czechia",          "Corea",
-             "Canada",        "Bosnia\nand Herzegovina",   "Qatar",            "Switzerland",
-             "Brazil",        "Morocco",                   "Haiti",            "Scotland",
-             "USA",           "Paraguay",                  "Australia",        "Türkiye",
-             "Germany",       "Curaçao",                   "Côte d'Ivoire",    "Ecuador",
-             "Netherlands",   "Japan",                     "Sweden",           "Tunisia",
-             "Belgium",       "Egypt",                     "Iran",             "New Zeland",
-             "Spain",         "Cabo Verde",                "Saudi Arabi",      "Uruguay",
-             "France",        "Senegal",                   "Iraq",             "Norway",
-             "Argentina",     "Algeria",                   "Austria",          "Jordan",
-             "Portugal",      "Congo DR",                  "Uzbekistan",       "Colombia",
-             "England",       "Croatia",                   "Ghana",            "Panama"]
+team_list = ["Mexico",        "South Africa",    "Czechia",          "Corea",
+             "Canada",        "Bosnia",          "Qatar",            "Switzerland",
+             "Brazil",        "Morocco",         "Haiti",            "Scotland",
+             "USA",           "Paraguay",        "Australia",        "Türkiye",
+             "Germany",       "Curaçao",         "Côte d'Ivoire",    "Ecuador",
+             "Netherlands",   "Japan",           "Sweden",           "Tunisia",
+             "Belgium",       "Egypt",           "Iran",             "New Zeland",
+             "Spain",         "Cabo Verde",      "Saudi Arabi",      "Uruguay",
+             "France",        "Senegal",         "Iraq",             "Norway",
+             "Argentina",     "Algeria",         "Austria",          "Jordan",
+             "Portugal",      "Congo DR",        "Uzbekistan",       "Colombia",
+             "England",       "Croatia",         "Ghana",            "Panama"]
         
 gs_scoreboard = create_scoreboard(team_list)
 
