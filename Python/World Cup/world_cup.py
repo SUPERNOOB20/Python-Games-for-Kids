@@ -107,6 +107,22 @@ def create_groups(team_list: list[str], group_size = 4) -> list[list[str]]:
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Given the list of team groups, sorts groups by order of points achieved.
+def create_tiers(group_list, gs_scoreboard):
+
+    tier_list = []
+
+    for group in group_list:
+        group_dict = {}
+        for team in group:
+            group_dict[team] = gs_scoreboard[team]
+        group_dict = sorted(group_dict, key=group_dict.get, reverse=True)
+        score = gs_scoreboard[group]
+
+    # transpose matrix here (yes, it's needed, unless you do each tier manually instead. And yes, I'm fed up of this.)
+
+    return tier_list
+
 # Hardcoded at 12 groups of 4 teams each, for now.
 def elimination(team_tiers):
 
@@ -342,6 +358,9 @@ group_list = create_groups(team_list)
 
 
 def render_gs(team_list, gs_scoreboard):
+
+    global fonts
+
     x = 2.8
     y = 27.3
     inner_vertical_gap = 6.5
@@ -364,8 +383,8 @@ def render_gs(team_list, gs_scoreboard):
                 for i in range(0, group_size):
                     # print("gs_scoreboard:", gs_scoreboard)
                     # print("team_list_queue:", team_list_queue)
-                    render_text(team_list_queue[0],                 "black",  (int_horizontal_position(x),     int_vertical_position(y)),  screen, font = normal_font)                  # Renders teams
-                    render_text(str(gs_scoreboard[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = handwritten_font)            # Renders the current score of each team
+                    render_text(team_list_queue[0],                     "black",  (int_horizontal_position(x),      int_vertical_position(y)),  screen, font = fonts["normal_font"])                 # Renders teams
+                    render_text(str(gs_scoreboard[team_list_queue[0]]), "black",  (int_horizontal_position(x + 11), int_vertical_position(y)),  screen, font = fonts["handwritten_font"])            # Renders the current score of each team
                     y += inner_vertical_gap
                     team_list_queue.pop(0)
                 
@@ -389,9 +408,20 @@ def render_gs(team_list, gs_scoreboard):
 pygame.init()       # Yes, initialize pygame twice. Sorry, couldn't find any other workaround "^^
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
+# ----------- INTERLUDIUM: FONTS ------------------------------------------------------------------------------------
 
 SegoeUII_12pt = pygame.font.Font(filename="../Fonts/segoeuii.ttf", size=12)
 CCWildWordsI_36pt = pygame.font.Font(filename="../Fonts/CC Wild Words Italic.ttf", size=36)
+
+fonts = {"normal_font":               pygame.font.Font('../Fonts/segoeuii.ttf', 17),
+         "handwritten_font":          pygame.font.Font('../Fonts/BRADHITC.TTF', 30),
+         "italic_handwritten_font":   pygame.font.Font('../Fonts/BRADHITC.TTF', 30),                     # <--- Yeah I've yet to implement this one, sorry e.e
+         "bold_handwritten_font":     pygame.font.Font('../Fonts/CC Wild Words Italic.ttf', 48)}
+
+
+
+
+
 
 resized_for_this_screen: tuple = (user_screen_width, user_screen_height)
 
@@ -416,6 +446,8 @@ def simulation():
 
     global running
     global simulation_state
+
+    global fonts
 
     global gs_scoreboard
     global team_list
@@ -458,35 +490,22 @@ def simulation():
         
 
 
-        # ----------- INTERLUDIUM: FONTS ------------------------------------------------------------------------------------
-
-        # normal_font             = tk.font.Font(family = "Segoe UI",         size = 40, slant = "italic")
-        # handwritten_font        = tk.font.Font(family = "Bradley Hand ITC", size = 40)
-        # italic_handwritten_font = tk.font.Font(family = "Bradley Hand ITC", size = 40, slant = "italic")
-
-
-        # normal_font             = pygame.font.SysFont('Segoe UI',         30, italic = True)
-        # handwritten_font        = pygame.font.SysFont('Bradley Hand ITC', 30)
-        # italic_handwritten_font = pygame.font.SysFont('Bradley Hand ITC', 30, italic = True)
-
-
-        normal_font             = pygame.font.Font('../Fonts/segoeuii.ttf', 17)
-        handwritten_font        = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
-        italic_handwritten_font = pygame.font.Font('../Fonts/BRADHITC.TTF', 30)
-        bold_handwritten_font   = pygame.font.Font('../Fonts/CC Wild Words Italic.ttf', 48)
+        
+        
 
 
         # -------------------------------------------------------------------------------------------------------------------
 
         text1 = f"Played 0 out of 3 games"
 
+        # ----- Group Stage
         if (simulation_state < 2):
 
             screen.blit(groups_scaled_surface, (0, 0))
 
             # Renders the title.
             text1 = f"Played 3 out of 3 games"
-            render_text(text1, "pink",  (int_horizontal_position(25), int_vertical_position(5)),  screen, font = bold_handwritten_font)
+            render_text(text1, "pink",  (int_horizontal_position(25), int_vertical_position(5)),  screen, font = fonts["bold_handwritten_font"])
 
             # Renders the standings (the team names and their scores).
             render_gs(team_list, gs_scoreboard)
@@ -503,20 +522,17 @@ def simulation():
 
                 enable_gs = False
 
-        elif simulation_state >= 2:
-            screen.blit(brackets_scaled_surface, (0, 0))
-
-
-        # ------------------------------------------------------------------------------------
         # ----- Bracket stage
+        elif simulation_state >= 2:
 
-        
+            screen.blit(brackets_scaled_surface, (0, 0))
+            
+            tier_list        = create_tiers(group_list)
+            qualified_teams  = elimination(team_tiers = tier_list)
+            brackets         = create_brackets(qualified_teams, tier_list)
 
-        qualified_teams = elimination(team_tiers = group_list)
-        brackets: list  = create_brackets(qualified_teams, group_list)
-
-        print(brackets)
-        
+            print(brackets)
+            
         pygame.display.flip()
         clock.tick(60)  # Caps the events loop at a 60fps ceiling.
     return
