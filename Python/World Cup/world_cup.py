@@ -100,7 +100,7 @@ def elimination(gs_scoreboard, team_tiers):
 
     qualified_teams = team_tiers.copy()
 
-    qualified_teams.pop[3]      # tier 4 doesn't qualify :c
+    qualified_teams.pop(3)      # tier 4 doesn't qualify :c
 
     tier_3 = []
     for team in team_tiers[2]:  # grabs tier 3
@@ -170,9 +170,9 @@ def create_brackets(qualified_teams: list[int], group_list: list[list[str]]):
         tier3 = qualified_teams[2]
         
         for team in tier2:
-            remaining_teams.append()
+            remaining_teams.append(team)
         for team in tier3:
-            remaining_teams.append()
+            remaining_teams.append(team)
         
         
         assert len(ro16_bracket)    == len(remaining_teams)
@@ -477,9 +477,14 @@ def simulation():
 
 
         # ------------------------------------------------------------------------------------
+        # ----- Bracket stage
 
+        group_list = create_groups(team_list)
 
+        qualified_teams = elimination(gs_scoreboard, team_tiers = group_list)
+        brackets: list  = create_brackets(qualified_teams, group_list)
 
+        print(brackets)
         
         pygame.display.flip()
         clock.tick(60)  # Caps the events loop at a 60fps ceiling.
