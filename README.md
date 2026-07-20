@@ -24,7 +24,7 @@ We will not get to learn more advanced topics such as Event Handling in depth.
 - Functions
 - Modules
 
-We will not get to learn more advanced topics such as GUIs (but I tried to bring as many GUI activities as possible for them to stay engaged throughout the course! :3).
+We will not get to learn more advanced topics such as OOP and GUIs (but I tried to bring as many GUI activities as possible for them to stay engaged throughout the course! :3).
 
 <br>
 <br>
